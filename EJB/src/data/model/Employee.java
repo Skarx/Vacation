@@ -57,7 +57,7 @@ public class Employee {
         this.firstname = firstname;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "serviceId")
     public Service getService(){
         return service;

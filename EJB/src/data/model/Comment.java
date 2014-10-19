@@ -24,7 +24,7 @@ public class Comment {
         this.id = id;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "creatorId")
     public Employee getCreator(){
         return creator;
@@ -32,7 +32,7 @@ public class Comment {
     public void setCreator(Employee emp){
         creator = emp;
     }
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "vacationId")
     public Vacation getVacation(){
         return vacation;

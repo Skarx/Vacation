@@ -40,7 +40,7 @@ public class Service {
         this.name = name;
     }
 
-    @OneToMany(mappedBy = "service")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "service")
     public Set<Employee> getEmployees(){
         return employees;
     }
