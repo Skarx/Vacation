@@ -1,9 +1,6 @@
 package data.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by Hervé on 17/10/2014.
@@ -14,6 +11,21 @@ public class Employee {
     private String lastname;
     private String firstname;
     private Service service;
+
+    public Employee(){
+
+    }
+
+    public Employee(String firstName, String lastName){
+        this.firstname = firstName ;
+        this.lastname = lastName ;
+    }
+
+    public Employee(Service service, String firstname, String lastname){
+        this.service = service ;
+        this.firstname = firstname ;
+        this.lastname = lastname ;
+    }
 
     @Id
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
@@ -43,6 +55,16 @@ public class Employee {
 
     public void setFirstname(String firstname) {
         this.firstname = firstname;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "serviceId")
+    public Service getService(){
+        return service;
+    }
+
+    public void setService(Service service){
+        this.service = service;
     }
 
     @Override

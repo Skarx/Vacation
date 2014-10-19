@@ -1,9 +1,7 @@
 package data.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created by Hervé on 17/10/2014.
@@ -12,6 +10,15 @@ import javax.persistence.Id;
 public class Service {
     private int id;
     private String name;
+    private Set<Employee> employees;
+
+    public Service(){
+
+    }
+
+    public Service(String name){
+        this.name = name ;
+    }
 
     @Id
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
@@ -31,6 +38,19 @@ public class Service {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @OneToMany(mappedBy = "service")
+    public Set<Employee> getEmployees(){
+        return employees;
+    }
+
+    public void setEmployees(Set<Employee> employees){
+        this.employees = employees ;
+    }
+
+    public void addEmployee(Employee emp){
+        this.employees.add(emp);
     }
 
     @Override
