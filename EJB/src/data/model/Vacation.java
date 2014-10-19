@@ -30,26 +30,26 @@ public class Vacation {
         this.id = id;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "employeeId")
     public Employee getEmployee(){return employee;}
 
     public void setEmployee(Employee employee){this.employee = employee;}
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "managerId")
 
     public Employee getManager(){return manager;}
 
     public void setManager(Employee manager){this.manager = manager;}
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "hrId")
     public Employee getHr(){return hr;}
 
     public void setHr(Employee hr){this.hr = hr;}
 
-    @OneToMany(mappedBy = "vacation")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "vacation")
     public Set<Comment> getComments(){return comments;}
 
     public void setComments(Set<Comment> comments) {this.comments = comments;}

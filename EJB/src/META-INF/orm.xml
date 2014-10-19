@@ -14,10 +14,10 @@
             <basic name="comments">
                 <column name="comments" nullable="false" length="500"/>
             </basic>
-            <many-to-one name="creator">
+            <many-to-one name="creator" fetch="EAGER">
                 <join-column name="creatorid" nullable="false" updatable="true"/>
             </many-to-one>
-            <many-to-one name="vacation">
+            <many-to-one name="vacation" fetch="EAGER">
                 <join-column name="vacationid" nullable="false" updatable="true"/>
             </many-to-one>
         </attributes>
@@ -68,16 +68,16 @@
             <basic name="status">
                 <column name="status" nullable="false" length="20"/>
             </basic>
-            <many-to-one name="employee">
+            <many-to-one name="employee" fetch="EAGER">
                 <join-column name="employeeid" nullable="false" updatable="true"/>
             </many-to-one>
-            <many-to-one name="manager">
+            <many-to-one name="manager" fetch="EAGER">
                 <join-column name="managerid" nullable="true" updatable="true"/>
             </many-to-one>
-            <many-to-one name="hr">
+            <many-to-one name="hr" fetch="EAGER">
                 <join-column name="hrid" nullable="false" updatable="true"/>
             </many-to-one>
-            <one-to-many name="comments">
+            <one-to-many name="comments" fetch="EAGER">
                 <join-table name="comment" />
             </one-to-many>
         </attributes>
