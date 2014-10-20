@@ -6,6 +6,8 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import data.model.Comment;
+import data.model.Employee;
+import data.model.Vacation;
 
 import java.util.List;
 /**
@@ -46,16 +48,17 @@ public class CommentDAO {
     }
     //-----------------------------------------------------------------------------
 
-    public List<Comment> findByVacation(int vacationId){
-        return (List<Comment>)vacationDAO.findById(vacationId).getComments();
+    public List<Comment> findByVacation(Vacation vacation){
+        return (List<Comment>)vacation.getComments();
     }
     //-----------------------------------------------------------------------------
 
 
-    public List<Comment> findByCreator(int creatorId){
+    public List<Comment> findByCreator(Employee employee){
+
         Query query = entityManager.createQuery("" +
                 "SELECT Comment FROM Comment Comment " +
-                "WHERE Comment.managerId IS " + creatorId);
+                "WHERE Comment.managerId IS " + employee.getId());
         return query.getResultList();
     }
     //-----------------------------------------------------------------------------
@@ -67,7 +70,7 @@ public class CommentDAO {
     }
     //-----------------------------------------------------------------------------
 
-    public Comment update (Comment Comment){
+    public Comment update(Comment Comment){
         return entityManager.merge(Comment);
 
     }

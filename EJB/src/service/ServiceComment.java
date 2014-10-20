@@ -12,6 +12,8 @@ import data.model.Employee;
 import data.model.Vacation;
 
 import java.security.Timestamp;
+import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Hervé on 19/10/2014.
@@ -39,12 +41,25 @@ public class ServiceComment {
         nvComment.setCreator(emp);
         nvComment.setVacation(vacation);
         nvComment = commentDAO.persist(nvComment);
-        vacation.addComments(nvComment);
-        vacationDAO.update(vacation);
         return nvComment.getId();
     }
-
-
-
-
+    public Comment getComment(int idComment){
+        return commentDAO.findById(idComment);
+    }
+    public void updateComment(int idComment, String comment){
+        Comment com = commentDAO.findById(idComment);
+        Date date = new Date();
+        com.setCreadate(new java.sql.Timestamp(date.getTime()));
+        com.setComments(comment);
+        commentDAO.update(com);
+    }
+    public void deleteComment(int idComment){
+        commentDAO.remove(commentDAO.findById(idComment));
+    }
+    public List<Comment> listOfCommentsByVacation(int idVacation){
+        return commentDAO.findByVacation(vacationDAO.findById(idVacation));
+    }
+    public List<Comment> listOfCommentByCreator(int idCreator){
+        return commentDAO.findByCreator(employeeDAO.find(idCreator));
+    }
 }

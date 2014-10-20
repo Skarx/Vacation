@@ -4,6 +4,8 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+
+import data.model.Employee;
 import data.model.Vacation;
 import data.model.Status;
 import java.util.List;
@@ -45,47 +47,47 @@ public class VacationDAO {
         return (List<Vacation>)l;
     }
     //-----------------------------------------------------------------------------
-    public List<Vacation> findByManager(int managerId){
+    public List<Vacation> findByManager(Employee manager){
         Query query = entityManager.createQuery("" +
                 "SELECT Vacation FROM Vacation Vacation " +
-                "WHERE Vacation.managerId IS " + managerId);
+                "WHERE Vacation.managerId IS " + manager.getId());
         return query.getResultList();
     }
     //-----------------------------------------------------------------------------
-    public List<Vacation> findByHr(int hrId){
+    public List<Vacation> findByHr(Employee hr){
         Query query = entityManager.createQuery("" +
                 "SELECT Vacation FROM Vacation Vacation " +
-                "WHERE Vacation.hrId IS " + hrId);
+                "WHERE Vacation.hrId IS " + hr.getId());
         return query.getResultList();
     }
     //-----------------------------------------------------------------------------
-    public List<Vacation> findByEmployee(int employeeId){
+    public List<Vacation> findByEmployee(Employee employee){
         Query query = entityManager.createQuery("" +
                 "SELECT Vacation FROM Vacation Vacation " +
-                "WHERE Vacation.employeeId IS " + employeeId);
+                "WHERE Vacation.employeeId IS " + employee.getId());
         return query.getResultList();
     }
     //-----------------------------------------------------------------------------
-    public List<Vacation> findByEmployeeAndStatus(int employeeId, Status status){
+    public List<Vacation> findByEmployeeAndStatus(Employee employee, Status status){
         Query query = entityManager.createQuery("" +
                 "SELECT Vacation FROM Vacation Vacation " +
-                "WHERE Vacation.employeeId IS " + employeeId + " " +
+                "WHERE Vacation.employeeId IS " + employee.getId() + " " +
                 "AND Vacations.status IS " + status.toString());
         return query.getResultList();
     }
     //-----------------------------------------------------------------------------
-    public List<Vacation> findByManagerAndStatus(int managerId, Status status){
+    public List<Vacation> findByManagerAndStatus(Employee manager, Status status){
         Query query = entityManager.createQuery("" +
                 "SELECT Vacation FROM Vacation Vacation " +
-                "WHERE Vacation.managerId IS " + managerId + " " +
+                "WHERE Vacation.managerId IS " + manager.getId() + " " +
                 "AND Vacations.status IS " + status.toString());
         return query.getResultList();
     }
     //-----------------------------------------------------------------------------
-    public List<Vacation> findByHrAndStatus(int hrId, Status status){
+    public List<Vacation> findByHrAndStatus(Employee hr, Status status){
         Query query = entityManager.createQuery("" +
                 "SELECT Vacation FROM Vacation Vacation " +
-                "WHERE Vacation.hrId IS " + hrId + " " +
+                "WHERE Vacation.hrId IS " + hr.getId() + " " +
                 "AND Vacations.status IS " + status.toString());
         return query.getResultList();
     }
