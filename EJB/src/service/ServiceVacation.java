@@ -5,7 +5,6 @@ import data.dao.EmployeeDAO;
 import data.dao.ServiceDAO;
 import data.dao.VacationDAO;
 import data.model.*;
-
 import javax.ejb.EJB;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
