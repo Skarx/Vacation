@@ -11,6 +11,7 @@ public class Service {
     private int id;
     private String name;
     private Set<Employee> employees;
+    private Employee manager;
 
     public Service(){
 
@@ -40,6 +41,8 @@ public class Service {
         this.name = name;
     }
 
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "serviceId")
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "service")
     public Set<Employee> getEmployees(){
         return employees;
