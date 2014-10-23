@@ -32,6 +32,7 @@ CREATE TABLE Employee (
 	id				  SERIAL 				NOT NULL,
 	lastName		VARCHAR(30) 		NOT NULL,
 	firstName		VARCHAR(30) 		NOT NULL,
+  nbVacation  INTEGER,
 	serviceId		INTEGER 				NOT NULL,
 	managerId		INTEGER,
 	CONSTRAINT  employeePK 				PRIMARY KEY (id),
@@ -79,11 +80,11 @@ INSERT INTO Service VALUES (nextval('service_id_seq'), 'RH', 2);
 INSERT INTO Service VALUES (nextval('service_id_seq'), 'Labo1', 3);
 
 -- Insertion des Employés
-INSERT INTO Employee VALUES (nextval('employee_id_seq'),'Smith', 'John', 1, NULL );
-INSERT INTO Employee VALUES (nextval('employee_id_seq'),'Cliff', 'Jimmy', 2, 1 );
-INSERT INTO Employee VALUES (nextval('employee_id_seq'),'Denzey', 'Willy', 3, 1 );
-INSERT INTO Employee VALUES (nextval('employee_id_seq'),'Snow', 'John', 2, 2 );
-INSERT INTO Employee VALUES (nextval('employee_id_seq'),'Sand', 'Bobby', 3, 3 );
+INSERT INTO Employee VALUES (nextval('employee_id_seq'),'Smith', 'John',25, 1, NULL );
+INSERT INTO Employee VALUES (nextval('employee_id_seq'),'Cliff', 'Jimmy',25, 2, 1 );
+INSERT INTO Employee VALUES (nextval('employee_id_seq'),'Denzey', 'Willy',20, 3, 1 );
+INSERT INTO Employee VALUES (nextval('employee_id_seq'),'Snow', 'John',12, 2, 2 );
+INSERT INTO Employee VALUES (nextval('employee_id_seq'),'Sand', 'Bobby',25, 3, 3 );
 
 
 
