@@ -34,6 +34,9 @@
             <basic name="firstname">
                 <column name="firstname" nullable="false" length="30"/>
             </basic>
+            <basic name="nbVacation">
+                <column name="nbvacation" nullable="true"/>
+            </basic>
             <many-to-one name="service">
                 <join-column name="serviceid" nullable="false" updatable="true"/>
             </many-to-one>

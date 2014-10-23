@@ -8,7 +8,10 @@ import data.model.*;
 
 import javax.ejb.EJB;
 import java.sql.Date;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 /**
  * Created by Manfred on 01/11/2014.
@@ -49,42 +52,38 @@ public class ServiceAsk implements IEmployee{
     }
 
     @Override
-    public Vacation cancelVacation(Vacation vacation) {
-        vacation.setStatus(Status.PENDINGCANCEL.toString());
-        return vacationDAO.update(vacation);
-    }
-
-    @Override
     public void makePlanning(Employee employee) {
         List<Vacation> vacations = vacationDAO.findByManager(employeeDAO.getManager(employee));
     }
 
 
     @Override
-    public void checkVacations() {
-
+    public int checkVacations(Employee employee) {
+        return employee.getNbVacation();
+    }
+    @Override
+    public List<Vacation> getMyAssociatesPendingVacations(Employee employee) {
+        List<Vacation> vacationList = null;
+        for(Employee emp: employeeDAO.getEmployeesByService(employee.getService())){
+            if(!emp.equals(employee))
+                vacationList.addAll(vacationDAO.findByEmployee(emp));
+        }
+        return vacationList;
+    }
+    @Override
+    public List<Vacation> getMyVacations(Employee employee){
+        return vacationDAO.findByEmployee(employee);
+    }
+    @Override
+    public Vacation cancelPendingVacation(Vacation vacation){
+        vacation.setStatus(Status.CANCELLED.toString());
+        return vacationDAO.update(vacation);
     }
 
     @Override
-    public List<Vacation> getVacationsByEmployee(Employee emp) {
-        return vacationDAO.findByEmployee(emp);
-    }
-
-    @Override
-    public List<Vacation> getVacationByEmployeeAndYear(Employee emp, int year){
-        return vacationDAO.findByEmployeeAndYear(emp, year);
-    }
-    @Override
-    public List<Vacation> getVacationByEmployeeAndStatus(Employee employee, Status status){
-        return vacationDAO.findByEmployeeAndStatus(employee, status);
-    }
-    @Override
-    public List<Vacation> getVacationByManagerAndStatus(Employee manager, Status status){
-        return vacationDAO.findByManagerAndStatus(manager, status);
-    }
-    @Override
-    public List<Vacation> getVacationByHrAndStatus(Employee hr, Status status){
-        return vacationDAO.findByHrAndStatus(hr, status);
+    public Vacation cancelVacation(Vacation vacation) {
+        vacation.setStatus(Status.PENDINGCANCEL.toString());
+        return vacationDAO.update(vacation);
     }
 
 }
