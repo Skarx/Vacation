@@ -1,14 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="155879738">
+  <component name="DataSourceManagerImpl" format="xml" hash="111793119">
     <data-source source="LOCAL" name="PostgreSQL - postgres@localhost" uuid="df259ec0-7a42-4336-a782-192d9fdca741">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://localhost:5432/postgres</jdbc-url>
       <user-name>postgres</user-name>
-      <user-password>dffcdfe3dfefdffedfc4dfc5dfc7</user-password>
+      <user-password>dfdadfc5dfd9dfdedfcddfd8dfcfdfd9</user-password>
       <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="PersistenceUnit" uuid="c5a4fa55-be1c-45ae-85a8-a4b27b961923">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/postgres</jdbc-url>
+      <user-name>postgres</user-name>
+      <user-password>dfdadfc5dfd9dfdedfcddfd8dfcfdfd9</user-password>
+      <libraries>
+        <library>
+          <url>file://C:\Users\Hervé\Documents\Work\save\postgresql-9.3-1102.jdbc41.jar</url>
+        </library>
+      </libraries>
     </data-source>
   </component>
 </project>

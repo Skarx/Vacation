@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+                 version="2.0">
+
+    <entity class="data.model.Comment">
+        <table name="comment" schema="public" catalog="postgres"/>
+        <attributes>
+            <id name="id">
+                <column name="id" nullable="false" precision="10"/>
+            </id>
+            <basic name="creadate">
+                <column name="creadate" nullable="false" precision="6"/>
+            </basic>
+            <basic name="comments">
+                <column name="comments" nullable="false" length="500"/>
+            </basic>
+            <many-to-one name="creator" fetch="EAGER">
+                <join-column name="creatorid" nullable="false" updatable="true"/>
+            </many-to-one>
+            <many-to-one name="vacation" fetch="EAGER">
+                <join-column name="vacationid" nullable="false" updatable="true"/>
+            </many-to-one>
+        </attributes>
+    </entity>
+    <entity class="data.model.Employee">
+        <table name="employee" schema="public" catalog="postgres"/>
+        <attributes>
+            <id name="id">
+                <column name="id" nullable="false" precision="10"/>
+            </id>
+            <basic name="lastname">
+                <column name="lastname" nullable="false" length="30"/>
+            </basic>
+            <basic name="firstname">
+                <column name="firstname" nullable="false" length="30"/>
+            </basic>
+            <basic name="nbVacation">
+                <column name="nbvacation" nullable="true"/>
+            </basic>
+            <many-to-one name="service">
+                <join-column name="serviceid" nullable="false" updatable="true"/>
+            </many-to-one>
+            <many-to-one name="manager">
+                <join-column name="managerId" nullable="false" updatable="true"/>
+            </many-to-one>
+            <one-to-many name="associates">
+                <join-table name="employee"/>
+            </one-to-many>
+        </attributes>
+    </entity>
+    <entity class="data.model.Service">
+        <table name="service" schema="public" catalog="postgres"/>
+        <attributes>
+            <id name="id">
+                <column name="id" nullable="false" precision="10"/>
+            </id>
+            <basic name="name">
+                <column name="name" nullable="false" length="30"/>
+            </basic>
+            <one-to-many name="employees">
+                <join-table name="employee"/>
+            </one-to-many>
+        </attributes>
+    </entity>
+    <entity class="data.model.Vacation">
+        <table name="vacation" schema="public" catalog="postgres"/>
+        <attributes>
+            <id name="id">
+                <column name="id" nullable="false" precision="10"/>
+            </id>
+            <basic name="begdate">
+                <column name="begdate" nullable="false" precision="13"/>
+            </basic>
+            <basic name="begtime">
+                <column name="begtime" nullable="false" length="20"/>
+            </basic>
+            <basic name="enddate">
+                <column name="enddate" nullable="false" precision="13"/>
+            </basic>
+            <basic name="endtime">
+                <column name="endtime" nullable="false" length="20"/>
+            </basic>
+            <basic name="status">
+                <column name="status" nullable="false" length="20"/>
+            </basic>
+            <many-to-one name="employee" fetch="EAGER">
+                <join-column name="employeeid" nullable="false" updatable="true"/>
+            </many-to-one>
+            <many-to-one name="manager" fetch="EAGER">
+                <join-column name="managerid" nullable="true" updatable="true"/>
+            </many-to-one>
+            <many-to-one name="hr" fetch="EAGER">
+                <join-column name="hrid" nullable="false" updatable="true"/>
+            </many-to-one>
+            <one-to-many name="comments" fetch="EAGER">
+                <join-table name="comment" />
+            </one-to-many>
+        </attributes>
+    </entity>
+</entity-mappings>
