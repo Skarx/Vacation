@@ -34,6 +34,9 @@
             <basic name="firstname">
                 <column name="firstname" nullable="false" length="30"/>
             </basic>
+            <many-to-one name="service">
+                <join-column name="serviceid" nullable="false" updatable="true"/>
+            </many-to-one>
         </attributes>
     </entity>
     <entity class="data.model.Service">
@@ -45,6 +48,9 @@
             <basic name="name">
                 <column name="name" nullable="false" length="30"/>
             </basic>
+            <one-to-many name="employees">
+                <join-table name="employee"/>
+            </one-to-many>
         </attributes>
     </entity>
     <entity class="data.model.Vacation">

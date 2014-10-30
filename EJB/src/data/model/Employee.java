@@ -1,9 +1,6 @@
 package data.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by Hervé on 17/10/2014.
@@ -43,6 +40,16 @@ public class Employee {
 
     public void setFirstname(String firstname) {
         this.firstname = firstname;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "serviceId")
+    public Service getService(){
+        return service;
+    }
+
+    public void setService(Service service){
+        this.service = service;
     }
 
     @Override
