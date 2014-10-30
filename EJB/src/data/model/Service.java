@@ -12,6 +12,14 @@ public class Service {
     private String name;
     private Set<Employee> employees;
 
+    public Service(){
+
+    }
+
+    public Service(String name){
+        this.name = name ;
+    }
+
     @Id
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
     public int getId() {
@@ -39,6 +47,10 @@ public class Service {
 
     public void setEmployees(Set<Employee> employees){
         this.employees = employees ;
+    }
+
+    public void addEmployee(Employee emp){
+        this.employees.add(emp);
     }
 
     @Override

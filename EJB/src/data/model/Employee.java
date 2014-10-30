@@ -12,6 +12,21 @@ public class Employee {
     private String firstname;
     private Service service;
 
+    public Employee(){
+
+    }
+
+    public Employee(String firstName, String lastName){
+        this.firstname = firstName ;
+        this.lastname = lastName ;
+    }
+
+    public Employee(Service service, String firstname, String lastname){
+        this.service = service ;
+        this.firstname = firstname ;
+        this.lastname = lastname ;
+    }
+
     @Id
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
     public int getId() {
