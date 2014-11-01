@@ -37,6 +37,12 @@
             <many-to-one name="service">
                 <join-column name="serviceid" nullable="false" updatable="true"/>
             </many-to-one>
+            <many-to-one name="manager">
+                <join-column name="managerId" nullable="false" updatable="true"/>
+            </many-to-one>
+            <one-to-many name="associates">
+                <join-table name="employee"/>
+            </one-to-many>
         </attributes>
     </entity>
     <entity class="data.model.Service">

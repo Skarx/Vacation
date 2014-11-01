@@ -1,5 +1,6 @@
 package service;
 
+import data.model.Comment;
 import data.model.Employee;
 import data.model.Vacation;
 
@@ -10,13 +11,13 @@ import java.util.List;
  */
 public interface IValidator {
 
-    public void validateVacation(Vacation vacation);
+    public Vacation validateVacation(Vacation vacation, Employee validator, Comment comment);
 
-    public void refuseVacation(Vacation vacation);
+    public Vacation refuseVacation(Vacation vacation, Employee validator, Comment comment);
 
-    public void validateCancelling(Vacation vacation);
+    public Vacation validateCancelling(Vacation vacation, Employee validator, Comment comment);
 
-    public void refuseCancelling(Vacation vacation);
+    public Vacation refuseCancelling(Vacation vacation, Employee validator, Comment comment);
 
     public List<Vacation> getMyAssociatesPendingVacations(Employee employee);
 
