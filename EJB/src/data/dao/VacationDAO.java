@@ -68,6 +68,13 @@ public class VacationDAO {
         return query.getResultList();
     }
     //-----------------------------------------------------------------------------
+    public List<Vacation> findPendingVacationsByEmployee(Employee employee){
+        Query query = entityManager.createQuery("SELECT vacation FROM Vacation vacation " +
+                "WHERE vacation.employeeId IS " + employee.getId() + " AND " +
+                "vacation.status IS " + Status.PENDING.toString());
+        return query.getResultList();
+    }
+    //-----------------------------------------------------------------------------
     public List<Vacation> findByEmployeeAndStatus(Employee employee, Status status){
         Query query = entityManager.createQuery("" +
                 "SELECT Vacation FROM Vacation Vacation " +

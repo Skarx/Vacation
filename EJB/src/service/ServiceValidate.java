@@ -10,6 +10,7 @@ import data.model.Status;
 import data.model.Vacation;
 
 import javax.ejb.EJB;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -83,12 +84,21 @@ public class ServiceValidate implements IValidator {
 
     @Override
     public List<Vacation> getMyAssociatesPendingVacations(Employee employee) {
-        return null;
+        List<Vacation> vacations = new ArrayList<Vacation>();
+
+        // pour chaque associe du manager, on incremente la liste des conges
+        for( Employee e : employee.getAssociates()){
+            vacations.addAll(vacationDAO.findPendingVacationsByEmployee(e));
+        }
+
+        return vacations ;
     }
 
     @Override
     public List<Vacation> getVacationsForEmployee(Employee employee) {
-        return null;
+        List<Vacation> vacations = new ArrayList<Vacation>() ;
+        vacations.addAll(vacationDAO.findByEmployee(employee));
+        return vacations ;
     }
 
     @Override
