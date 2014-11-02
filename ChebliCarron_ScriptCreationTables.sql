@@ -22,16 +22,17 @@ DROP TABLE IF EXISTS Comment CASCADE;
 -- | Création des tables (externe)                                                                |
 -- +----------------------------------------------------------------------------------------------+
 CREATE TABLE Service (
-	id				SERIAL 				NOT NULL,
-	name			VARCHAR(30) 		NOT NULL,
+	id				    SERIAL 				  NOT NULL,
+	name			    VARCHAR(30) 		NOT NULL,
+	managerId     INTEGER         NOT NULL,
 	CONSTRAINT 		servicePK 			PRIMARY KEY (id)
 );
 
 CREATE TABLE Employee (
-	id				SERIAL 				NOT NULL,
+	id				  SERIAL 				NOT NULL,
 	lastName		VARCHAR(30) 		NOT NULL,
 	firstName		VARCHAR(30) 		NOT NULL,
-	serviceId		SERIAL 				NOT NULL,
+	serviceId		INTEGER 				NOT NULL,
 	managerId		INTEGER,
 	CONSTRAINT  employeePK 				PRIMARY KEY (id),
 	CONSTRAINT  employeeFKService		FOREIGN KEY (serviceId)  REFERENCES Service(id),
@@ -73,9 +74,9 @@ CREATE TABLE Comment (
 -- +----------------------------------------------------------------------------------------------+
 
 -- Insertion des Service
-INSERT INTO Service VALUES (nextval('service_id_seq'),'CODIR');
-INSERT INTO Service VALUES (nextval('service_id_seq'),'RH');
-INSERT INTO Service VALUES (nextval('service_id_seq'),'Labo1');
+INSERT INTO Service VALUES (nextval('service_id_seq'), 'CODIR', 1);
+INSERT INTO Service VALUES (nextval('service_id_seq'), 'RH', 2);
+INSERT INTO Service VALUES (nextval('service_id_seq'), 'Labo1', 3);
 
 -- Insertion des Employés
 INSERT INTO Employee VALUES (nextval('employee_id_seq'),'Smith', 'John', 1, NULL );

@@ -8,6 +8,9 @@ import javax.persistence.Query;
 import data.model.Employee;
 import data.model.Vacation;
 import data.model.Status;
+
+import java.sql.Date;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 /**
@@ -96,6 +99,13 @@ public class VacationDAO {
                 "SELECT Vacation FROM Vacation Vacation " +
                 "WHERE Vacation.hrId IS " + hr.getId() + " " +
                 "AND Vacations.status IS " + status.toString());
+        return query.getResultList();
+    }
+    public List<Vacation> findByEmployeeAndYear(Employee emp, int year){
+        Query query = entityManager.createQuery("" +
+                "SELECT Vacation FROM Vacation Vacation " +
+                "WHERE Vacation.hrId IS " + emp.getId() + " " +
+                "AND YEAR(Vacations.enddate) IS " + year);
         return query.getResultList();
     }
     //-----------------------------------------------------------------------------

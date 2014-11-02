@@ -72,7 +72,7 @@ public class Employee {
     }
 
     @ManyToOne
-    @Column(name = "managerId", nullable = true, insertable = true, updatable = true, length = 35)
+    @Column(name = "managerId", nullable = true, insertable = true, updatable = true)
     public Employee getManager() {
         return manager;
     }
@@ -82,7 +82,7 @@ public class Employee {
     }
 
     @OneToMany
-    @Column(name="id", nullable = true, insertable = true,updatable = true, length = 35)
+    @Column(name="id", nullable = true, insertable = true,updatable = true)
     public Set<Employee> getAssociates() {
         return associates;
     }

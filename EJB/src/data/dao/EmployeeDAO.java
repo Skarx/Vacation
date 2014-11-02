@@ -1,6 +1,7 @@
 package data.dao;
 
 import data.model.Employee;
+import data.model.Service;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
@@ -51,6 +52,15 @@ public class EmployeeDAO {
         return (List<Employee>) l;
     }
 
+    public List<Employee> getEmployeesByService(Service service){
+        String serviceName = service.getName();
+        Query query = entityManager.createQuery("SELECT employee FROM Employee employee " +
+                "WHERE employee.service.name = :serviceName");
+        List l = query.getResultList();
+
+        return (List<Employee>) l;
+    }
+
     public List<Employee> getEmployeesByService(String serviceName){
         Query query = entityManager.createQuery("SELECT employee FROM Employee employee " +
                 "WHERE employee.service.name = :serviceName");
@@ -58,6 +68,11 @@ public class EmployeeDAO {
 
         return (List<Employee>) l;
     }
+
+    public Employee getManager(Employee employee){
+        return employee.getManager();
+    }
+
 
     public Employee find(int id){
         return entityManager.find(Employee.class, id);
