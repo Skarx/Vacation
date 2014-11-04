@@ -1,8 +1,3 @@
-import data.model.DayTime;
-import data.model.Employee;
-import data.model.Vacation;
-import service.ServiceAsk;
-
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,14 +9,14 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import service.*;
+import utils.ServicesLocator;
+
 /**
  * Created by Manfred on 04/11/2014.
  */
 @WebServlet(name="NewVacationServlet", urlPatterns = "/newVacation")
 public class NewVacationServlet extends HttpServlet {
-
-    @EJB
-    private ServiceAsk serviceAsk = new ServiceAsk();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // recuperation des params de la requête
@@ -47,7 +42,9 @@ public class NewVacationServlet extends HttpServlet {
         // recuperation de l'employe
 
         try {
-            //serviceAsk.newVacation(begTime, endDate, begTime, endTime, comment, );
+            //IEmployee serviceEmployee = (IEmployee)ServicesLocator.getInstance().getRemoteInterface("serviceAsk");
+            //serviceEmployee.newVacation(begTime, endDate, begTime, endTime, comment, );
+
         }catch(Exception e){
             // TODO preparer les exceptions de newVacation
         }
