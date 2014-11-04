@@ -1,15 +1,17 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-ear" name="EAR:ear exploded">
+  <artifact type="exploded-ear" build-on-make="true" name="EAR:ear exploded">
     <output-path>$PROJECT_DIR$/out/artifacts/EAR_ear_exploded</output-path>
     <root id="root">
       <element id="javaee-facet-resources" facet="EAR/javaeeApplication/javaEEApplication" />
-      <element id="directory" name="EJB.jar">
-        <element id="artifact" artifact-name="EJB:ejb exploded" />
-      </element>
       <element id="directory" name="lib">
-        <element id="library" level="project" name="Java EE 6-Java EE 6" />
         <element id="file-copy" path="$PROJECT_DIR$/lib/junit-4.7.jar" />
         <element id="library" level="project" name="Java EE 6" />
+        <element id="archive" name="'EJB' JPA descriptors.jar">
+          <element id="jpa-descriptors" facet="EJB/jpa/JPA" />
+        </element>
+      </element>
+      <element id="directory" name="EJB.jar">
+        <element id="artifact" artifact-name="EJB:ejb exploded" />
       </element>
       <element id="directory" name="WEB.war">
         <element id="artifact" artifact-name="WEB:war exploded" />
