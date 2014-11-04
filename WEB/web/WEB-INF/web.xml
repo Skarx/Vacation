@@ -3,4 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="file:///C:/schemas/ file:///C:/schemas/web-app_3_1.xsd"
          version="3.1">
+    <servlet>
+        <servlet-name>index.jsp</servlet-name>
+        <jsp-file>/index.jsp</jsp-file>
+    </servlet>
+    
+    <servlet>
+        <servlet-name>NewVacationServlet</servlet-name>
+    </servlet>
+
 </web-app>

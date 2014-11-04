@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="javassist-3.18.1-GA">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../hibernate-release-4.2.15.Final/hibernate-release-4.2.15.Final/lib/required/javassist-3.18.1-GA.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>

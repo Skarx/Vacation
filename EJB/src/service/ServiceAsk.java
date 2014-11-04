@@ -38,7 +38,8 @@ public class ServiceAsk implements IEmployee{
     }
 
     @Override
-    public Vacation newVacation(Date begDate, Date endDate, DayTime begTime, DayTime endTime, Comment comment, Employee hr, Employee manager, Status status) {
+    public Vacation newVacation(Date begDate, Date endDate, DayTime begTime, DayTime endTime, Comment comment,
+                                Employee hr, Employee manager) {
         Vacation nvVacation = new Vacation();
         nvVacation.setBegdate(begDate);
         nvVacation.setBegtime(begTime.toString());
@@ -47,7 +48,7 @@ public class ServiceAsk implements IEmployee{
         nvVacation.addComments(comment);
         nvVacation.setHr(hr);
         nvVacation.setManager(manager);
-        nvVacation.setStatus(status.toString());
+        nvVacation.setStatus(Status.PENDING.toString());
         return vacationDAO.persist(nvVacation);
     }
 
@@ -61,6 +62,7 @@ public class ServiceAsk implements IEmployee{
     public int checkVacations(Employee employee) {
         return employee.getNbVacation();
     }
+
     @Override
     public List<Vacation> getMyAssociatesPendingVacations(Employee employee) {
         List<Vacation> vacationList = null;
