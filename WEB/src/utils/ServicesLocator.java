@@ -47,6 +47,8 @@ public class ServicesLocator
 			nomJNDI = "java:global/EAR/EJB/ServiceAsk!service.IEmployee";
 		else if(nomEJB.equals("ServiceValidate"))
 			nomJNDI = "java:global/EAR/EJB/ServiceValidate!service.IValidator";
+        else if(nomEJB.equals("ServiceLogin"))
+            nomJNDI = "java:global/EAR/EJB/ServiceLogin!service.ILogin";
 
 		// ATTENTION !!! La récupération d'un DAO n'existe ici que
 		// pour les contrôles (utilisés dans la servlet ControleDAOServlet) :

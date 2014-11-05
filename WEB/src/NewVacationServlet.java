@@ -15,7 +15,6 @@ import utils.ServicesLocator;
 /**
  * Created by Manfred on 04/11/2014.
  */
-@WebServlet(name="NewVacationServlet", urlPatterns = "/newVacation")
 public class NewVacationServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

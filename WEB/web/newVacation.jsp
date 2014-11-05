@@ -36,4 +36,6 @@
     </form>
 </div>
 
+${hello}
+
 <%@include file="footer.jsp"%>

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Manfred
@@ -11,7 +12,10 @@
     <title>Application de congés</title>
 </head>
 <body>
-<a href="">Mon planning</a>
+<a href="">Planning</a>
 <a href="./newVacation.jsp">Demander un congé</a>
-<a href="">Voir le planning sur l'année</a>
-<a href="">Voir les congés en attente de validation de mes collaborateur</a>
+
+<c:choose>
+    <c:when test="${not empty sessionScope.username}">Connecté en tant que : ${sessionScope.username}</c:when>
+    <c:otherwise>Non connecté</c:otherwise>
+</c:choose>
