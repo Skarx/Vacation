@@ -42,7 +42,7 @@ public class NewVacationServlet extends HttpServlet {
         // recuperation de l'employe
 
         try {
-            //IEmployee serviceEmployee = (IEmployee)ServicesLocator.getInstance().getRemoteInterface("serviceAsk");
+            IEmployee serviceEmployee = (IEmployee)ServicesLocator.getInstance().getRemoteInterface("serviceAsk");
             //serviceEmployee.newVacation(begTime, endDate, begTime, endTime, comment, );
 
         }catch(Exception e){

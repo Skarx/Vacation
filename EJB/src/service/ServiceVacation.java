@@ -27,7 +27,7 @@ public class ServiceVacation {
     @EJB
     private VacationDAO vacationDAO;
 
-    public ServiceVacation(){};
+    public ServiceVacation(){}
 
     public int newVacation(Date begDate, Date endDate, DayTime begTime, DayTime endTime, Set<Comment> comments, Employee hr, Employee manager, Status status ){
         Vacation nvVacation = new Vacation();

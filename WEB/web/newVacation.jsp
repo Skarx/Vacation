@@ -20,13 +20,13 @@
             <label for="begTime">Du</label>
             <select id="begTime" name="begTime">
                 <option value="">Matin</option>
-                <option vlaue="">Journée</option>
+                <option value="">Journée</option>
             </select>
 
             <label for="endTime">Du</label>
             <select id="endTime" name="endTime">
                 <option value="">Matin</option>
-                <option vlaue="">Journée</option>
+                <option value="">Journée</option>
             </select>
 
             <label for="comment">Commentaire :</label>
