@@ -9,8 +9,10 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import data.model.Employee;
 import service.*;
 import utils.ServicesLocator;
+import utils.ServicesLocatorException;
 
 /**
  * Created by Manfred on 04/11/2014.
@@ -53,8 +55,22 @@ public class NewVacationServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String hello = "coucou" ;
-        request.setAttribute("hello", hello);
+        Employee employee = null ;
+        int solde = 0 ;
+        try{
+            // recuperation de l'employe qui effectue la demande
+            ILogin serviceLogin = (ILogin)ServicesLocator.getInstance().getRemoteInterface("serviceLogin");
+            //employee = serviceLogin.getEmployee(request.getRemoteUser());
+
+            // recuperation du solde des conges de l'employe
+            IEmployee serviceAsk = (IEmployee)ServicesLocator.getInstance().getRemoteInterface("serviceAsk");
+            solde = serviceAsk.checkVacations(employee);
+        } catch (ServicesLocatorException e) {
+            e.printStackTrace();
+        }
+
+
+        request.setAttribute("solde", solde);
         request.getRequestDispatcher("newVacation.jsp").forward(request, response);
     }
 

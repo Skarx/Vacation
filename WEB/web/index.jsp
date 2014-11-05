@@ -14,11 +14,16 @@
     <c:forEach var="employee" items="${employees}">
         <option value="${employee.name}">${employee}</option>
     </c:forEach>
+
 </select>
 
 <form id="login_form">
     <input type="submit" value="Login">
 </form>
+</div>
+
+<div>
+    debug
 </div>
 
 <%@include file="footer.jsp"%>

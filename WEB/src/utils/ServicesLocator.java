@@ -41,30 +41,31 @@ public class ServicesLocator
 		//   java:global/<nom projet EAR>/<nom sous-projet EJB>/<nom bean session EJB>!<nom complet avec package de l'interface remote du bean>
 		// Exemple :
 		//   java:global/CabinetRecrutement_EAR/CabinetRecrutement_EJB/ServiceEntreprise!eu.telecom_bretagne.cabinet_recrutement.service.IServiceEntreprise
-
+        System.out.println("COUCOUGETREMOTE");
 		String nomJNDI = null;
 		if(nomEJB.equals("ServiceAsk"))
-			nomJNDI = "java:global/EAR/EJB/ServiceAsk!service.IEmployee";
+			nomJNDI = "java:global/EAR_ear_exploded/EJB/ServiceAsk!service.IEmployee";
 		else if(nomEJB.equals("ServiceValidate"))
-			nomJNDI = "java:global/EAR/EJB/ServiceValidate!service.IValidator";
+			nomJNDI = "java:global/EAR_ear_exploded/EJB/ServiceValidate!service.IValidator";
         else if(nomEJB.equals("ServiceLogin"))
-            nomJNDI = "java:global/EAR/EJB/ServiceLogin!service.ILogin";
+            nomJNDI = "java:global/EAR_ear_exploded/EJB/ServiceLogin!service.ILogin";
 
 		// ATTENTION !!! La récupération d'un DAO n'existe ici que
 		// pour les contrôles (utilisés dans la servlet ControleDAOServlet) :
 		// ils ne sont normalement pas appelés par la couche IHM.
 
 		else if(nomEJB.equals("CommentDAO"))
-			nomJNDI = "java:global/EAR/EJB/CommentDAO!data.dao.CommentDAO";
+			nomJNDI = "java:global/EAR_ear_exploded/EJB/CommentDAO!data.dao.CommentDAO";
 		else if(nomEJB.equals("EmployeeDAO"))
-			nomJNDI = "java:global/EAR/EJB/EmployeeDAO!data.dao.EmployeeDAO";
+			nomJNDI = "java:global/EAR_ear_exploded/EJB/EmployeeDAO!data.dao.EmployeeDAO";
         else if(nomEJB.equals("ServiceDAO"))
-            nomJNDI = "java:global/EAR/EJB/ServiceDAO!data.dao.ServiceDAO";
+            nomJNDI = "java:global/EAR_ear_exploded/EJB/ServiceDAO!data.dao.ServiceDAO";
         else if(nomEJB.equals("EmployeeDAO"))
-            nomJNDI = "java:global/EAR/EJB/ServiceDAO!data.dao.ServiceDAO";
+            nomJNDI = "java:global/EAR_ear_exploded/EJB/ServiceDAO!data.dao.ServiceDAO";
 		else
 			throw new ServicesLocatorException("Il n'y a pas d'EJB avec ce nom... " + nomEJB);
 
+        System.out.println("JNDI PRINT"+ nomJNDI);
 		// La méthode recherche d'abord le stub dans le cache, s'il est absent,
 		// il est récupéré via JNDI.
 		Object remoteInterface = cache.get(nomJNDI);

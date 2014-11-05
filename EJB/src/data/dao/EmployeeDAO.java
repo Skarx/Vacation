@@ -46,9 +46,10 @@ public class EmployeeDAO {
     }
 
     public List<Employee> getAll(){
-        Query query = entityManager.createQuery("SELECT Employee FROM Employee Employee ORDER BY Employee.id DESC");
+        Query query = entityManager.createQuery("SELECT employee FROM Employee employee ORDER BY employee.id DESC");
+        System.out.println("query done");
         List l = query.getResultList();
-
+        System.out.println("list got");
         return (List<Employee>) l;
     }
 

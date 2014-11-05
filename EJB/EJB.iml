@@ -8,6 +8,7 @@
         <datasource-mapping>
           <factory-entry name="NewPersistenceUnit" value="df259ec0-7a42-4336-a782-192d9fdca741" />
           <factory-entry name="PersistenceUnit" value="c5a4fa55-be1c-45ae-85a8-a4b27b961923" />
+          <factory-entry name="PostgreSQL" />
         </datasource-mapping>
         <deploymentDescriptor name="orm.xml" url="file://$MODULE_DIR$/src/META-INF/orm.xml" />
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/META-INF/persistence.xml" />

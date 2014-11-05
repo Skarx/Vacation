@@ -13,7 +13,7 @@
 </head>
 <body>
 <a href="">Planning</a>
-<a href="./newVacation.jsp">Demander un congé</a>
+<a href="./newVacation">Demander un congé</a>
 
 <c:choose>
     <c:when test="${not empty sessionScope.username}">Connecté en tant que : ${sessionScope.username}</c:when>

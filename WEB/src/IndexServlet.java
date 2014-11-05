@@ -21,13 +21,14 @@ public class IndexServlet extends javax.servlet.http.HttpServlet {
     protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
         // get employees list
         try {
+            System.out.println("Trying");
             ILogin serviceEmployee = (ILogin) ServicesLocator.getInstance().getRemoteInterface("ServiceLogin");
             System.out.println(serviceEmployee.getEmployees());
             request.setAttribute("employees", serviceEmployee.getEmployees());
         } catch (ServicesLocatorException e) {
+            System.out.println("jndi crashed");
             e.printStackTrace();
         }
-        System.out.println("coucou");
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 }
