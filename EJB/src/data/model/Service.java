@@ -23,6 +23,8 @@ public class Service implements Serializable{
     }
 
     @Id
+    @SequenceGenerator(name = "serviceGenPk", sequenceName = "service_id_seq", allocationSize = 1)
+    @GeneratedValue(generator = "serviceGenPk")
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
     public int getId() {
         return id;

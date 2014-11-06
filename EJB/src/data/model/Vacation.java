@@ -22,6 +22,8 @@ public class Vacation implements Serializable{
     private Set<Comment> comments;
 
     @Id
+    @SequenceGenerator(name = "vacationGenPk", sequenceName = "vacation_id_seq", allocationSize = 1)
+    @GeneratedValue(generator = "vacationGenPk")
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
     public int getId() {
         return id;
