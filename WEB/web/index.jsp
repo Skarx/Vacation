@@ -9,8 +9,13 @@
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<div>
+<div id="messages">
+    <c:forEach var="message" items="${messages}">
+        <p>${message}</p>
+    </c:forEach>
+</div>
 
+<div id="login">
 <form method="POST" id="login_form">
     <select name="employee">
         <c:forEach var="employee" items="${employees}">
@@ -19,10 +24,6 @@
     </select>
     <input type="submit" value="Login">
 </form>
-</div>
-
-<div>
-    debug
 </div>
 
 <%@include file="footer.jsp"%>

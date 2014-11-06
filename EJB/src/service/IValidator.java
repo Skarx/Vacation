@@ -4,11 +4,13 @@ import data.model.Comment;
 import data.model.Employee;
 import data.model.Vacation;
 
+import javax.ejb.Remote;
 import java.util.List;
 
 /**
  * Created by Manfred on 01/11/2014.
  */
+@Remote
 public interface IValidator {
 
     public Vacation validateVacation(Vacation vacation, Employee validator, Comment comment);

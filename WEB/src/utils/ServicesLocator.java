@@ -41,7 +41,7 @@ public class ServicesLocator
 		//   java:global/<nom projet EAR>/<nom sous-projet EJB>/<nom bean session EJB>!<nom complet avec package de l'interface remote du bean>
 		// Exemple :
 		//   java:global/CabinetRecrutement_EAR/CabinetRecrutement_EJB/ServiceEntreprise!eu.telecom_bretagne.cabinet_recrutement.service.IServiceEntreprise
-        System.out.println("COUCOUGETREMOTE");
+
 		String nomJNDI = null;
 		if(nomEJB.equals("ServiceAsk"))
 			nomJNDI = "java:global/EAR_ear_exploded/EJB/ServiceAsk!service.IEmployee";
@@ -65,7 +65,7 @@ public class ServicesLocator
 		else
 			throw new ServicesLocatorException("Il n'y a pas d'EJB avec ce nom... " + nomEJB);
 
-        System.out.println("JNDI PRINT "+ nomJNDI);
+
 		// La méthode recherche d'abord le stub dans le cache, s'il est absent,
 		// il est récupéré via JNDI.
 		Object remoteInterface = cache.get(nomJNDI);
@@ -81,7 +81,6 @@ public class ServicesLocator
 				throw new ServicesLocatorException(e);
 			}
 		}
-        System.out.println("Returning remote interface");
 		return remoteInterface;
 	}
 	//-----------------------------------------------------------------------------

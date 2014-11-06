@@ -9,4 +9,6 @@
 
 <br><br>
 </body>
+
+<script language="text/javascript" src="javascript/vacation.js"/>
 </html>

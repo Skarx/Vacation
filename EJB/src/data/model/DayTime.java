@@ -4,7 +4,8 @@ package data.model;
  */
 public enum DayTime {
     MORNING("morning"),
-    AFTERNOON("afternoon");
+    AFTERNOON("afternoon"),
+    ALL_DAY("all_day");
 
     private String name ="";
     DayTime(String name){

@@ -15,6 +15,10 @@ public class Comment implements Serializable{
     private Employee creator;
     private Vacation vacation;
 
+    public Comment(){
+
+    }
+
     @Id
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
     public int getId() {
@@ -41,8 +45,9 @@ public class Comment implements Serializable{
     public void setVacation(Vacation vac){
         vacation = vac;
     }
+
     @Basic
-    @Column(name = "creadate", nullable = false, insertable = true, updatable = true)
+    @Column(name = "creadate", nullable = false, insertable = false, updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     public Timestamp getCreadate() {
         return creadate;
     }
