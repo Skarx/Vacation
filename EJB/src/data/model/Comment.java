@@ -29,7 +29,7 @@ public class Comment implements Serializable{
         this.id = id;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "creatorId")
     public Employee getCreator(){
         return creator;
@@ -37,7 +37,7 @@ public class Comment implements Serializable{
     public void setCreator(Employee emp){
         creator = emp;
     }
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "vacationId")
     public Vacation getVacation(){
         return vacation;

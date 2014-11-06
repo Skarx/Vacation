@@ -40,7 +40,7 @@ public class ServiceAsk implements IEmployee{
     }
 
     @Override
-    public Vacation newVacation(Date begDate, Date endDate, DayTime begTime, DayTime endTime, Comment comment,
+    public Vacation newVacation(java.sql.Date begDate, java.sql.Date endDate, DayTime begTime, DayTime endTime, String comment,
                                 Employee employee, Employee manager) {
         Vacation nvVacation = new Vacation();
 
@@ -66,7 +66,7 @@ public class ServiceAsk implements IEmployee{
         if(!comment.equals("")){
             Comment comment_obj = new Comment();
             comment_obj.setComments(comment);
-            comment_obj.setCreator(creator);
+            comment_obj.setCreator(employee);
             comment_obj.setVacation(nvVacation);
             this.commentDAO.persist(comment_obj);
         }

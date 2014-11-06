@@ -31,20 +31,20 @@ public class Vacation implements Serializable{
         this.id = id;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "employeeId")
     public Employee getEmployee(){return employee;}
 
     public void setEmployee(Employee employee){this.employee = employee;}
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "managerId")
 
     public Employee getManager(){return manager;}
 
     public void setManager(Employee manager){this.manager = manager;}
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "hrId")
     public Employee getHr(){return hr;}
 
