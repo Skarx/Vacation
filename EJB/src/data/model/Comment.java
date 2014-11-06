@@ -1,13 +1,14 @@
 package data.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 
 /**
  * Created by Hervé on 17/10/2014.
  */
 @Entity
-public class Comment {
+public class Comment implements Serializable{
     private int id;
     private Timestamp creadate;
     private String comments;

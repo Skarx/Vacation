@@ -1,13 +1,14 @@
 package data.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 /**
  * Created by Hervé on 17/10/2014.
  */
 @Entity
-public class Service {
+public class Service implements Serializable{
     private int id;
     private String name;
     private Set<Employee> employees;

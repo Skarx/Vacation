@@ -1,6 +1,7 @@
 package data.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.Set;
 
@@ -8,7 +9,7 @@ import java.util.Set;
  * Created by Hervé on 17/10/2014.
  */
 @Entity
-public class Vacation {
+public class Vacation implements Serializable{
     private int id;
     private Date begdate;
     private String begtime;

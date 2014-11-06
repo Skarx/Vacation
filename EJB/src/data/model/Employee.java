@@ -1,13 +1,14 @@
 package data.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Set;
 
 /**
  * Created by Hervé on 17/10/2014.
  */
 @Entity
-public class Employee {
+public class Employee implements Serializable{
     private int id;
     private String lastname;
     private String firstname;
@@ -79,7 +80,7 @@ public class Employee {
     }
 
     @ManyToOne
-    @Column(name = "managerId", nullable = true, insertable = true, updatable = true)
+    @JoinColumn(name = "managerId", nullable = true, insertable = true, updatable = true)
     public Employee getManager() {
         return manager;
     }
@@ -89,7 +90,7 @@ public class Employee {
     }
 
     @OneToMany
-    @Column(name="id", nullable = true, insertable = true,updatable = true)
+    @JoinColumn(name="id", nullable = true, insertable = true,updatable = true)
     public Set<Employee> getAssociates() {
         return associates;
     }

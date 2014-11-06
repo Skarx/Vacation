@@ -15,16 +15,11 @@ import java.util.List;
 @Stateless
 @LocalBean
 public class EmployeeDAO {
-    //@PersistenceContext
-    //EntityManager entityManager ;
-    EntityManagerFactory entityManagerFactory;
+    @PersistenceContext
+    EntityManager entityManager ;
 
     public EmployeeDAO(){
 
-    }
-
-    private void setUp() throws Exception{
-        this.entityManagerFactory = Persistence.createEntityManagerFactory("PersistanceUnit");
     }
 
 //    public void create(Employee employee){
@@ -50,20 +45,8 @@ public class EmployeeDAO {
 
     public List<Employee> getAll(){
         System.out.println("create query");
-        try {
-            setUp();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        System.out.println("set up");
-        EntityManager entityManager = this.entityManagerFactory.createEntityManager();
-        System.out.println("coucou un");
-        entityManager.getTransaction();
-        System.out.println("coucou deux");
-        Query query = entityManager.createQuery("SELECT employee FROM Employee employee");
+        Query query = this.entityManager.createQuery("SELECT employee FROM Employee employee");
         System.out.println("coucou trois");
-        entityManager.getTransaction().commit();
-        entityManager.close();
         System.out.println("query done");
         List l = query.getResultList();
         System.out.println("list got");
@@ -92,9 +75,9 @@ public class EmployeeDAO {
  //   }
  //
  //
- //   public Employee find(int id){
- //       return entityManager.find(Employee.class, id);
- //   }
+    public Employee find(int id){
+        return entityManager.find(Employee.class, id);
+    }
  //
  //   public Employee find(String firstName, String lastName){
  //       Query query = entityManager.createQuery("SELECT employee FROM Employee employee " +

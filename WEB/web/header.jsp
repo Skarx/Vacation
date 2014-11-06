@@ -16,6 +16,6 @@
 <a href="./newVacation">Demander un congé</a>
 
 <c:choose>
-    <c:when test="${not empty sessionScope.username}">Connecté en tant que : ${sessionScope.username}</c:when>
+    <c:when test="${not empty currentSessionUser}">Connecté en tant que : ${currentSessionUser.firstname} ${currentSessionUser.lastname}</c:when>
     <c:otherwise>Non connecté</c:otherwise>
 </c:choose>

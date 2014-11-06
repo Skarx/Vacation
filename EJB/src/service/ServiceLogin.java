@@ -27,8 +27,7 @@ public class ServiceLogin implements ILogin {
     }
 
     @Override
-    public Employee getEmployee(String firstName, String lastName) {
-        //return this.employeeDAO.find(firstName, lastName);
-        return new Employee();
+    public Employee getEmployee(int id) {
+        return this.employeeDAO.find(id) ;
     }
 }

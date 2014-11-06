@@ -13,5 +13,5 @@ import java.util.List;
 public interface ILogin {
 
     public List<Employee> getEmployees();
-    public Employee getEmployee(String firstName, String lastName);
+    public Employee getEmployee(int id);
 }
