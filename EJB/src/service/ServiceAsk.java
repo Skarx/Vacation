@@ -39,14 +39,14 @@ public class ServiceAsk implements IEmployee{
 
     @Override
     public Vacation newVacation(Date begDate, Date endDate, DayTime begTime, DayTime endTime, Comment comment,
-                                Employee hr, Employee manager) {
+                                Employee employee, Employee manager) {
         Vacation nvVacation = new Vacation();
         nvVacation.setBegdate(begDate);
         nvVacation.setBegtime(begTime.toString());
         nvVacation.setEnddate(endDate);
         nvVacation.setBegtime(endTime.toString());
         nvVacation.addComments(comment);
-        nvVacation.setHr(hr);
+        nvVacation.setEmployee(employee);
         nvVacation.setManager(manager);
 
         //Test si l'employé est Directeur, si oui, passage en validé MGR Sinon, Passage en attente
@@ -69,29 +69,20 @@ public class ServiceAsk implements IEmployee{
     }
 
     @Override
-    public List<Vacation> getMyAssociatesPendingVacations(Employee employee) {
-        //TODO refaire comments
-        List<Vacation> vacationList = null;
-        for(Employee emp: employeeDAO.getEmployeesByService(employee.getService())){
-            if(!emp.equals(employee))try {
-                vacationList.addAll(vacationDAO.findByEmployee(emp));
-            }
-            catch (Exception e){}
-        }
-        return vacationList;
-    }
-    @Override
     public List<Vacation> getMyVacations(Employee employee){
         return vacationDAO.findByEmployee(employee);
-    }
-    @Override
-    public Vacation cancelPendingVacation(Vacation vacation){
-        vacation.setStatus(Status.CANCELLED.toString());
-        return vacationDAO.update(vacation);
     }
 
     @Override
     public Vacation cancelVacation(Vacation vacation) {
+        if(vacation.getStatus().equals(Status.PENDING)) {
+            vacation.setStatus(Status.CANCELLED.toString());
+            return vacationDAO.update(vacation);
+        }
+        if(vacation.getEmployee().getManager() == null) {
+            vacation.setStatus(Status.CANCELLED.toString());
+            return vacationDAO.update(vacation);
+        }
         vacation.setStatus(Status.PENDINGCANCEL.toString());
         return vacationDAO.update(vacation);
     }

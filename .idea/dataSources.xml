@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="123817695">
+  <component name="DataSourceManagerImpl" format="xml" hash="667595877">
     <data-source source="LOCAL" name="Postgres" uuid="df259ec0-7a42-4336-a782-192d9fdca741">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
@@ -11,18 +11,6 @@
       <schema-pattern>postgres.pg_catalog postgres.public</schema-pattern>
       <default-schemas>postgres.pg_catalog postgres.public</default-schemas>
       <libraries />
-    </data-source>
-    <data-source source="LOCAL" name="PersistanceUnit" uuid="44c3081f-ce8b-4d44-8539-96936ffc9271">
-      <driver-ref>postgresql</driver-ref>
-      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://localhost:5432/postgres</jdbc-url>
-      <user-name>postgres</user-name>
-      <user-password>dfdadfc5dfd9dfdedfcddfd8dfcfdfd9</user-password>
-      <libraries>
-        <library>
-          <url>file://C:\Users\Manfred\Documents\GitHub\Vacation\lib\jstl-1.2.jar</url>
-        </library>
-      </libraries>
     </data-source>
   </component>
 </project>

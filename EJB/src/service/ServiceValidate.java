@@ -31,7 +31,6 @@ public class ServiceValidate implements IValidator {
 
     @Override
     public Vacation validateVacation(Vacation vacation, Employee validator, Comment comment) {
-        //TODO Tu prends pas en compte le fait que l'employee est le directeur dans ta méthode
         if(vacation.getStatus().equals(Status.PENDING.toString())
                 && vacation.getEmployee().getManager().equals(validator)){
             // en attente de validation par le manager
@@ -42,6 +41,7 @@ public class ServiceValidate implements IValidator {
                 && validator.getService().getName().equals("RH")){
             // en attente de validation par le service rh
             vacation.setStatus(Status.VALIDATEDHR.toString());
+            vacation.setHr(validator);
             vacation.addComments(comment);
             vacation = vacationDAO.update(vacation);
         }
@@ -49,9 +49,8 @@ public class ServiceValidate implements IValidator {
     }
 
     @Override
-    //TODO Même remarque que plus haut
     public Vacation refuseVacation(Vacation vacation, Employee validator, Comment comment) {
-        if((vacation.getStatus().equals(Status.PENDING.toString()) && vacation.getEmployee().getManager() == validator)
+        if((vacation.getStatus().equals(Status.PENDING.toString()) && vacation.getEmployee().getManager().equals(validator))
                 ||(vacation.getStatus().equals(Status.VALIDATEDMGR.toString()) && validator.getService().getName().equals("RH"))){
             vacation.setStatus(Status.REFUSED.toString());
             vacation.addComments(comment);

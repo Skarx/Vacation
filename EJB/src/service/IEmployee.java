@@ -14,8 +14,6 @@ public interface IEmployee {
                             Comment comment, Employee hr, Employee manager) ;
     public void makePlanning(Employee manager) ;
     public int checkVacations(Employee employee) ;
-    public List<Vacation> getMyAssociatesPendingVacations(Employee employee) ;
     public List<Vacation> getMyVacations(Employee employee) ;
-    public Vacation cancelPendingVacation(Vacation vacation) ;
     public Vacation cancelVacation(Vacation vacation) ;
 }

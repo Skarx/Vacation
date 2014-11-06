@@ -18105,7 +18105,4 @@
       </prototype>
     </procedure>
   </data-source>
-  <data-source source="LOCAL" name="PersistanceUnit" uuid="44c3081f-ce8b-4d44-8539-96936ffc9271">
-    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
-  </data-source>
 </component>
