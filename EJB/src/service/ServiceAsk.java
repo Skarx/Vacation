@@ -48,13 +48,18 @@ public class ServiceAsk implements IEmployee{
         nvVacation.addComments(comment);
         nvVacation.setHr(hr);
         nvVacation.setManager(manager);
-        nvVacation.setStatus(Status.PENDING.toString());
+
+        //Test si l'employé est Directeur, si oui, passage en validé MGR Sinon, Passage en attente
+        if(manager == null)
+            nvVacation.setStatus(Status.VALIDATEDMGR.toString());
+        else
+            nvVacation.setStatus(Status.PENDING.toString());
         return vacationDAO.persist(nvVacation);
     }
 
     @Override
     public void makePlanning(Employee employee) {
-        //List<Vacation> vacations = vacationDAO.findByManager(employeeDAO.getManager(employee));
+        List<Vacation> vacations = vacationDAO.findByManager(employeeDAO.getManager(employee));
     }
 
 
@@ -65,11 +70,14 @@ public class ServiceAsk implements IEmployee{
 
     @Override
     public List<Vacation> getMyAssociatesPendingVacations(Employee employee) {
+        //TODO refaire comments
         List<Vacation> vacationList = null;
-        /*for(Employee emp: employeeDAO.getEmployeesByService(employee.getService())){
-            if(!emp.equals(employee))
+        for(Employee emp: employeeDAO.getEmployeesByService(employee.getService())){
+            if(!emp.equals(employee))try {
                 vacationList.addAll(vacationDAO.findByEmployee(emp));
-        }*/
+            }
+            catch (Exception e){}
+        }
         return vacationList;
     }
     @Override

@@ -26,7 +26,7 @@ public class Comment implements Serializable{
     }
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "creator")
+    @JoinColumn(name = "creatorId")
     public Employee getCreator(){
         return creator;
     }

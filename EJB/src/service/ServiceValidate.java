@@ -32,14 +32,14 @@ public class ServiceValidate implements IValidator {
     @Override
     public Vacation validateVacation(Vacation vacation, Employee validator, Comment comment) {
         //TODO Tu prends pas en compte le fait que l'employee est le directeur dans ta méthode
-        if(vacation.getStatus() == Status.PENDING.toString()
-                && vacation.getEmployee().getManager() == validator){
+        if(vacation.getStatus().equals(Status.PENDING.toString())
+                && vacation.getEmployee().getManager().equals(validator)){
             // en attente de validation par le manager
             vacation.setStatus(Status.VALIDATEDMGR.toString());
             vacation.addComments(comment);
             vacation = vacationDAO.update(vacation);
-        }else if(vacation.getStatus() == Status.VALIDATEDMGR.toString()
-                && validator.getService().getName() == "RH"){
+        }else if(vacation.getStatus().equals(Status.VALIDATEDMGR.toString())
+                && validator.getService().getName().equals("RH")){
             // en attente de validation par le service rh
             vacation.setStatus(Status.VALIDATEDHR.toString());
             vacation.addComments(comment);
@@ -51,8 +51,8 @@ public class ServiceValidate implements IValidator {
     @Override
     //TODO Même remarque que plus haut
     public Vacation refuseVacation(Vacation vacation, Employee validator, Comment comment) {
-        if((vacation.getStatus() == Status.PENDING.toString() && vacation.getEmployee().getManager() == validator)
-                ||(vacation.getStatus() == Status.VALIDATEDMGR.toString() && validator.getService().getName() == "RH")){
+        if((vacation.getStatus().equals(Status.PENDING.toString()) && vacation.getEmployee().getManager() == validator)
+                ||(vacation.getStatus().equals(Status.VALIDATEDMGR.toString()) && validator.getService().getName().equals("RH"))){
             vacation.setStatus(Status.REFUSED.toString());
             vacation.addComments(comment);
             vacation = vacationDAO.update(vacation);
@@ -63,8 +63,8 @@ public class ServiceValidate implements IValidator {
     @Override
     public Vacation validateCancelling(Vacation vacation, Employee validator, Comment comment) {
         // changement de l'état de la demande de congé en fonction du status
-        if(vacation.getStatus() == Status.PENDINGCANCEL.toString()
-                && vacation.getEmployee().getManager() == validator) {
+        if(vacation.getStatus().equals(Status.PENDINGCANCEL.toString())
+                && vacation.getEmployee().getManager().equals(validator)) {
             vacation.setStatus(Status.CANCELLED.toString());
             vacation.addComments(comment);
             vacation = vacationDAO.update(vacation);
@@ -75,8 +75,8 @@ public class ServiceValidate implements IValidator {
     @Override
     public Vacation refuseCancelling(Vacation vacation, Employee validator, Comment comment) {
         // changement de l'état de la demande de congé en fonction du status
-        if(vacation.getStatus() == Status.PENDINGCANCEL.toString()
-                && vacation.getEmployee().getManager() == validator) {
+        if(vacation.getStatus().equals(Status.PENDINGCANCEL.toString())
+                && vacation.getEmployee().getManager().equals(validator)) {
             vacation.setStatus(Status.VALIDATEDHR.toString());
             vacation.addComments(comment);
             vacation = vacationDAO.update(vacation);

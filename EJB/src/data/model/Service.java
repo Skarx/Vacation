@@ -42,7 +42,7 @@ public class Service implements Serializable{
         this.name = name;
     }
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "employees")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "service")
     public Set<Employee> getEmployees(){
         return employees;
     }

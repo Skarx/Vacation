@@ -26,7 +26,6 @@ public class CommentDAO {
     /**
      * Default constructor.
      */
-    private VacationDAO vacationDAO;
     public CommentDAO()
     {
         // TODO Auto-generated constructor stub
@@ -58,7 +57,7 @@ public class CommentDAO {
 
         Query query = entityManager.createQuery("" +
                 "SELECT Comment FROM Comment Comment " +
-                "WHERE Comment.managerId IS " + employee.getId());
+                "WHERE Comment.creator =: employee");
         return query.getResultList();
     }
     //-----------------------------------------------------------------------------
