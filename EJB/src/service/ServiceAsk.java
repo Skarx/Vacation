@@ -54,7 +54,7 @@ public class ServiceAsk implements IEmployee{
 
     @Override
     public void makePlanning(Employee employee) {
-        List<Vacation> vacations = vacationDAO.findByManager(employeeDAO.getManager(employee));
+        //List<Vacation> vacations = vacationDAO.findByManager(employeeDAO.getManager(employee));
     }
 
 
@@ -66,10 +66,10 @@ public class ServiceAsk implements IEmployee{
     @Override
     public List<Vacation> getMyAssociatesPendingVacations(Employee employee) {
         List<Vacation> vacationList = null;
-        for(Employee emp: employeeDAO.getEmployeesByService(employee.getService())){
+        /*for(Employee emp: employeeDAO.getEmployeesByService(employee.getService())){
             if(!emp.equals(employee))
                 vacationList.addAll(vacationDAO.findByEmployee(emp));
-        }
+        }*/
         return vacationList;
     }
     @Override

@@ -23,12 +23,13 @@ public class IndexServlet extends javax.servlet.http.HttpServlet {
         try {
             System.out.println("Trying");
             ILogin serviceEmployee = (ILogin) ServicesLocator.getInstance().getRemoteInterface("ServiceLogin");
-            System.out.println(serviceEmployee.getEmployees());
+            System.out.println("service GOT");
             request.setAttribute("employees", serviceEmployee.getEmployees());
         } catch (ServicesLocatorException e) {
             System.out.println("jndi crashed");
             e.printStackTrace();
         }
+        System.out.println("jndi not crashed");
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 }

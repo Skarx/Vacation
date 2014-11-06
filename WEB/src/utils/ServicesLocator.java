@@ -65,7 +65,7 @@ public class ServicesLocator
 		else
 			throw new ServicesLocatorException("Il n'y a pas d'EJB avec ce nom... " + nomEJB);
 
-        System.out.println("JNDI PRINT"+ nomJNDI);
+        System.out.println("JNDI PRINT "+ nomJNDI);
 		// La méthode recherche d'abord le stub dans le cache, s'il est absent,
 		// il est récupéré via JNDI.
 		Object remoteInterface = cache.get(nomJNDI);
@@ -81,6 +81,7 @@ public class ServicesLocator
 				throw new ServicesLocatorException(e);
 			}
 		}
+        System.out.println("Returning remote interface");
 		return remoteInterface;
 	}
 	//-----------------------------------------------------------------------------

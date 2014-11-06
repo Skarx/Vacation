@@ -17,7 +17,7 @@ import java.util.List;
 
 /**
  * Created by Hervé on 19/10/2014.
- */
+
 @Stateless
 @LocalBean
 public class ServiceComment {
@@ -63,3 +63,4 @@ public class ServiceComment {
         return commentDAO.findByCreator(employeeDAO.find(idCreator));
     }
 }
+*/

@@ -76,8 +76,7 @@ public class NewVacationServlet extends HttpServlet {
 
     private Date convertStringToDate(String date_str) throws ParseException{
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        Date date = formatter.parse(date_str);
-        return date ;
+        return formatter.parse(date_str);
     }
 }
 

@@ -25,7 +25,7 @@ public class Comment {
     }
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "creatorId")
+    @JoinColumn(name = "creator")
     public Employee getCreator(){
         return creator;
     }

@@ -14,7 +14,7 @@ import java.util.Set;
 
 /**
  * Created by Hervé on 20/10/2014.
- */
+
 @Stateless
 @LocalBean
 public class ServiceVacation {
@@ -90,3 +90,4 @@ public class ServiceVacation {
         return vacationDAO.findByEmployeeAndStatus(employeeDAO.find(idEmployee), status);
     }
 }
+*/
