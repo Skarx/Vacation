@@ -44,44 +44,41 @@ public class EmployeeDAO {
     }
 
     public List<Employee> getAll(){
-        System.out.println("create query");
         Query query = this.entityManager.createQuery("SELECT employee FROM Employee employee");
-        System.out.println("coucou trois");
-        System.out.println("query done");
         List l = query.getResultList();
-        System.out.println("list got");
         return (List<Employee>) l;
     }
 
-   public List<Employee> getEmployeesByService(Service service){
-       String serviceName = service.getName();
-       Query query = entityManager.createQuery("SELECT employee FROM Employee employee " +
-               "WHERE employee.service.name = :serviceName");
-       List l = query.getResultList();
-       return (List<Employee>) l;
-   }
+    public List<Employee> getEmployeesByService(Service service){
+        String serviceName = service.getName();
+        Query query = entityManager.createQuery("SELECT employee FROM Employee employee " +
+                "WHERE employee.service.name = :serviceName");
+        List l = query.getResultList();
 
-   public List<Employee> getEmployeesByService(String serviceName){
-       Query query = entityManager.createQuery("SELECT employee FROM Employee employee " +
-               "WHERE employee.service.name = :serviceName");
-       List l = query.getResultList();
+        return (List<Employee>) l;
+    }
 
-       return (List<Employee>) l;
-   }
+    public List<Employee> getEmployeesByService(String serviceName){
+        Query query = entityManager.createQuery("SELECT employee FROM Employee employee " +
+                "WHERE employee.service.name = :serviceName");
+        List l = query.getResultList();
 
-   public Employee getManager(Employee employee){
-       return employee.getManager();
-   }
+        return (List<Employee>) l;
+    }
+
+    public Employee getManager(Employee employee){
+        return employee.getManager();
+    }
 
 
     public Employee find(int id){
         return entityManager.find(Employee.class, id);
     }
 
-   public Employee find(String firstName, String lastName){
-       Query query = entityManager.createQuery("SELECT employee FROM Employee employee " +
-               "WHERE employee.firstname = :firstName AND employee.lastname = :lastName");
+    public Employee find(String firstName, String lastName){
+        Query query = entityManager.createQuery("SELECT employee FROM Employee employee " +
+                "WHERE employee.firstname = :firstName AND employee.lastname = :lastName");
 
-       return (Employee)query.getSingleResult();
-   }
+        return (Employee)query.getSingleResult();
+    }
 }

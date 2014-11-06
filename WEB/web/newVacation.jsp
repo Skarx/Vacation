@@ -14,25 +14,25 @@
 <p>Solde de congés restant : ${solde}</p>
 
 <div>
-    <form method="get" action="newVacation">
+    <form method="POST" action="newVacation">
         <fieldset>
             <label for="begDate">Du</label>
             <input type="date" id="begDate" name="begDate" value=""/>
 
             <label for="endDate">Au</label>
-            <input type="date" id="endDate" name="begDate" value=""/>
+            <input type="date" id="endDate" name="endDate" value=""/>
 
             <br>
 
             <label for="begTime">Du</label>
             <select id="begTime" name="begTime">
-                <option value="allday">Journée entière</option>
+                <option value="all_day">Journée entière</option>
                 <option value="afternoon">Après-midi seulement</option>
             </select>
 
             <label for="endTime">Du</label>
             <select id="endTime" name="endTime">
-                <option value="allday">Journée entière</option>
+                <option value="all_day">Journée entière</option>
                 <option value="morning">Matin seulement</option>
             </select>
 

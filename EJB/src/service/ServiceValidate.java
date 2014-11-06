@@ -10,12 +10,14 @@ import data.model.Status;
 import data.model.Vacation;
 
 import javax.ejb.EJB;
+import javax.ejb.Stateless;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Manfred on 01/11/2014.
  */
+@Stateless
 public class ServiceValidate implements IValidator {
 
     @EJB

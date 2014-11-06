@@ -7,7 +7,8 @@ import data.dao.VacationDAO;
 import data.model.*;
 
 import javax.ejb.EJB;
-import java.sql.Date;
+import javax.ejb.Stateless;
+import java.util.Date;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -16,6 +17,7 @@ import java.util.ListIterator;
 /**
  * Created by Manfred on 01/11/2014.
  */
+@Stateless
 public class ServiceAsk implements IEmployee{
 
     @EJB
@@ -38,15 +40,20 @@ public class ServiceAsk implements IEmployee{
     }
 
     @Override
-    public Vacation newVacation(Date begDate, Date endDate, DayTime begTime, DayTime endTime, Comment comment,
-                                Employee hr, Employee manager) {
+    public Vacation newVacation(Date begDate, Date endDate, DayTime begTime, DayTime endTime, String comment,
+                                Employee creator, Employee manager) {
         Vacation nvVacation = new Vacation();
-        nvVacation.setBegdate(begDate);
+
+        // Date de début et moment de la journée
+        nvVacation.setBegdate(new java.sql.Date(begDate.getTime()));
         nvVacation.setBegtime(begTime.toString());
-        nvVacation.setEnddate(endDate);
-        nvVacation.setBegtime(endTime.toString());
-        nvVacation.addComments(comment);
-        nvVacation.setHr(hr);
+
+        // Date de fin et moment de la journée
+        nvVacation.setEnddate(new java.sql.Date(endDate.getTime()));
+        nvVacation.setEndtime(endTime.toString());
+
+        // Demandeur et Validateur
+        nvVacation.setEmployee(creator);
         nvVacation.setManager(manager);
 
         //Test si l'employé est Directeur, si oui, passage en validé MGR Sinon, Passage en attente
@@ -54,7 +61,18 @@ public class ServiceAsk implements IEmployee{
             nvVacation.setStatus(Status.VALIDATEDMGR.toString());
         else
             nvVacation.setStatus(Status.PENDING.toString());
-        return vacationDAO.persist(nvVacation);
+        vacationDAO.persist(nvVacation);
+
+        if(!comment.equals("")){
+            Comment comment_obj = new Comment();
+            comment_obj.setComments(comment);
+            comment_obj.setCreator(creator);
+            comment_obj.setVacation(nvVacation);
+            this.commentDAO.persist(comment_obj);
+        }
+
+
+        return nvVacation ;
     }
 
     @Override

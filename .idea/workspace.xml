@@ -2,18 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ef56b363-ad4c-4f14-8475-d2f35639a86f" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WEB/src/loginServlet.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WEB/web/javascript/vacation.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EJB/src/data/model/Comment.java" afterPath="$PROJECT_DIR$/EJB/src/data/model/Comment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EJB/EJB.iml" afterPath="$PROJECT_DIR$/EJB/EJB.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EJB/src/data/model/Employee.java" afterPath="$PROJECT_DIR$/EJB/src/data/model/Employee.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EJB/src/data/model/DayTime.java" afterPath="$PROJECT_DIR$/EJB/src/data/model/DayTime.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EJB/src/data/dao/EmployeeDAO.java" afterPath="$PROJECT_DIR$/EJB/src/data/dao/EmployeeDAO.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EJB/src/service/ILogin.java" afterPath="$PROJECT_DIR$/EJB/src/service/ILogin.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WEB/src/IndexServlet.java" afterPath="$PROJECT_DIR$/WEB/src/IndexServlet.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EJB/src/data/model/Service.java" afterPath="$PROJECT_DIR$/EJB/src/data/model/Service.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EJB/src/service/ServiceLogin.java" afterPath="$PROJECT_DIR$/EJB/src/service/ServiceLogin.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EJB/src/data/model/Vacation.java" afterPath="$PROJECT_DIR$/EJB/src/data/model/Vacation.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EJB/src/service/IEmployee.java" afterPath="$PROJECT_DIR$/EJB/src/service/IEmployee.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EJB/src/service/IValidator.java" afterPath="$PROJECT_DIR$/EJB/src/service/IValidator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WEB/src/NewVacationServlet.java" afterPath="$PROJECT_DIR$/WEB/src/NewVacationServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EJB/src/service/ServiceAsk.java" afterPath="$PROJECT_DIR$/EJB/src/service/ServiceAsk.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EJB/src/service/ServiceValidate.java" afterPath="$PROJECT_DIR$/EJB/src/service/ServiceValidate.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WEB/src/utils/ServicesLocator.java" afterPath="$PROJECT_DIR$/WEB/src/utils/ServicesLocator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WEB/WEB.iml" afterPath="$PROJECT_DIR$/WEB/WEB.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WEB/web/footer.jsp" afterPath="$PROJECT_DIR$/WEB/web/footer.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WEB/web/header.jsp" afterPath="$PROJECT_DIR$/WEB/web/header.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WEB/web/index.jsp" afterPath="$PROJECT_DIR$/WEB/web/index.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/EJB/src/META-INF/persistence.xml" afterPath="$PROJECT_DIR$/EJB/src/META-INF/persistence.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WEB/web/newVacation.jsp" afterPath="$PROJECT_DIR$/WEB/web/newVacation.jsp" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <list id="46aefe56-b2b4-4ce7-abf2-1353fafd20c5" name="Failed commit: Default" comment="Finalisation des DAO&#10;&#10;Création de l'enum DayTime&#10;Finission de ServiceComment&#10;Création et finission de ServiceVacation" />
@@ -39,46 +43,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WEB/web/index.jsp">
+      <file leaf-file-name="NewVacationServlet.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/WEB/src/NewVacationServlet.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.269231" vertical-offset="59" max-vertical-offset="561">
-              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="header.jsp" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WEB/web/header.jsp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.769231" vertical-offset="0" max-vertical-offset="459">
-              <caret line="18" column="135" selection-start-line="18" selection-start-column="135" selection-end-line="18" selection-end-column="135" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IndexServlet.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WEB/src/IndexServlet.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="33" max-vertical-offset="646">
-              <caret line="19" column="52" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="52" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ServiceLogin.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/EJB/src/service/ServiceLogin.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4085028" vertical-offset="0" max-vertical-offset="541">
-              <caret line="20" column="10" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
+            <state vertical-scroll-proportion="0.52819335" vertical-offset="0" max-vertical-offset="1972">
+              <caret line="27" column="43" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
               <folding>
-                <element signature="e#464#465#0" expanded="true" />
-                <element signature="e#512#513#0" expanded="true" />
-                <element signature="e#569#570#0" expanded="true" />
-                <element signature="e#618#619#0" expanded="true" />
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -105,14 +76,11 @@
         <option value="$PROJECT_DIR$/EJB/src/data/model/Status.java" />
         <option value="$PROJECT_DIR$/EJB/src/data/dao/ServiceDAO.java" />
         <option value="$PROJECT_DIR$/EJB/src/data/model/dayTime.java" />
-        <option value="$PROJECT_DIR$/EJB/src/data/model/DayTime.java" />
         <option value="$PROJECT_DIR$/EJB/src/test/ServiceDAOTest.java" />
         <option value="$PROJECT_DIR$/EJB/src/data/dao/VacationDAO.java" />
         <option value="$PROJECT_DIR$/ChebliCarron_ScriptCreationTables.sql" />
         <option value="dbtable:/7edbb91e/df259ec0-7a42-4336-a782-192d9fdca741/postgres.public.employee" />
         <option value="$PROJECT_DIR$/EJB/src/META-INF/orm.xml" />
-        <option value="$PROJECT_DIR$/EJB/src/service/IEmployee.java" />
-        <option value="$PROJECT_DIR$/EJB/src/service/ServiceValidate.java" />
         <option value="$PROJECT_DIR$/EJB/src/data/dao/CommentDAO.java" />
         <option value="$PROJECT_DIR$/EAR/META-INF/application.xml" />
         <option value="$PROJECT_DIR$/EJB/META-INF/ejb-jar.xml" />
@@ -122,25 +90,31 @@
         <option value="$PROJECT_DIR$/WEB/src/loginServlet.java" />
         <option value="$PROJECT_DIR$/WEB/src/LoginServlet.java" />
         <option value="$PROJECT_DIR$/WEB/web/WEB-INF/web.xml" />
-        <option value="$PROJECT_DIR$/WEB/web/newVacation.jsp" />
-        <option value="$PROJECT_DIR$/WEB/src/NewVacationServlet.java" />
-        <option value="$PROJECT_DIR$/WEB/src/utils/ServicesLocator.java" />
         <option value="db-console:/bc801fa2/44c3081f-ce8b-4d44-8539-96936ffc9271/" />
-        <option value="db-console:/bc801fa2/df259ec0-7a42-4336-a782-192d9fdca741/" />
-        <option value="$PROJECT_DIR$/EJB/src/service/ServiceAsk.java" />
         <option value="$PROJECT_DIR$/EJB/src/service/ServiceComment.java" />
         <option value="$PROJECT_DIR$/EJB/src/service/ServiceVacation.java" />
         <option value="$PROJECT_DIR$/EJB/src/META-INF/persistence.xml" />
         <option value="$PROJECT_DIR$/EJB/src/data/model/Employee.java" />
-        <option value="$PROJECT_DIR$/EJB/src/data/model/Comment.java" />
         <option value="$PROJECT_DIR$/EJB/src/data/model/Service.java" />
         <option value="$PROJECT_DIR$/EJB/src/data/model/Vacation.java" />
-        <option value="$PROJECT_DIR$/EJB/src/data/dao/EmployeeDAO.java" />
         <option value="$PROJECT_DIR$/EJB/src/service/ServiceLogin.java" />
         <option value="$PROJECT_DIR$/EJB/src/service/ILogin.java" />
         <option value="$PROJECT_DIR$/WEB/src/IndexServlet.java" />
-        <option value="$PROJECT_DIR$/WEB/web/index.jsp" />
+        <option value="$PROJECT_DIR$/EJB/src/service/IValidator.java" />
+        <option value="$PROJECT_DIR$/EJB/src/service/ServiceValidate.java" />
+        <option value="$PROJECT_DIR$/WEB/javascript/vacation.js" />
         <option value="$PROJECT_DIR$/WEB/web/header.jsp" />
+        <option value="$PROJECT_DIR$/WEB/web/footer.jsp" />
+        <option value="$PROJECT_DIR$/EJB/src/data/model/DayTime.java" />
+        <option value="$PROJECT_DIR$/EJB/src/service/IEmployee.java" />
+        <option value="$PROJECT_DIR$/WEB/web/index.jsp" />
+        <option value="$PROJECT_DIR$/WEB/src/utils/ServicesLocator.java" />
+        <option value="$PROJECT_DIR$/EJB/src/data/dao/EmployeeDAO.java" />
+        <option value="$PROJECT_DIR$/WEB/web/newVacation.jsp" />
+        <option value="db-console:/bc801fa2/df259ec0-7a42-4336-a782-192d9fdca741/" />
+        <option value="$PROJECT_DIR$/EJB/src/service/ServiceAsk.java" />
+        <option value="$PROJECT_DIR$/EJB/src/data/model/Comment.java" />
+        <option value="$PROJECT_DIR$/WEB/src/NewVacationServlet.java" />
       </list>
     </option>
   </component>
@@ -152,10 +126,10 @@
     <option name="CUSTOM_FILTER" value="" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
+    <option name="x" value="1912" />
     <option name="y" value="-8" />
-    <option name="width" value="1296" />
-    <option name="height" value="699" />
+    <option name="width" value="1594" />
+    <option name="height" value="1040" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -227,7 +201,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="web" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="javascript" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -245,7 +223,21 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="utils" />
+              <option name="myItemId" value="NewVacationServlet.java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Vacation" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WEB" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -365,8 +357,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -378,7 +370,7 @@
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="dynamic.classpath" value="false" />
@@ -402,6 +394,9 @@
     </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="service" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Manfred\Documents\GitHub\Vacation\WEB\web" />
     </key>
     <key name="ImportMappingsDialog.RecentPackages">
       <recent name="data.model" />
@@ -614,6 +609,12 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
+      <option name="VM_PARAMETERS" value="" />
+      <option name="USER_CFG_CLASS" />
+      <option name="CONTEXT_PROVIDER" />
+      <method />
+    </configuration>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
       <module name="" />
       <option name="ACTIVITY_CLASS" value="" />
@@ -632,12 +633,6 @@
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
       <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
-      <method />
-    </configuration>
-    <configuration default="true" type="com.intellij.persistence.run.ConsoleRunConfigurationType" factoryName="Query Language Console">
-      <option name="VM_PARAMETERS" value="" />
-      <option name="USER_CFG_CLASS" />
-      <option name="CONTEXT_PROVIDER" />
       <method />
     </configuration>
     <configuration default="false" name="GlassFish 4.1.0" type="GlassfishConfiguration" factoryName="Local" APPLICATION_SERVER_NAME="GlassFish 4.1.0" ALTERNATIVE_JRE_ENABLED="false" ALTERNATIVE_JRE_PATH="">
@@ -751,7 +746,8 @@
       <workItem from="1415228448102" duration="6760000" />
       <workItem from="1415273689367" duration="2790000" />
       <workItem from="1415276520244" duration="347000" />
-      <workItem from="1415276955551" duration="4590000" />
+      <workItem from="1415276955551" duration="13869000" />
+      <workItem from="1415293722156" duration="214000" />
     </task>
     <task id="LOCAL-00001" summary="DAO">
       <created>1413740830097</created>
@@ -833,11 +829,15 @@
       <created>1415235227783</created>
       <updated>1415235227783</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Fonction de login">
+      <created>1415282188983</created>
+      <updated>1415282188983</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="101844000" />
+    <option name="totallyTimeSpent" value="111337000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -860,7 +860,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1296" height="699" extended-state="6" />
+    <frame x="1912" y="-8" width="1594" height="1040" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -868,7 +868,7 @@
       <window_info id="JavaEE:App" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20759289" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20759289" sideWeight="0.5014663" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2536349" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25325522" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32804233" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39858907" sideWeight="0.30775446" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
@@ -876,37 +876,37 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3338983" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32804233" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20759289" sideWeight="0.49560118" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4409171" sideWeight="0.77786756" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1673177" sideWeight="0.49560118" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32929516" sideWeight="0.77786756" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32928804" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32804233" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39858907" sideWeight="0.69224554" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24889868" sideWeight="0.69224554" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20759289" sideWeight="0.50088185" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32627866" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
-      <window_info id="Web" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20759289" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24959612" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Web" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20759289" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20117188" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="combo" />
       <window_info id="EJB" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329806" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32929516" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32599118" sideWeight="0.5" order="16" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39858907" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329806" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="JavaEE:App" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20759289" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20759289" sideWeight="0.50157726" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="JavaEE:App" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20759289" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2536349" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32804233" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39858907" sideWeight="0.30775446" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39858907" sideWeight="0.30775446" order="11" side_tool="true" content_ui="tabs" />
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3338983" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32879046" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -927,9 +927,9 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32627866" sideWeight="0.5" order="17" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20759289" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24959612" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="combo" />
-      <window_info id="EJB" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="EJB" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="bottom" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39858907" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -961,7 +961,8 @@
     <MESSAGE value="ServicesLocator (pas sûr du truc)" />
     <MESSAGE value="Correction des JNDI dans le serviceLocator" />
     <MESSAGE value="/!\ Non stable : impossible de récupérer un entityManager&#10;Suppression des fichiers de tests non utilisés&#10;Configuration de la connexion glassfish &gt; postgres&#10;Configuration du persistance.xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="/!\ Non stable : impossible de récupérer un entityManager&#10;Suppression des fichiers de tests non utilisés&#10;Configuration de la connexion glassfish &gt; postgres&#10;Configuration du persistance.xml" />
+    <MESSAGE value="Fonction de login" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fonction de login" />
   </component>
   <component name="VssConfiguration">
     <option name="CLIENT_PATH" value="" />
@@ -1002,7 +1003,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="54" />
+      <option name="time" value="81" />
     </breakpoint-manager>
   </component>
   <component name="antWorkspaceConfiguration">
@@ -1010,24 +1011,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/EJB/src/service/ServiceLogin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="3" max-vertical-offset="544">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding>
-            <element signature="e#512#513#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EJB/src/data/dao/EmployeeDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="714" max-vertical-offset="1751">
-          <caret line="66" column="41" selection-start-line="66" selection-start-column="41" selection-end-line="66" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/EJB/src/META-INF/persistence.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
@@ -1121,20 +1104,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/EJB/src/data/dao/VacationDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1079" max-vertical-offset="1887">
-          <caret line="100" column="41" selection-start-line="100" selection-start-column="41" selection-end-line="100" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EJB/src/data/dao/CommentDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="1224">
-          <caret line="31" column="11" selection-start-line="31" selection-start-column="11" selection-end-line="31" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/EJB/META-INF/ejb-jar.xml">
       <provider editor-type-id="com.intellij.javaee.module.components.MethodPermissionsEditorProvider">
         <state />
@@ -1152,24 +1121,10 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/EJB/src/data/model/DayTime.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="306">
-          <caret line="4" column="12" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/EJB/src/data/model/Status.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
           <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EJB/src/data/dao/ServiceDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="173" max-vertical-offset="1088">
-          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1195,27 +1150,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WEB/web/newVacation.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.6153846" vertical-offset="127" max-vertical-offset="901">
-          <caret line="13" column="36" selection-start-line="13" selection-start-column="36" selection-end-line="13" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EJB/src/service/ServiceValidate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.3448277" vertical-offset="0" max-vertical-offset="1768">
-          <caret line="51" column="38" selection-start-line="51" selection-start-column="38" selection-end-line="51" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EJB/src/service/IValidator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41034484" vertical-offset="0" max-vertical-offset="493">
-          <caret line="11" column="18" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/glassfish-4.1/glassfish4/glassfish/modules/javax.ejb-api.jar!/javax/ejb/Stateless.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.36226416" vertical-offset="23" max-vertical-offset="323">
@@ -1227,13 +1161,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33203125" vertical-offset="2771" max-vertical-offset="6120">
           <caret line="168" column="14" selection-start-line="168" selection-start-column="14" selection-end-line="168" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WEB/src/NewVacationServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1181" max-vertical-offset="1496">
-          <caret line="77" column="40" selection-start-line="77" selection-start-column="40" selection-end-line="77" selection-end-column="40" />
         </state>
       </provider>
     </entry>
@@ -1251,13 +1178,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="dbDummy://db-console:/bc801fa2/df259ec0-7a42-4336-a782-192d9fdca741/">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="304">
-          <caret line="0" column="55" selection-start-line="0" selection-start-column="55" selection-end-line="0" selection-end-column="55" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/EJB/src/service/ServiceComment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8038462" vertical-offset="449" max-vertical-offset="969">
@@ -1269,13 +1189,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="989" max-vertical-offset="1496">
           <caret line="92" column="2" selection-start-line="92" selection-start-column="2" selection-end-line="92" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EJB/src/service/ServiceAsk.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="496" max-vertical-offset="1615">
-          <caret line="71" column="11" selection-start-line="71" selection-start-column="11" selection-end-line="71" selection-end-column="11" />
         </state>
       </provider>
     </entry>
@@ -1294,30 +1207,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/EJB/src/META-INF/persistence.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24460432" vertical-offset="0" max-vertical-offset="544">
-          <caret line="4" column="60" selection-start-line="4" selection-start-column="60" selection-end-line="4" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WEB/src/utils/ServicesLocator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1160" max-vertical-offset="1462">
-          <caret line="84" column="0" selection-start-line="84" selection-start-column="0" selection-end-line="84" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EJB/src/data/model/Comment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1173">
-          <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/EJB/src/data/model/Service.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1105">
@@ -1326,61 +1215,149 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/EJB/src/data/model/Vacation.java">
+    <entry file="file://$PROJECT_DIR$/EJB/src/service/IValidator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="1972">
-          <caret line="13" column="25" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EJB/src/data/model/Employee.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="76" max-vertical-offset="1768">
-          <caret line="10" column="45" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EJB/src/data/dao/EmployeeDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1136" max-vertical-offset="1496">
-          <caret line="80" column="3" selection-start-line="80" selection-start-column="3" selection-end-line="80" selection-end-column="3" />
-          <folding>
-            <element signature="e#2060#2061#0" expanded="true" />
-            <element signature="e#2121#2122#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EJB/src/service/IEmployee.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="61" max-vertical-offset="408">
-          <caret line="16" column="75" selection-start-line="16" selection-start-column="75" selection-end-line="16" selection-end-column="75" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="510">
+          <caret line="12" column="7" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/EJB/src/service/ILogin.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="32" max-vertical-offset="323">
-          <caret line="15" column="38" selection-start-line="15" selection-start-column="38" selection-end-line="15" selection-end-column="38" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EJB/src/data/dao/ServiceDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.2179878" vertical-offset="313" max-vertical-offset="969">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EJB/src/data/dao/CommentDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.32164633" vertical-offset="568" max-vertical-offset="1224">
+          <caret line="31" column="11" selection-start-line="31" selection-start-column="11" selection-end-line="31" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EJB/src/service/ServiceValidate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.5396341" vertical-offset="1129" max-vertical-offset="1785">
+          <caret line="19" column="10" selection-start-line="19" selection-start-column="10" selection-end-line="19" selection-end-column="10" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WEB/web/header.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.769231" vertical-offset="0" max-vertical-offset="459">
-          <caret line="18" column="135" selection-start-line="18" selection-start-column="135" selection-end-line="18" selection-end-column="135" />
+        <state vertical-scroll-proportion="0.27468583" vertical-offset="0" max-vertical-offset="557">
+          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WEB/web/footer.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36624774" vertical-offset="0" max-vertical-offset="557">
+          <caret line="12" column="65" selection-start-line="12" selection-start-column="65" selection-end-line="12" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WEB/web/javascript/vacation.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="119">
+          <caret line="3" column="16" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#44#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EJB/src/data/model/DayTime.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.20411664" vertical-offset="0" max-vertical-offset="583">
+          <caret line="7" column="21" selection-start-line="7" selection-start-column="21" selection-end-line="7" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EJB/src/service/IEmployee.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="493">
+          <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WEB/web/index.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.269231" vertical-offset="59" max-vertical-offset="561">
-          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.7935368" vertical-offset="0" max-vertical-offset="578">
+          <caret line="26" column="6" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WEB/src/utils/ServicesLocator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.68596494" vertical-offset="867" max-vertical-offset="1445">
+          <caret line="82" column="9" selection-start-line="82" selection-start-column="9" selection-end-line="82" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EJB/src/service/ServiceLogin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.20411664" vertical-offset="0" max-vertical-offset="583">
+          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EJB/src/data/dao/EmployeeDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3464837" vertical-offset="495" max-vertical-offset="1360">
+          <caret line="47" column="39" selection-start-line="47" selection-start-column="39" selection-end-line="47" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WEB/web/newVacation.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6142857" vertical-offset="191" max-vertical-offset="901">
+          <caret line="34" column="35" selection-start-line="34" selection-start-column="35" selection-end-line="34" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EJB/src/data/model/Vacation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="673" max-vertical-offset="2006">
+          <caret line="58" column="0" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EJB/src/data/dao/VacationDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1423" max-vertical-offset="2006">
+          <caret line="111" column="20" selection-start-line="111" selection-start-column="20" selection-end-line="111" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="dbDummy://db-console:/bc801fa2/df259ec0-7a42-4336-a782-192d9fdca741/">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="554">
+          <caret line="0" column="22" selection-start-line="0" selection-start-column="22" selection-end-line="0" selection-end-column="22" />
           <folding />
         </state>
       </provider>
@@ -1388,20 +1365,49 @@
     <entry file="file://$PROJECT_DIR$/WEB/src/IndexServlet.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="33" max-vertical-offset="646">
-          <caret line="19" column="52" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="52" />
+          <caret line="24" column="38" selection-start-line="24" selection-start-column="38" selection-end-line="24" selection-end-column="38" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/EJB/src/service/ServiceLogin.java">
+    <entry file="file://$PROJECT_DIR$/EJB/src/service/ServiceAsk.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4085028" vertical-offset="0" max-vertical-offset="541">
-          <caret line="20" column="10" selection-start-line="20" selection-start-column="10" selection-end-line="20" selection-end-column="10" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="658" max-vertical-offset="1989">
+          <caret line="66" column="48" selection-start-line="66" selection-start-column="48" selection-end-line="66" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EJB/src/META-INF/persistence.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33487833" vertical-offset="0" max-vertical-offset="863">
+          <caret line="17" column="28" selection-start-line="17" selection-start-column="28" selection-end-line="17" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EJB/src/data/model/Employee.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.6199095" vertical-offset="684" max-vertical-offset="1751">
+          <caret line="10" column="45" selection-start-line="10" selection-start-column="45" selection-end-line="10" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EJB/src/data/model/Comment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6486797" vertical-offset="149" max-vertical-offset="1258">
+          <caret line="60" column="27" selection-start-line="60" selection-start-column="27" selection-end-line="60" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WEB/src/NewVacationServlet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.52819335" vertical-offset="0" max-vertical-offset="1972">
+          <caret line="27" column="43" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
           <folding>
-            <element signature="e#464#465#0" expanded="true" />
-            <element signature="e#512#513#0" expanded="true" />
-            <element signature="e#569#570#0" expanded="true" />
-            <element signature="e#618#619#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1468,7 +1474,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>JPA|EJB</last-edited>
+          <last-edited>WEB</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1492,7 +1498,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>Java EE 6</last-edited>
+          <last-edited>Java EE 6-Java EE 6</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

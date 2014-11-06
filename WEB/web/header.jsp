@@ -12,10 +12,13 @@
     <title>Application de congés</title>
 </head>
 <body>
-<a href="">Planning</a>
-<a href="./newVacation">Demander un congé</a>
+
 
 <c:choose>
-    <c:when test="${not empty currentSessionUser}">Connecté en tant que : ${currentSessionUser.firstname} ${currentSessionUser.lastname}</c:when>
+    <c:when test="${not empty currentSessionUser}">
+        <a href="./">Index</a>
+        <a href="">Planning</a>
+        <a href="./newVacation">Demander un congé</a>
+        Connecté en tant que : ${currentSessionUser.firstname} ${currentSessionUser.lastname}</c:when>
     <c:otherwise>Non connecté</c:otherwise>
 </c:choose>
