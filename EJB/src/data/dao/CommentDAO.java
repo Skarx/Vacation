@@ -28,7 +28,7 @@ public class CommentDAO {
      */
     public CommentDAO()
     {
-        // TODO Auto-generated constructor stub
+
     }
     //-----------------------------------------------------------------------------
     public Comment findById(Integer id)
