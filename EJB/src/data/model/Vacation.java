@@ -23,7 +23,7 @@ public class Vacation implements Serializable{
 
     @Id
     @SequenceGenerator(name = "vacationGenPk", sequenceName = "vacation_id_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "vacationGenPk")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "vacationGenPk")
     @Column(name = "id")
     public int getId() {
         return id;

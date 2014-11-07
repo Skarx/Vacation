@@ -44,15 +44,15 @@ CREATE TABLE Employee (
 -- | Création des tables (interne)                                                                |
 -- +----------------------------------------------------------------------------------------------+
 CREATE TABLE Vacation (
-	id				SERIAL 				NOT NULL DEFAULT nextval('vacation_id_seq'),
-	begDate			DATE				NOT NULL,
+	id				  SERIAL 				  NOT NULL,
+	begDate			DATE				    NOT NULL,
 	begTime			VARCHAR(20) 		NOT NULL,
-	endDate			DATE				NOT NULL,
+	endDate			DATE				    NOT NULL,
 	endTime			VARCHAR(20)			NOT NULL,
 	status			VARCHAR(20)			NOT NULL,
-	employeeId		SERIAL 				NOT NULL,
+	employeeId	INTEGER 				NOT NULL,
 	managerId		INTEGER,
-	hrId			INTEGER,		
+	hrId			  INTEGER,
 	CONSTRAINT	vacationPK 				PRIMARY KEY (id),
 	CONSTRAINT	vacationFKemployeeEmp	FOREIGN KEY (employeeId) REFERENCES Employee(id),
 	CONSTRAINT	vacationFKemployeeMgr	FOREIGN	KEY	(managerId)	 REFERENCES Employee(id),
@@ -60,10 +60,10 @@ CREATE TABLE Vacation (
 );
 
 CREATE TABLE Comment (
-	id				SERIAL				NOT NULL,
-	creaDate		TIMESTAMP			NOT NULL DEFAULT LOCALTIMESTAMP,
-	comments		VARCHAR(500)		NOT NULL,
-	creatorId		INTEGER				NOT NULL,
+	id				    SERIAL				NOT NULL,
+	creadate		  TIMESTAMP			NOT NULL DEFAULT LOCALTIMESTAMP,
+	comments		  VARCHAR(500)	NOT NULL,
+	creatorId		  INTEGER				NOT NULL,
 	vacationId		INTEGER				NOT NULL,
 	CONSTRAINT		commentsPK			PRIMARY KEY	(id),
 	CONSTRAINT		commentsFKemployee	FOREIGN	KEY (creatorId)	 REFERENCES Employee(id),

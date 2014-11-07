@@ -45,7 +45,7 @@ public class EmployeeDAO {
     }
 
     public List<Employee> getAll(){
-        Query query = this.entityManager.createQuery("SELECT employee FROM Employee employee");
+        Query query = entityManager.createQuery("SELECT employee FROM Employee employee");
         List l = query.getResultList();
         return (List<Employee>) l;
     }

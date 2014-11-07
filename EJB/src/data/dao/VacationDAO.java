@@ -113,7 +113,9 @@ public class VacationDAO {
     }
     //-----------------------------------------------------------------------------
     public Vacation persist(Vacation vacation){
+        entityManager.flush();
         entityManager.persist(vacation);
+        entityManager.flush();
         return vacation;
 
     }
