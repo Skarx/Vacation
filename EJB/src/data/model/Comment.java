@@ -20,8 +20,8 @@ public class Comment implements Serializable{
     }
 
     @Id
-    @SequenceGenerator(name = "commentGenPk", sequenceName = "comment_id_seq", allocationSize = 1)
-    @GeneratedValue(generator = "commentGenPk")
+    @SequenceGenerator(name = "commentGenPk", sequenceName = "comment_id_seq", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "commentGenPk")
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
     public int getId() {
         return id;
@@ -39,7 +39,7 @@ public class Comment implements Serializable{
     public void setCreator(Employee emp){
         creator = emp;
     }
-    @ManyToOne
+    @ManyToOne(cascade= CascadeType.PERSIST)
     @JoinColumn(name = "vacationId")
     public Vacation getVacation(){
         return vacation;

@@ -21,9 +21,12 @@ public class Vacation implements Serializable{
     private Employee hr;
     private Set<Comment> comments;
 
+    public Vacation(){
+
+    }
     @Id
-    @SequenceGenerator(name = "vacationGenPk", sequenceName = "vacation_id_seq", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "vacationGenPk")
+    @SequenceGenerator(name = "vacationGenPk", sequenceName = "vacation_id_seq", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "vacationGenPk")
     @Column(name = "id")
     public int getId() {
         return id;
@@ -52,7 +55,7 @@ public class Vacation implements Serializable{
 
     public void setHr(Employee hr){this.hr = hr;}
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "vacation")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST, mappedBy = "vacation")
     public Set<Comment> getComments(){return comments;}
 
     public void setComments(Set<Comment> comments) {this.comments = comments;}

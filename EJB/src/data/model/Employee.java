@@ -91,7 +91,7 @@ public class Employee implements Serializable{
         this.manager = manager;
     }
 
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL , mappedBy = "manager")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST , mappedBy = "manager")
     public Set<Employee> getAssociates() {
         return associates;
     }

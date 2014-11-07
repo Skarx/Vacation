@@ -113,9 +113,7 @@ public class VacationDAO {
     }
     //-----------------------------------------------------------------------------
     public Vacation persist(Vacation vacation){
-        entityManager.flush();
-        entityManager.persist(vacation);
-        entityManager.flush();
+        entityManager.persist(entityManager.merge(vacation));
         return vacation;
 
     }
@@ -128,7 +126,7 @@ public class VacationDAO {
     //-----------------------------------------------------------------------------
 
     public void remove(Vacation Vacation){
-        entityManager.remove(entityManager.merge(Vacation));
+        entityManager.remove(Vacation);
     }
 
 }

@@ -63,8 +63,9 @@ public class ServiceAsk implements IEmployee{
             nvVacation.setStatus(Status.PENDING.toString());
 
         System.out.println("Avant : " + nvVacation.getId());
-        vacationDAO.persist(nvVacation);
+        Vacation v = vacationDAO.persist(nvVacation);
         System.out.println("Après : " + nvVacation.getId());
+        System.out.println("Après2: " + v.getId());
 
         if(!comment.equals("")){
             Comment comment_obj = new Comment();
