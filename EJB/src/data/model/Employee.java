@@ -34,6 +34,8 @@ public class Employee implements Serializable{
     }
 
     @Id
+    @SequenceGenerator(name = "employeeGenPk", sequenceName = "employee_id_seq", allocationSize = 1)
+    @GeneratedValue(generator = "employeeGenPk")
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
     public int getId() {
         return id;

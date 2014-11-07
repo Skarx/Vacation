@@ -13,12 +13,16 @@ import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Manfred on 01/11/2014.
  */
 @Stateless
 public class ServiceValidate implements IValidator {
+
+    @EJB
+    private EmployeeDAO employeeDAO ;
 
     @EJB
     private VacationDAO vacationDAO ;
@@ -90,8 +94,10 @@ public class ServiceValidate implements IValidator {
         List<Vacation> vacations = new ArrayList<Vacation>();
 
         // pour chaque associe du manager, on incremente la liste des conges
-        for( Employee e : employee.getAssociates()){
-            vacations.addAll(vacationDAO.findPendingVacationsByEmployee(e));
+        List<Employee> associates = this.employeeDAO.getAssociates(employee) ;
+        for( Employee e : associates){
+            vacations.addAll(vacationDAO.findAll());
+            //vacations.addAll(vacationDAO.findPendingVacationsByEmployee(e));
         }
 
         return vacations ;

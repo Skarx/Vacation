@@ -44,7 +44,7 @@ CREATE TABLE Employee (
 -- | Création des tables (interne)                                                                |
 -- +----------------------------------------------------------------------------------------------+
 CREATE TABLE Vacation (
-	id				SERIAL 				NOT NULL,
+	id				SERIAL 				NOT NULL DEFAULT nextval('vacation_id_seq'),
 	begDate			DATE				NOT NULL,
 	begTime			VARCHAR(20) 		NOT NULL,
 	endDate			DATE				NOT NULL,
@@ -89,9 +89,9 @@ INSERT INTO Employee VALUES (nextval('employee_id_seq'),'Sand', 'Bobby',25, 3, 3
 
 
 -- Insertion des congés
-INSERT INTO Vacation VALUES (nextval('vacation_id_seq'), to_date('05 Dec 2014', 'DD Mon YYYY'), 'Matin', to_date('15 Dec 2014', 'DD Mon YYYY'), 'Aprem', 'ValidatedHR',  1, NULL, 4 );
-INSERT INTO Vacation VALUES (nextval('vacation_id_seq'), to_date('10 Dec 2014', 'DD Mon YYYY'), 'Aprem', to_date('20 Dec 2014', 'DD Mon YYYY'), 'Aprem', 'ValidatedHR',  2, 1, 4 );
-INSERT INTO Vacation VALUES (nextval('vacation_id_seq'), to_date('05 Dec 2014', 'DD Mon YYYY'), 'Matin', to_date('25 Dec 2014', 'DD Mon YYYY'), 'Matin', 'ValidatedHR',  4, 2, 4 );
+INSERT INTO Vacation VALUES (nextval('vacation_id_seq'),to_date('05 Dec 2014', 'DD Mon YYYY'), 'Matin', to_date('15 Dec 2014', 'DD Mon YYYY'), 'Aprem', 'ValidatedHR',  1, NULL, 4 );
+INSERT INTO Vacation VALUES (nextval('vacation_id_seq'),to_date('10 Dec 2014', 'DD Mon YYYY'), 'Aprem', to_date('20 Dec 2014', 'DD Mon YYYY'), 'Aprem', 'ValidatedHR',  2, 1, 4 );
+INSERT INTO Vacation VALUES (nextval('vacation_id_seq'),to_date('05 Dec 2014', 'DD Mon YYYY'), 'Matin', to_date('25 Dec 2014', 'DD Mon YYYY'), 'Matin', 'ValidatedHR',  4, 2, 4 );
 
 --Insertion de commentaires
 INSERT INTO Comment  VALUES (nextval('comment_id_seq'), LOCALTIMESTAMP , 'COUCOU HIBOUX', 1, 1 );

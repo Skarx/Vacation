@@ -1,9 +1,12 @@
 package data.dao;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.jms.Session;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
 
 import data.model.Employee;
 import data.model.Vacation;
@@ -25,7 +28,7 @@ public class VacationDAO {
      * Référence vers le gestionnaire de persistance.
      */
     @PersistenceContext
-    EntityManager entityManager;
+    private EntityManager entityManager;
     //-----------------------------------------------------------------------------
     /**
      * Default constructor.
@@ -42,9 +45,7 @@ public class VacationDAO {
     //----------------------------------------------------------------------------
     public List<Vacation> findAll()
     {
-        Query query = entityManager.createQuery(
-                "SELECT Vacation FROM Vacation Vacation "
-                        + "ORDER BY Vacation.id DESC");
+        Query query = entityManager.createQuery("SELECT vacation FROM Vacation vacation");
         List l = query.getResultList();
 
         return (List<Vacation>)l;
@@ -52,30 +53,35 @@ public class VacationDAO {
     //-----------------------------------------------------------------------------
     public List<Vacation> findByManager(Employee manager){
         Query query = entityManager.createQuery("" +
-                "SELECT Vacation FROM Vacation Vacation " +
-                "WHERE Vacation.managerId IS " + manager.getId());
+                "SELECT vacation FROM Vacation vacation " +
+                "WHERE vacation.manager = :manager");
+        query.setParameter("manager", manager);
         return query.getResultList();
     }
     //-----------------------------------------------------------------------------
     public List<Vacation> findByHr(Employee hr){
         Query query = entityManager.createQuery("" +
-                "SELECT Vacation FROM Vacation Vacation " +
-                "WHERE Vacation.hrId IS " + hr.getId());
+                "SELECT vacation FROM Vacation vacation " +
+                "WHERE vacation.hr = :hr");
+        query.setParameter("hr", hr);
         return query.getResultList();
     }
     //-----------------------------------------------------------------------------
     public List<Vacation> findByEmployee(Employee employee){
         Query query = entityManager.createQuery("" +
-                "SELECT Vacation FROM Vacation Vacation " +
-                "WHERE Vacation.employeeId IS " + employee.getId());
+                "SELECT vacation FROM Vacation vacation " +
+                "WHERE vacation.employee = :employee");
+        query.setParameter("employee", employee);
         return query.getResultList();
     }
     //-----------------------------------------------------------------------------
     public List<Vacation> findPendingVacationsByEmployee(Employee employee){
-        Query query = entityManager.createQuery("SELECT vacation FROM Vacation vacation " +
-                "WHERE vacation.employeeId IS " + employee.getId() + " AND " +
-                "vacation.status IS " + Status.PENDING.toString());
-        return query.getResultList();
+        Query query = entityManager.createQuery("SELECT vacation FROM Vacation vacation");//" " +
+                //"WHERE vacation.employee = :employee");// AND vacation.status = :status");
+        //query.setParameter("employee", employee);
+        //query.setParameter("status", Status.PENDING.toString());
+        List<Vacation> l = query.getResultList() ;
+        return l;
     }
     //-----------------------------------------------------------------------------
     public List<Vacation> findByEmployeeAndStatus(Employee employee, Status status){
@@ -109,15 +115,15 @@ public class VacationDAO {
         return query.getResultList();
     }
     //-----------------------------------------------------------------------------
-    public Vacation persist(Vacation Vacation){
-        entityManager.persist(Vacation);
-        return Vacation;
+    public Vacation persist(Vacation vacation){
+        entityManager.persist(vacation);
+        return vacation;
 
     }
     //-----------------------------------------------------------------------------
 
-    public Vacation update (Vacation Vacation){
-        return entityManager.merge(Vacation);
+    public Vacation update (Vacation vacation){
+        return entityManager.merge(vacation);
 
     }
     //-----------------------------------------------------------------------------

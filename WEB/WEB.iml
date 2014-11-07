@@ -11,6 +11,13 @@
         </webroots>
       </configuration>
     </facet>
+    <facet type="Spring" name="Spring">
+      <configuration>
+        <fileset id="fileset" name="Spring Application Context" removed="false">
+          <file>file://$MODULE_DIR$/web/WEB-INF/mvc-dispatcher-servlet.xml.tld</file>
+        </fileset>
+      </configuration>
+    </facet>
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
@@ -22,6 +29,8 @@
     <orderEntry type="library" name="Java EE 6" level="project" />
     <orderEntry type="module" module-name="EJB" scope="PROVIDED" />
     <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
+    <orderEntry type="library" name="Spring-4.1.1.RELEASE" level="project" />
+    <orderEntry type="library" name="Spring-4.1.1.RELEASE" level="project" />
   </component>
 </module>
 

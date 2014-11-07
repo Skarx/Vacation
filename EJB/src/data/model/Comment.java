@@ -20,6 +20,8 @@ public class Comment implements Serializable{
     }
 
     @Id
+    @SequenceGenerator(name = "commentGenPk", sequenceName = "comment_id_seq", allocationSize = 1)
+    @GeneratedValue(generator = "commentGenPk")
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
     public int getId() {
         return id;

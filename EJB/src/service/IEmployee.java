@@ -11,7 +11,7 @@ import java.util.List;
  */
 @Remote
 public interface IEmployee {
-    Vacation newVacation(java.sql.Date begDate, java.sql.Date endDate, DayTime begTime, DayTime endTime, String comment,
+    Vacation newVacation(java.util.Date begDate, java.util.Date endDate, DayTime begTime, DayTime endTime, String comment,
                          Employee employee, Employee manager);
 
     public void makePlanning(Employee manager) ;

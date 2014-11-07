@@ -12,7 +12,6 @@ import java.io.IOException;
  */
 public class IndexServlet extends javax.servlet.http.HttpServlet {
     protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
-        System.out.println("coucoupost");
         HttpSession session = request.getSession(true);
         try {
             ILogin serviceLogin = (ILogin) ServicesLocator.getInstance().getRemoteInterface("ServiceLogin");
@@ -34,6 +33,7 @@ public class IndexServlet extends javax.servlet.http.HttpServlet {
         } catch (ServicesLocatorException e) {
             e.printStackTrace();
         }
+
         request.getRequestDispatcher("index.jsp").forward(request, response);
     }
 }

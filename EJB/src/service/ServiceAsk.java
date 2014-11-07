@@ -40,7 +40,7 @@ public class ServiceAsk implements IEmployee{
     }
 
     @Override
-    public Vacation newVacation(java.sql.Date begDate, java.sql.Date endDate, DayTime begTime, DayTime endTime, String comment,
+    public Vacation newVacation(java.util.Date begDate, java.util.Date endDate, DayTime begTime, DayTime endTime, String comment,
                                 Employee employee, Employee manager) {
         Vacation nvVacation = new Vacation();
 
@@ -61,7 +61,10 @@ public class ServiceAsk implements IEmployee{
             nvVacation.setStatus(Status.VALIDATEDMGR.toString());
         else
             nvVacation.setStatus(Status.PENDING.toString());
+
+        System.out.println("Avant : " + nvVacation.getId());
         vacationDAO.persist(nvVacation);
+        System.out.println("Après : " + nvVacation.getId());
 
         if(!comment.equals("")){
             Comment comment_obj = new Comment();
@@ -71,9 +74,9 @@ public class ServiceAsk implements IEmployee{
             this.commentDAO.persist(comment_obj);
         }
 
-
         return nvVacation ;
     }
+
 
     @Override
     public void makePlanning(Employee employee) {
@@ -93,7 +96,7 @@ public class ServiceAsk implements IEmployee{
 
     @Override
     public Vacation cancelVacation(Vacation vacation) {
-        if(vacation.getStatus().equals(Status.PENDING)) {
+        if(vacation.getStatus().equals(Status.PENDING.toString())) {
             vacation.setStatus(Status.CANCELLED.toString());
             return vacationDAO.update(vacation);
         }

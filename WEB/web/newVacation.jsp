@@ -17,10 +17,10 @@
     <form method="POST" action="newVacation">
         <fieldset>
             <label for="begDate">Du</label>
-            <input type="date" id="begDate" name="begDate" value=""/>
+            <input type="date" id="begDate" name="begDate" value="" required />
 
             <label for="endDate">Au</label>
-            <input type="date" id="endDate" name="endDate" value=""/>
+            <input type="date" id="endDate" name="endDate" value="" required />
 
             <br>
 
