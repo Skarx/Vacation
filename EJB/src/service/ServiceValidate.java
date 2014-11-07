@@ -96,8 +96,7 @@ public class ServiceValidate implements IValidator {
         // pour chaque associe du manager, on incremente la liste des conges
         List<Employee> associates = this.employeeDAO.getAssociates(employee) ;
         for( Employee e : associates){
-            vacations.addAll(vacationDAO.findAll());
-            //vacations.addAll(vacationDAO.findPendingVacationsByEmployee(e));
+            vacations.addAll(vacationDAO.findPendingVacationsByEmployee(e));
         }
 
         return vacations ;
