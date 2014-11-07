@@ -7,6 +7,7 @@ import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Manfred on 29/10/2014.
@@ -68,6 +69,13 @@ public class EmployeeDAO {
 
     public Employee getManager(Employee employee){
         return employee.getManager();
+    }
+
+    public List<Employee> getAssociates(Employee manager){
+        Query query = entityManager.createQuery("SELECT employee FROM Employee employee WHERE employee.manager = :manager");
+        query.setParameter("manager", manager);
+        List l = query.getResultList();
+        return (List<Employee>) l ;
     }
 
 

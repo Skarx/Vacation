@@ -21,4 +21,13 @@
         <servlet-name>NewVacationServlet</servlet-name>
         <url-pattern>/newVacation</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Planning</servlet-name>
+        <servlet-class>PlanningServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Planning</servlet-name>
+        <url-pattern>/planning</url-pattern>
+    </servlet-mapping>
 </web-app>

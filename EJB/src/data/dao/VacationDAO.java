@@ -1,9 +1,12 @@
 package data.dao;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.jms.Session;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
 
 import data.model.Employee;
 import data.model.Vacation;
@@ -25,7 +28,7 @@ public class VacationDAO {
      * Référence vers le gestionnaire de persistance.
      */
     @PersistenceContext
-    EntityManager entityManager;
+    private EntityManager entityManager;
     //-----------------------------------------------------------------------------
     /**
      * Default constructor.
@@ -109,15 +112,15 @@ public class VacationDAO {
         return query.getResultList();
     }
     //-----------------------------------------------------------------------------
-    public Vacation persist(Vacation Vacation){
-        entityManager.persist(Vacation);
-        return Vacation;
+    public Vacation persist(Vacation vacation){
+        entityManager.persist(vacation);
+        return vacation;
 
     }
     //-----------------------------------------------------------------------------
 
-    public Vacation update (Vacation Vacation){
-        return entityManager.merge(Vacation);
+    public Vacation update (Vacation vacation){
+        return entityManager.merge(vacation);
 
     }
     //-----------------------------------------------------------------------------

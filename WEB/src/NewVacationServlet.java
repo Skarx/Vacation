@@ -29,12 +29,9 @@ public class NewVacationServlet extends HttpServlet {
         String endTime_str = request.getParameter("endTime");
         String comment = request.getParameter("comment");
 
-        // on retourne une erreur si les parametres ne sont pas tous presents
-
+        // conversion des string en Date
         Date begDate = null ;
         Date endDate = null ;
-
-        // conversion des string en Date
         try {
             begDate = convertStringToDate(begDate_str);
             endDate = convertStringToDate(endDate_str);
@@ -52,11 +49,11 @@ public class NewVacationServlet extends HttpServlet {
             // TODO handle exception
         }
 
-
         // recuperation de l'employe
         HttpSession session = request.getSession(true);
-        Employee employee = employee = (Employee) session.getAttribute("currentSessionUser"); ;
+        Employee employee = employee = (Employee) session.getAttribute("currentSessionUser");
 
+        // creation de la demande de conges
         try {
             IEmployee serviceEmployee = (IEmployee)ServicesLocator.getInstance().getRemoteInterface("ServiceAsk");
             Employee manager = employee.getManager() ;
@@ -66,7 +63,7 @@ public class NewVacationServlet extends HttpServlet {
         }
 
         request.setAttribute("message", "Votre demande de congé a bien été créée.");
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        response.sendRedirect("/Vacations/");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

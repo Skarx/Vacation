@@ -5,14 +5,13 @@
   Time: 10:51
   To change this template use File | Settings | File Templates.
 --%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="header.jsp"%>
-
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<div id="messages">
-    <c:forEach var="message" items="${messages}">
-        <p>${message}</p>
-    </c:forEach>
+<h3>Application de gestion de congés</h3>
+<div id="message">
+    <p>${message}</p>
 </div>
 
 <div id="login">
