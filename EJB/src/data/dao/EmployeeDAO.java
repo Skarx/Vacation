@@ -51,17 +51,10 @@ public class EmployeeDAO {
     }
 
     public List<Employee> getEmployeesByService(Service service){
-        String serviceName = service.getName();
-        Query query = entityManager.createQuery("SELECT employee FROM Employee employee " +
-                "WHERE employee.service.name = :serviceName");
-        List l = query.getResultList();
 
-        return (List<Employee>) l;
-    }
-
-    public List<Employee> getEmployeesByService(String serviceName){
         Query query = entityManager.createQuery("SELECT employee FROM Employee employee " +
-                "WHERE employee.service.name = :serviceName");
+                "WHERE employee.service = :service");
+            query.setParameter("service", service);
         List l = query.getResultList();
 
         return (List<Employee>) l;
@@ -86,7 +79,8 @@ public class EmployeeDAO {
     public Employee find(String firstName, String lastName){
         Query query = entityManager.createQuery("SELECT employee FROM Employee employee " +
                 "WHERE employee.firstname = :firstName AND employee.lastname = :lastName");
-
+        query.setParameter("firstName", firstName);
+        query.setParameter("lastName", lastName);
         return (Employee)query.getSingleResult();
     }
 }

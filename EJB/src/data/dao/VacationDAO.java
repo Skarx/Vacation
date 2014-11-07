@@ -57,6 +57,7 @@ public class VacationDAO {
         Query query = entityManager.createQuery("" +
                 "SELECT Vacation FROM Vacation Vacation " +
                 "WHERE Vacation.manager = :manager");
+        query.setParameter("manager", manager);
         return query.getResultList();
     }
     //-----------------------------------------------------------------------------
@@ -64,6 +65,7 @@ public class VacationDAO {
         Query query = entityManager.createQuery("" +
                 "SELECT Vacation FROM Vacation Vacation " +
                 "WHERE Vacation.hr = :hr");
+        query.setParameter("hr", hr);
         return query.getResultList();
     }
     //-----------------------------------------------------------------------------
@@ -71,6 +73,7 @@ public class VacationDAO {
         Query query = entityManager.createQuery("" +
                 "SELECT Vacation FROM Vacation Vacation " +
                 "WHERE Vacation.employee = :employee");
+        query.setParameter("employee", employee);
         return query.getResultList();
     }
     //-----------------------------------------------------------------------------
@@ -85,33 +88,45 @@ public class VacationDAO {
     }
     //-----------------------------------------------------------------------------
     public List<Vacation> findByEmployeeAndStatus(Employee employee, Status status){
+        String statu = status.toString();
         Query query = entityManager.createQuery("" +
                 "SELECT Vacation FROM Vacation Vacation " +
                 "WHERE Vacation.employee = :employee " +
-                "AND Vacation.status IS " + status.toString());
+                "AND Vacation.status like :statu ");
+        query.setParameter("employee", employee);
+        query.setParameter("statu", statu);
         return query.getResultList();
     }
     //-----------------------------------------------------------------------------
     public List<Vacation> findByManagerAndStatus(Employee manager, Status status){
+        String statu = status.toString();
         Query query = entityManager.createQuery("" +
                 "SELECT Vacation FROM Vacation Vacation " +
-                "WHERE Vacation.manager = :manager "+ " " +
-                "AND Vacations.status IS " + status.toString());
+                "WHERE Vacation.manager = :manager " +
+                "AND Vacation.status like :statu ");
+        query.setParameter("manager", manager);
+        query.setParameter("statu", statu);
         return query.getResultList();
     }
     //-----------------------------------------------------------------------------
     public List<Vacation> findByHrAndStatus(Employee hr, Status status){
+        String statu = status.toString();
         Query query = entityManager.createQuery("" +
                 "SELECT Vacation FROM Vacation Vacation " +
-                "WHERE Vacation.hr = :hr "+ " " +
-                "AND Vacations.status IS " + status.toString());
+                "WHERE Vacation.hr = :hr " +
+                "AND Vacation.status like :statu ");
+        query.setParameter("hr", hr);
+        query.setParameter("statu", statu);
         return query.getResultList();
+
     }
-    public List<Vacation> findByEmployeeAndYear(Employee emp, int year){
+    public List<Vacation> findByEmployeeAndYear(Employee employee, int year){
         Query query = entityManager.createQuery("" +
                 "SELECT Vacation FROM Vacation Vacation " +
-                "WHERE Vacation.employee = :emp IS " + " " +
-                "AND YEAR(Vacations.enddate) IS " + year);
+                "WHERE Vacation.employee = :employee " + " " +
+                "AND YEAR(Vacation.enddate) like :year ");
+        query.setParameter("employee", employee);
+        query.setParameter("year", year);
         return query.getResultList();
     }
     //-----------------------------------------------------------------------------
