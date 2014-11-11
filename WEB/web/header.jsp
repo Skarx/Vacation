@@ -10,6 +10,9 @@
 <html>
 <head>
     <title>Application de congés</title>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.3/css/jquery.dataTables.min.css">
+    <script src="//cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
 </head>
 <body>
 
@@ -19,6 +22,14 @@
         <a href="./">Index</a>
         <a href="./planning">Planning</a>
         <a href="./newVacation">Demander un congé</a>
+
+        <c:choose>
+            <c:when test="${not empty managerSession}"><a href="./validateMgr">Validation congés Manager</a></c:when>
+        </c:choose>
+        <c:choose>
+            <c:when test="${not empty HRSession}"><a href="./validateRH">Validation congés RH</a></c:when>
+        </c:choose>
+
         Connecté en tant que : ${currentSessionUser.firstname} ${currentSessionUser.lastname}</c:when>
     <c:otherwise>Non connecté</c:otherwise>
 </c:choose>

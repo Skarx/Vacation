@@ -46,11 +46,17 @@ public class ServiceDAO {
     }
 
     public Service find(int id){
-        return entityManager.find(Service.class, id);
+        Query query = entityManager.createQuery("SELECT service FROM Service service " +
+                "WHERE service.id =:serviceId");
+        query.setParameter("serviceId", id);
+        return (Service)query.getSingleResult();
     }
 
     public Service find(String serviceName){
-        return entityManager.find(Service.class, serviceName);
+        Query query = entityManager.createQuery("SELECT service FROM Service service " +
+                "WHERE service.name =:serviceName");
+        query.setParameter("serviceName", serviceName);
+        return (Service)query.getSingleResult();
     }
 
     public List<Service> getAll(){

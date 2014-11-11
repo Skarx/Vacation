@@ -19,6 +19,12 @@ public class Comment implements Serializable{
 
     }
 
+    public Comment(String comment, Employee creator, Vacation vacation){
+        this.comments = comment ;
+        this.creator = creator ;
+        this.vacation = vacation ;
+    }
+
     @Id
     @SequenceGenerator(name = "commentGenPk", sequenceName = "comment_id_seq", allocationSize = 1, initialValue = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "commentGenPk")

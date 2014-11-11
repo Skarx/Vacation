@@ -101,6 +101,7 @@ public class Employee implements Serializable{
     }
 
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -121,5 +122,11 @@ public class Employee implements Serializable{
         result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
         result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString(){
+        String fullName = this.getFirstname() + " " + this.getLastname() ;
+        return fullName;
     }
 }

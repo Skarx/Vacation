@@ -13,13 +13,15 @@ import java.util.List;
 @Remote
 public interface IValidator {
 
-    public Vacation validateVacation(Vacation vacation, Employee validator, Comment comment);
+    public Vacation getVacationById(int id);
 
-    public Vacation refuseVacation(Vacation vacation, Employee validator, Comment comment);
+    public Vacation validateVacation(Vacation vacation, Employee validator, String comment);
 
-    public Vacation validateCancelling(Vacation vacation, Employee validator, Comment comment);
+    public Vacation refuseVacation(Vacation vacation, Employee validator, String comment);
 
-    public Vacation refuseCancelling(Vacation vacation, Employee validator, Comment comment);
+    public Vacation validateCancelling(Vacation vacation, Employee validator, String comment);
+
+    public Vacation refuseCancelling(Vacation vacation, Employee validator, String comment);
 
     public List<Vacation> getMyAssociatesPendingVacations(Employee employee);
 

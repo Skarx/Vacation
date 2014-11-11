@@ -96,6 +96,29 @@ public class ServiceAsk implements IEmployee{
     }
 
     @Override
+    public List<Vacation> getAllVacations() {
+        return this.vacationDAO.findAll();
+    }
+
+    @Override
+    public List<Vacation> getVacationsByService(String serviceName, String status, int year) {
+        Service service = this.serviceDAO.find(serviceName);
+        return this.vacationDAO.findByService(service);
+    }
+
+    @Override
+    public List<Vacation> getVacationsByEmployee(int employeeId, String status, int year) {
+        Employee employee = this.employeeDAO.find(employeeId);
+        return this.vacationDAO.findByEmployee(employee);
+    }
+
+    @Override
+    public List<Vacation> getVacationsByAssociates(int managerId, String status, int year) {
+        Employee manager = this.employeeDAO.find(managerId);
+        return this.vacationDAO.findByManager(manager);
+    }
+
+    @Override
     public Vacation cancelVacation(Vacation vacation) {
         if(vacation.getStatus().equals(Status.PENDING.toString())) {
             vacation.setStatus(Status.CANCELLED.toString());

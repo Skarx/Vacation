@@ -30,4 +30,13 @@
         <servlet-name>Planning</servlet-name>
         <url-pattern>/planning</url-pattern>
     </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Validate</servlet-name>
+        <servlet-class>ValidateMgrServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Validate</servlet-name>
+        <url-pattern>/validateMgr</url-pattern>
+    </servlet-mapping>
 </web-app>

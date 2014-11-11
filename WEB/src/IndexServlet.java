@@ -17,6 +17,17 @@ public class IndexServlet extends javax.servlet.http.HttpServlet {
             ILogin serviceLogin = (ILogin) ServicesLocator.getInstance().getRemoteInterface("ServiceLogin");
             Employee employee = serviceLogin.getEmployee(Integer.parseInt(request.getParameter("employee")));
             session.setAttribute("currentSessionUser", employee);
+            if(serviceLogin.isManager(employee.getId())){
+                session.setAttribute("managerSession", true);
+            }else{
+                session.removeAttribute("managerSession");
+            }
+
+            if(serviceLogin.isHR(employee.getId())){
+                session.setAttribute("HRSession", true);
+            }else{
+                session.removeAttribute("HRSession");
+            }
         } catch (ServicesLocatorException e) {
             e.printStackTrace();
         }

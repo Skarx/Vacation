@@ -36,54 +36,74 @@ public class ServiceValidate implements IValidator {
     }
 
     @Override
-    public Vacation validateVacation(Vacation vacation, Employee validator, Comment comment) {
+    public Vacation getVacationById(int id) {
+        return this.vacationDAO.findById(id);
+    }
+
+    @Override
+    public Vacation validateVacation(Vacation vacation, Employee validator, String comment) {
         if(vacation.getStatus().equals(Status.PENDING.toString())
                 && vacation.getEmployee().getManager().equals(validator)){
             // en attente de validation par le manager
             vacation.setStatus(Status.VALIDATEDMGR.toString());
-            vacation.addComments(comment);
+            if(!comment.equals("")){
+                Comment comment_obj = new Comment(comment, validator, vacation);
+                vacation.addComments(comment_obj);
+            }
             vacation = vacationDAO.update(vacation);
         }else if(vacation.getStatus().equals(Status.VALIDATEDMGR.toString())
                 && validator.getService().getName().equals("RH")){
             // en attente de validation par le service rh
             vacation.setStatus(Status.VALIDATEDHR.toString());
             vacation.setHr(validator);
-            vacation.addComments(comment);
+            if(!comment.equals("")){
+                Comment comment_obj = new Comment(comment, validator, vacation);
+                vacation.addComments(comment_obj);
+            }
             vacation = vacationDAO.update(vacation);
         }
         return vacation;
     }
 
     @Override
-    public Vacation refuseVacation(Vacation vacation, Employee validator, Comment comment) {
+    public Vacation refuseVacation(Vacation vacation, Employee validator, String comment) {
         if((vacation.getStatus().equals(Status.PENDING.toString()) && vacation.getEmployee().getManager().equals(validator))
                 ||(vacation.getStatus().equals(Status.VALIDATEDMGR.toString()) && validator.getService().getName().equals("RH"))){
             vacation.setStatus(Status.REFUSED.toString());
-            vacation.addComments(comment);
+            if(!comment.equals("")){
+                Comment comment_obj = new Comment(comment, validator, vacation);
+                vacation.addComments(comment_obj);
+            }
             vacation = vacationDAO.update(vacation);
         }
         return vacation;
     }
 
     @Override
-    public Vacation validateCancelling(Vacation vacation, Employee validator, Comment comment) {
+    public Vacation validateCancelling(Vacation vacation, Employee validator, String comment) {
         // changement de l'état de la demande de congé en fonction du status
         if(vacation.getStatus().equals(Status.PENDINGCANCEL.toString())
                 && vacation.getEmployee().getManager().equals(validator)) {
             vacation.setStatus(Status.CANCELLED.toString());
-            vacation.addComments(comment);
+            if(!comment.equals("")){
+                Comment comment_obj = new Comment(comment, validator, vacation);
+                vacation.addComments(comment_obj);
+            }
             vacation = vacationDAO.update(vacation);
         }
         return vacation;
     }
 
     @Override
-    public Vacation refuseCancelling(Vacation vacation, Employee validator, Comment comment) {
+    public Vacation refuseCancelling(Vacation vacation, Employee validator, String comment) {
         // changement de l'état de la demande de congé en fonction du status
         if(vacation.getStatus().equals(Status.PENDINGCANCEL.toString())
                 && vacation.getEmployee().getManager().equals(validator)) {
             vacation.setStatus(Status.VALIDATEDHR.toString());
-            vacation.addComments(comment);
+            if(!comment.equals("")){
+                Comment comment_obj = new Comment(comment, validator, vacation);
+                vacation.addComments(comment_obj);
+            }
             vacation = vacationDAO.update(vacation);
         }
         return vacation;

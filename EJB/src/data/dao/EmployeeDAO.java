@@ -80,7 +80,11 @@ public class EmployeeDAO {
 
 
     public Employee find(int id){
-        return entityManager.find(Employee.class, id);
+        Query query = entityManager.createQuery("SELECT employee FROM Employee employee " +
+                "WHERE employee.id = :id");
+        query.setParameter("id", id);
+
+        return (Employee)query.getSingleResult();
     }
 
     public Employee find(String firstName, String lastName){

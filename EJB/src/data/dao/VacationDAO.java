@@ -9,6 +9,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 
 import data.model.Employee;
+import data.model.Service;
 import data.model.Vacation;
 import data.model.Status;
 
@@ -57,6 +58,7 @@ public class VacationDAO {
         Query query = entityManager.createQuery("" +
                 "SELECT Vacation FROM Vacation Vacation " +
                 "WHERE Vacation.manager = :manager");
+        query.setParameter("manager", manager);
         return query.getResultList();
     }
     //-----------------------------------------------------------------------------
@@ -71,6 +73,7 @@ public class VacationDAO {
         Query query = entityManager.createQuery("" +
                 "SELECT Vacation FROM Vacation Vacation " +
                 "WHERE Vacation.employee = :employee");
+        query.setParameter("employee", employee);
         return query.getResultList();
     }
     //-----------------------------------------------------------------------------
@@ -132,4 +135,11 @@ public class VacationDAO {
         entityManager.remove(Vacation);
     }
 
+    public List<Vacation> findByService(Service service) {
+        Query query = entityManager.createQuery("" +
+                "SELECT vacation FROM Vacation vacation " +
+                "WHERE vacation.employee.service = :service");
+        query.setParameter("service", service);
+        return query.getResultList();
+    }
 }
