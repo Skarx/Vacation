@@ -43,7 +43,7 @@ public class EmployeeDAO {
             entityManager.merge(employee);
         }
     }
-
+    //TODO Test SQL
     public List<Employee> getAll(){
         Query query = entityManager.createQuery("SELECT employee FROM Employee employee");
         List l = query.getResultList();
@@ -51,17 +51,10 @@ public class EmployeeDAO {
     }
 
     public List<Employee> getEmployeesByService(Service service){
-        String serviceName = service.getName();
-        Query query = entityManager.createQuery("SELECT employee FROM Employee employee " +
-                "WHERE employee.service.name = :serviceName");
-        List l = query.getResultList();
 
-        return (List<Employee>) l;
-    }
-
-    public List<Employee> getEmployeesByService(String serviceName){
         Query query = entityManager.createQuery("SELECT employee FROM Employee employee " +
-                "WHERE employee.service.name = :serviceName");
+                "WHERE employee.service = :service");
+            query.setParameter("service", service);
         List l = query.getResultList();
 
         return (List<Employee>) l;
@@ -86,11 +79,12 @@ public class EmployeeDAO {
 
         return (Employee)query.getSingleResult();
     }
-
+    //TODO Test SQL
     public Employee find(String firstName, String lastName){
         Query query = entityManager.createQuery("SELECT employee FROM Employee employee " +
                 "WHERE employee.firstname = :firstName AND employee.lastname = :lastName");
-
+        query.setParameter("firstName", firstName);
+        query.setParameter("lastName", lastName);
         return (Employee)query.getSingleResult();
     }
 }

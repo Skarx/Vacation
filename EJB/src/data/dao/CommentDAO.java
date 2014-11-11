@@ -28,7 +28,7 @@ public class CommentDAO {
      */
     public CommentDAO()
     {
-        // TODO Auto-generated constructor stub
+
     }
     //-----------------------------------------------------------------------------
     public Comment findById(Integer id)
@@ -58,6 +58,7 @@ public class CommentDAO {
         Query query = entityManager.createQuery("" +
                 "SELECT Comment FROM Comment Comment " +
                 "WHERE Comment.creator =: employee");
+        query.setParameter("employee", employee);
         return query.getResultList();
     }
     //-----------------------------------------------------------------------------
