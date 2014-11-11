@@ -47,7 +47,6 @@
     $(document).ready(function () {
         $('#planning_table_validate_mgr').DataTable();
     });
-
 </script>
 
 <%@include file="footer.jsp"%>

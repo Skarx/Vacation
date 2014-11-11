@@ -32,11 +32,20 @@
     </servlet-mapping>
     
     <servlet>
-        <servlet-name>Validate</servlet-name>
+        <servlet-name>ValidateMgr</servlet-name>
         <servlet-class>ValidateMgrServlet</servlet-class>
     </servlet>
     <servlet-mapping>
-        <servlet-name>Validate</servlet-name>
+        <servlet-name>ValidateMgr</servlet-name>
         <url-pattern>/validateMgr</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ValidateHR</servlet-name>
+        <servlet-class>ValidateHRServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ValidateHR</servlet-name>
+        <url-pattern>/validateHR</url-pattern>
     </servlet-mapping>
 </web-app>

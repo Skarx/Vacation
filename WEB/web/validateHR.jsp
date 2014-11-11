@@ -11,28 +11,43 @@
 
 <h3>Congés validés par un manager</h3>
 
-<table id="planning_table">
+<table id="planning_table_validate_hr">
     <tr>
-        <th>Demandeur</th>
+        <th>Employé</th>
+        <th>Service</th>
         <th>Date début</th>
         <th>Date fin</th>
         <th>Solde</th>
-        <th>Status</th>
         <th>Manager</th>
         <th>Commentaires</th>
+        <th>Validation</th>
     </tr>
     <c:forEach var="vacation" items="${vacations}">
         <tr>
             <td>${vacation.employee}</td>
+            <td>${vacation.employee.service}</td>
             <td>${vacation.begdate}</td>
             <td>${vacation.enddate}</td>
             <td></td>
-            <td>${vacation.status}</td>
             <td>${vacation.manager}</td>
             <td></td>
+            <td>
+                <form method="POST">
+                    <input type="hidden" name="vacationId" value="${vacation.id}"/>
+                    <input type="radio" name="validate" value="accept" /> Valider
+                    <input type="radio" name="validate" value="refuse"/> Refuser <br>
+                    <input type="text" name="comment" placeholder="raison"/>
+                    <input type="submit" value="Envoyer"/>
+                </form>
+            </td>
         </tr>
     </c:forEach>
 </table>
 
+<script>
+    $(document).ready(function () {
+        $('#planning_table_validate_hr').DataTable();
+    });
+</script>
 
 <%@include file="footer.jsp"%>

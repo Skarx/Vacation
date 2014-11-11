@@ -123,6 +123,12 @@ public class ServiceValidate implements IValidator {
     }
 
     @Override
+    public List<Vacation> getVacationsValidatedMgr() {
+        List<Vacation> vacations = this.vacationDAO.findByStatus(Status.VALIDATEDMGR.toString());
+        return vacations ;
+    }
+
+    @Override
     public List<Vacation> getVacationsForEmployee(Employee employee) {
         List<Vacation> vacations = new ArrayList<Vacation>() ;
         vacations.addAll(vacationDAO.findByEmployee(employee));

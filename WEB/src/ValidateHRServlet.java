@@ -1,19 +1,22 @@
 import data.model.Employee;
 import data.model.Vacation;
-import service.IEmployee;
 import service.IValidator;
 import utils.ServicesLocator;
 import utils.ServicesLocatorException;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
 /**
- * Created by Manfred on 09/11/2014.
+ * Created by Manfred on 11/11/2014.
  */
-public class ValidateMgrServlet extends javax.servlet.http.HttpServlet {
-    protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
+public class ValidateHRServlet extends HttpServlet {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(true);
         Employee employee = (Employee) session.getAttribute("currentSessionUser");
 
@@ -42,10 +45,10 @@ public class ValidateMgrServlet extends javax.servlet.http.HttpServlet {
         }
 
         // redirection sur la meme page
-        response.sendRedirect("/Vacations/validateMgr");
+        response.sendRedirect("/Vacations/validateHR");
     }
 
-    protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) throws javax.servlet.ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // recuperation de l'employee
         HttpSession session = request.getSession(true);
         Employee employee = (Employee) session.getAttribute("currentSessionUser");
@@ -57,10 +60,10 @@ public class ValidateMgrServlet extends javax.servlet.http.HttpServlet {
             e.printStackTrace();
         }
 
-        // recuperation des conges dans le status PENDING des collaborateurs
-        List<Vacation> pendingVacations = serviceValidate.getMyAssociatesPendingVacations(employee);
+        // recuperation des conges dans le status VALITATEDMGR
+        List<Vacation> validatedMgrVacations = serviceValidate.getVacationsValidatedMgr();
 
-        request.setAttribute("vacations", pendingVacations);
-        request.getRequestDispatcher("validateMgr.jsp").forward(request, response);
+        request.setAttribute("vacations", validatedMgrVacations);
+        request.getRequestDispatcher("validateHR.jsp").forward(request, response);
     }
 }

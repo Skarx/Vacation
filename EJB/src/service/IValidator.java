@@ -25,6 +25,8 @@ public interface IValidator {
 
     public List<Vacation> getMyAssociatesPendingVacations(Employee employee);
 
+    public List<Vacation> getVacationsValidatedMgr();
+
     public List<Vacation> getVacationsForEmployee(Employee employee);
 
     public void updateVacationForEmployee();

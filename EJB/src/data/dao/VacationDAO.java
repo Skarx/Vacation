@@ -131,6 +131,12 @@ public class VacationDAO {
         query.setParameter("year", year);
         return query.getResultList();
     }
+    public List<Vacation> findByStatus(String status){
+        Query query = entityManager.createQuery("SELECT vacation FROM Vacation vacation " +
+                "WHERE vacation.status = :status");
+        query.setParameter("status", status);
+        return query.getResultList();
+    }
     //-----------------------------------------------------------------------------
     public Vacation persist(Vacation vacation){
         entityManager.persist(entityManager.merge(vacation));
