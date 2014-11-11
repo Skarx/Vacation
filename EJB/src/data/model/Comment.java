@@ -95,4 +95,9 @@ public class Comment implements Serializable{
         result = 31 * result + (comments != null ? comments.hashCode() : 0);
         return result;
     }
+
+    @Override
+    public String toString(){
+        return this.creator + " : " + this.comments ;
+    }
 }

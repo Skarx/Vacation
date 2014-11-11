@@ -119,17 +119,24 @@ public class ServiceAsk implements IEmployee{
     }
 
     @Override
-    public Vacation cancelVacation(Vacation vacation) {
-        if(vacation.getStatus().equals(Status.PENDING.toString())) {
+    public Vacation cancelVacation(Vacation vacation, String comment) {
+        if(vacation.getStatus().equals(Status.PENDING.toString()) || vacation.getEmployee().getManager() == null) {
             vacation.setStatus(Status.CANCELLED.toString());
-            return vacationDAO.update(vacation);
-        }
-        if(vacation.getEmployee().getManager() == null) {
-            vacation.setStatus(Status.CANCELLED.toString());
+            if(!comment.equals("")){
+                Comment comment_obj = new Comment(comment, vacation.getEmployee(), vacation);
+                vacation.addComments(comment_obj);
+            }
             return vacationDAO.update(vacation);
         }
         vacation.setStatus(Status.PENDINGCANCEL.toString());
         return vacationDAO.update(vacation);
     }
 
+    public String getComments(Vacation vacation){
+        String comments = new String();
+        for(Comment c : vacation.getComments()){
+            comments += c.getComments() + "\n" ;
+        }
+        return comments.substring(0, comments.length()-1) ;
+    }
 }

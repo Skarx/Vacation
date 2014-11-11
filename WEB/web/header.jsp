@@ -21,6 +21,7 @@
     <c:when test="${not empty currentSessionUser}">
         <a href="./">Index</a>
         <a href="./planning">Planning</a>
+        <a href="./myDemands">Mes demandes</a>
         <a href="./newVacation">Demander un congé</a>
 
         <c:choose>

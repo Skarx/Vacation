@@ -30,7 +30,13 @@
             <td>${vacation.enddate}</td>
             <td></td>
             <td>${vacation.manager}</td>
-            <td></td>
+            <td>
+                <c:forEach var="comment" items="${vacation.comments}">
+                    <c:choose>
+                        <c:when test="${not empty comment}">${comment}<br></c:when>
+                    </c:choose>
+                </c:forEach>
+            </td>
             <td>
                 <form method="POST">
                     <input type="hidden" name="vacationId" value="${vacation.id}"/>

@@ -1,32 +1,34 @@
 <%--
   Created by IntelliJ IDEA.
   User: Manfred
-  Date: 09/11/2014
-  Time: 20:55
+  Date: 06/11/2014
+  Time: 21:44
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@include file="header.jsp"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<h3>Congés de mes collaborateurs en attente de validation</h3>
+<div id="messages">
+    <p>${message}</p>
+</div>
 
-<table id="planning_table_validate_mgr">
+<table id="my_demands_table" class="display" cellspacing="0" width="100%">
     <tr>
-        <th>Demandeur</th>
+        <th>Manager</th>
+        <th>RH</th>
         <th>Date début</th>
         <th>Date fin</th>
-        <th>Solde</th>
         <th>Status</th>
         <th>Commentaires</th>
-        <th>Action</th>
+        <th>Suppression</th>
     </tr>
     <c:forEach var="vacation" items="${vacations}">
         <tr>
-            <td>${vacation.employee}</td>
+            <td>${vacation.manager}</td>
+            <td>${vacation.hr}</td>
             <td>${vacation.begdate}</td>
             <td>${vacation.enddate}</td>
-            <td></td>
             <td>${vacation.status}</td>
             <td>
                 <c:forEach var="comment" items="${vacation.comments}">
@@ -36,22 +38,22 @@
                 </c:forEach>
             </td>
             <td>
-                <form method="POST">
+                <c:if test="${((vacation.status == 'pending') || (vacation.status == 'validatedMgr' && vacation.manager == null))}">
+                    <form method="POST">
                     <input type="hidden" name="vacationId" value="${vacation.id}"/>
-                    <input type="radio" name="validate" value="accept" /> Valider
-                    <input type="radio" name="validate" value="refuse"/> Refuser <br>
                     <input type="text" name="comment" placeholder="raison"/>
-                    <input type="submit" value="Envoyer"/>
-                </form>
+                    <input type="submit" value="Supprimer"/>
+                    </form>
+                </c:if>
             </td>
         </tr>
     </c:forEach>
 </table>
 
-<script>
-    $(document).ready(function () {
-        $('#planning_table_validate_mgr').DataTable();
-    });
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#my_demands_table').DataTable();
+    } );
 </script>
 
 <%@include file="footer.jsp"%>
