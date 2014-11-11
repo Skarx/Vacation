@@ -15,7 +15,6 @@ public class Employee implements Serializable{
     private Service service;
     private Employee manager ;
     private Set<Employee> associates ;
-    private int nbVacation;
 
     public Employee(){
 
@@ -64,12 +63,6 @@ public class Employee implements Serializable{
     public void setFirstname(String firstname) {
         this.firstname = firstname;
     }
-
-    @Basic
-    @Column(name = "nbVacation", nullable = true, insertable = false, updatable = true)
-    public int getNbVacation(){return nbVacation;}
-
-    public void setNbVacation(int nbVacation){this.nbVacation=nbVacation;}
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "serviceId")

@@ -58,7 +58,9 @@ public class NewVacationServlet extends HttpServlet {
         // creation de la demande de conges
         try {
             IEmployee serviceEmployee = (IEmployee)ServicesLocator.getInstance().getRemoteInterface("ServiceAsk");
-            if(checkNumbersOfDay(begDate, endDate)>employee.getNbVacation())
+            //TODO refaire avec les services
+            //TODO refaire avec les services
+            if(checkNumbersOfDay(begDate, endDate)> 0)
                 throw new BadDateException();
             Employee manager = employee.getManager() ;
             serviceEmployee.newVacation(begDate, endDate, begTime, endTime, comment, employee, manager);
