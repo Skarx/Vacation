@@ -21,5 +21,5 @@ public interface IEmployee {
     public List<Vacation> getVacationsByService(String serviceName, String status, int year) ;
     public List<Vacation> getVacationsByEmployee(int employeeId, String status, int year) ;
     public List<Vacation> getVacationsByAssociates(int employeeId, String status, int year) ;
-    public Vacation cancelVacation(Vacation vacation) ;
+    public Vacation cancelVacation(Vacation vacation, String comment) ;
 }

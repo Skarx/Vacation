@@ -41,6 +41,7 @@
         <th>Date début</th>
         <th>Date fin</th>
         <th>Status</th>
+        <th>Commentaires</th>
     </tr>
     <c:forEach var="vacation" items="${vacations}">
         <tr>
@@ -49,6 +50,13 @@
             <td>${vacation.begdate}</td>
             <td>${vacation.enddate}</td>
             <td>${vacation.status}</td>
+            <td>
+                <c:forEach var="comment" items="${vacation.comments}">
+                    <c:choose>
+                        <c:when test="${not empty comment}">${comment.creator} : ${comment.comments}<br></c:when>
+                    </c:choose>
+                </c:forEach>
+            </td>
         </tr>
     </c:forEach>
 </table>
