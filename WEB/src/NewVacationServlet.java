@@ -45,11 +45,14 @@ public class NewVacationServlet extends HttpServlet {
         DayTime begTime = null ;
         DayTime endTime = null ;
         try{
-            checkDayTime(begTime, endTime, begDate, endDate);
             begTime = convertStringToDayTime(begTime_str);
             endTime = convertStringToDayTime(endTime_str);
+            checkDayTime(begTime, endTime, begDate, endDate);
         }catch(BadDayTimeException ex){
-            // TODO handle exception
+            //TODO JE SAIS PAS CA MARCHE PAS TRES BIEN LAULE
+            /*request.setAttribute("message", "Erreur de saisie.");
+            request.getRequestDispatcher("./erreurs.jsp").forward(request, response);
+            */
         }
         // recuperation de l'employe
         HttpSession session = request.getSession(true);
@@ -60,6 +63,8 @@ public class NewVacationServlet extends HttpServlet {
             IEmployee serviceEmployee = (IEmployee)ServicesLocator.getInstance().getRemoteInterface("ServiceAsk");
             //TODO refaire avec les services
             //TODO refaire avec les services
+            int i = checkNumbersOfDay(begDate, endDate);
+            System.out.println(checkNumbersOfDay(begDate, endDate));
             if(checkNumbersOfDay(begDate, endDate)> 0)
                 throw new BadDateException();
             Employee manager = employee.getManager() ;
@@ -103,7 +108,8 @@ public class NewVacationServlet extends HttpServlet {
         }
  }
     private void checkDayTime(DayTime startTime, DayTime endTime, Date startDate, Date endDate) throws BadDayTimeException {
-            if(startDate.equals(endDate) && startTime.equals(DayTime.AFTERNOON) && endTime.equals(DayTime.MORNING))
+        if(startDate.equals(endDate) && startTime.equals(DayTime.AFTERNOON) && endTime.equals(DayTime.MORNING
+        ))
                 throw new BadDayTimeException();
     }
 
@@ -125,66 +131,91 @@ public class NewVacationServlet extends HttpServlet {
         Calendar armistice = new GregorianCalendar();
         // fêtes religieuses
         Calendar paque = new GregorianCalendar();
+        Date dimPaque;
         Calendar ascension = new GregorianCalendar();
         Calendar pentecote = new GregorianCalendar();
         Calendar assomption = new GregorianCalendar();
         Calendar toussaint = new GregorianCalendar();
         Calendar noel = new GregorianCalendar();
         int nbDay=0;
-
-        paque = paqueDay(begCalendar.get(Calendar.YEAR));
+        int year = begCalendar.get(Calendar.YEAR);
+        dimPaque = paqueDay(begCalendar.get(Calendar.YEAR));
         //Initialisation des jours fériés
-        jourDelAn.set(begCalendar.get(Calendar.YEAR), 1, 1);
-        feteDuTravail.set(begCalendar.get(Calendar.YEAR), 5, 1);
-        feteVictoire.set(begCalendar.get(Calendar.YEAR), 5, 8);
-        feteNationale.set(begCalendar.get(Calendar.YEAR), 7, 14);
-        armistice.set(begCalendar.get(Calendar.YEAR), 11, 11);
+        jourDelAn.set(year, 0, 1);
+        jourDelAn.getTime();
+        feteDuTravail.set(begCalendar.get(Calendar.YEAR), 5 - 1, 1);
+        feteDuTravail.getTime();
+        feteVictoire.set(begCalendar.get(Calendar.YEAR), 5 - 1, 8);
+        feteVictoire.getTime();
+        feteNationale.set(begCalendar.get(Calendar.YEAR), 7 - 1, 14);
+        feteNationale.getTime();
+        armistice.set(begCalendar.get(Calendar.YEAR), 11 - 1, 11);
+        armistice.getTime();
+        paque.setTime(dimPaque);
         paque.add(Calendar.DAY_OF_MONTH, 1);
-        ascension.add(Calendar.DAY_OF_MONTH, 38);
-        pentecote.add(Calendar.DAY_OF_MONTH, 49);
-        assomption.set(begCalendar.get(Calendar.YEAR), 8, 15);
-        toussaint.set(begCalendar.get(Calendar.YEAR), 11, 1);
-        noel.set(begCalendar.get(Calendar.YEAR), 12, 25);
+        paque.getTime();
+        ascension.setTime(ascension(dimPaque));
+        ascension.getTime();
+        pentecote.setTime(pentecote(dimPaque));
+        pentecote.getTime();
+        assomption.set(begCalendar.get(Calendar.YEAR), 8-1, 15);
+        assomption.getTime();
+        toussaint.set(begCalendar.get(Calendar.YEAR), 11 - 1, 1);
+        toussaint.getTime();
+        noel.set(begCalendar.get(Calendar.YEAR), 12-1, 25);
+        noel.getTime();
         long diff = Math.abs(endDate.getTime() - begDate.getTime());
         long numberOfDay = (long)diff/86400000;
         if(numberOfDay != 0){
             for(int i=0;i<numberOfDay;i++){
-                if(begCalendar.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY && begCalendar.get(Calendar.DAY_OF_WEEK) != Calendar.SATURDAY
-                        && !begCalendar.equals(noel)
-                        && !begCalendar.equals(toussaint)
-                        && !begCalendar.equals(assomption)
-                        && !begCalendar.equals(pentecote)
-                        && !begCalendar.equals(ascension)
-                        && !begCalendar.equals(paque)
-                        && !begCalendar.equals(armistice)
-                        && !begCalendar.equals(feteNationale)
-                        && !begCalendar.equals(feteVictoire)
-                        && !begCalendar.equals(feteDuTravail)
-                        && !begCalendar.equals(jourDelAn))
+                if(begCalendar.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY
+                        && begCalendar.get(Calendar.DAY_OF_WEEK) != Calendar.SATURDAY
+                        && !(begCalendar.getTime().equals(noel.getTime()))
+                        && !(begCalendar.getTime().equals(toussaint.getTime()))
+                        && !(begCalendar.getTime().equals(assomption.getTime()))
+                        && !(begCalendar.getTime().equals(pentecote.getTime()))
+                        && !(begCalendar.getTime().equals(ascension.getTime()))
+                        && !(begCalendar.getTime().equals(paque.getTime()))
+                        && !(begCalendar.getTime().equals(armistice.getTime()))
+                        && !(begCalendar.getTime().equals(feteNationale.getTime()))
+                        && !(begCalendar.getTime().equals(feteVictoire.getTime()))
+                        && !(begCalendar.getTime().equals(feteDuTravail.getTime()))
+                        && !(begCalendar.getTime().equals(jourDelAn.getTime())))
                     nbDay++;
                 begCalendar.add(Calendar.DAY_OF_MONTH, 1);
             }
         }
         return nbDay;
     }
-    private Calendar paqueDay(int year){
-        int a = year/19;
-        int b = year/4;
-        int c = year/7;
-        int d = ((19*a) + 24)/30;
-        int e = (((2*b) + (4*c) + (6*d) + 5)/7);
+    private Date paqueDay(int year){
+        int a = year%19;
+        int b = year%4;
+        int c = year%7;
+        int d = ((19*a) + 24)%30;
+        int e = (((2*b) + (4*c) + (6*d) + 5)%7);
         int resultMars = 22+d+e;
         int resultAvril = d+e-9;
         Calendar paque = new GregorianCalendar();
-        paque.set(year, 4, resultAvril);
         if(resultMars>31) {
-            paque.set(year, 4, resultAvril);
-            return paque;
+            paque.set(year, 4 - 1, resultAvril);
+            return paque.getTime();
         }
         else {
-            paque.set(year, 5, resultMars);
-            return paque;
+            paque.set(year, 5 - 1, resultMars);
+            return paque.getTime();
         }
+    }
+    private Date pentecote (Date paque){
+        Calendar pentecote = new GregorianCalendar();
+        pentecote.setTime(paque);
+        pentecote.add(Calendar.DAY_OF_MONTH, 50);
+        return pentecote.getTime();
+    }
+    private Date ascension (Date paque){
+        Calendar ascension = new GregorianCalendar();
+        ascension.setTime(paque);
+        ascension.add(Calendar.DAY_OF_MONTH, 39);
+        return ascension.getTime();
     }
 }
 class BadDayTimeException extends Exception{

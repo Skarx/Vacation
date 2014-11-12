@@ -24,16 +24,16 @@
 
             <br>
 
-            <label for="begTime">Du</label>
+            <label for="begTime">Début</label>
             <select id="begTime" name="begTime">
-                <option value="all_day">Journée entière</option>
-                <option value="afternoon">Après-midi seulement</option>
+                <option value="morning">Matin</option>
+                <option value="afternoon">Après-midi</option>
             </select>
 
-            <label for="endTime">Du</label>
+            <label for="endTime">Fin</label>
             <select id="endTime" name="endTime">
-                <option value="all_day">Journée entière</option>
-                <option value="morning">Matin seulement</option>
+                <option value="afternoon">Après-midi</option>
+                <option value="morning">Matin</option>
             </select>
 
             <br>
