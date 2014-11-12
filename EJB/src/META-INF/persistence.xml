@@ -7,6 +7,7 @@
         <class>data.model.Employee</class>
         <class>data.model.Service</class>
         <class>data.model.Vacation</class>
+        <class>data.model.Solde</class>
         <exclude-unlisted-classes>true</exclude-unlisted-classes>
     </persistence-unit>
 </persistence>

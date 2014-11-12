@@ -45,7 +45,7 @@ public class Solde implements Serializable{
     public int getYear(){
         return year;
     }
-    public void setYear(){
+    public void setYear(int year){
         this.year = year;
     }
 

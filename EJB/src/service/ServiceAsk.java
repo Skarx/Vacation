@@ -1,9 +1,6 @@
 package service;
 
-import data.dao.CommentDAO;
-import data.dao.EmployeeDAO;
-import data.dao.ServiceDAO;
-import data.dao.VacationDAO;
+import data.dao.*;
 import data.model.*;
 
 import javax.ejb.EJB;
@@ -31,6 +28,9 @@ public class ServiceAsk implements IEmployee{
 
     @EJB
     private CommentDAO commentDAO ;
+
+    @EJB
+    private SoldeDAO soldeDAO;
 
     public ServiceAsk(){
         this.employeeDAO = new EmployeeDAO() ;
@@ -86,9 +86,8 @@ public class ServiceAsk implements IEmployee{
 
 
     @Override
-    public int checkVacations(Employee employee) {
-        //TODO à refaire avec les DAO Solde
-        return 0;
+    public int checkSolde(Employee employee, int year) {
+        return soldeDAO.findByYearAndEmployee(employee, year).getNumber();
     }
 
     @Override

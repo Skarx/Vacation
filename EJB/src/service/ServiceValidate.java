@@ -1,13 +1,7 @@
 package service;
 
-import data.dao.CommentDAO;
-import data.dao.EmployeeDAO;
-import data.dao.ServiceDAO;
-import data.dao.VacationDAO;
-import data.model.Comment;
-import data.model.Employee;
-import data.model.Status;
-import data.model.Vacation;
+import data.dao.*;
+import data.model.*;
 
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
@@ -29,6 +23,10 @@ public class ServiceValidate implements IValidator {
 
     @EJB
     private CommentDAO commentDAO ;
+
+    @EJB
+    private SoldeDAO soldeDAO;
+
 
     public ServiceValidate(){
         this.vacationDAO = new VacationDAO() ;
@@ -139,4 +137,18 @@ public class ServiceValidate implements IValidator {
     public void updateVacationForEmployee() {
 
     }
+
+    @Override
+    public int checkSolde(Employee employee, int year) {
+        return soldeDAO.findByYearAndEmployee(employee, year).getNumber();
+    }
+
+    @Override
+    public int changeSolde(Employee employee, int year, int i) {
+        Solde solde = soldeDAO.findByYearAndEmployee(employee, year);
+        solde.setNumber(solde.getNumber()-i);
+        soldeDAO.update(solde);
+        return solde.getNumber();
+    }
+
 }

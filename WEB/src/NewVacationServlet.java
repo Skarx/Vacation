@@ -61,11 +61,7 @@ public class NewVacationServlet extends HttpServlet {
         // creation de la demande de conges
         try {
             IEmployee serviceEmployee = (IEmployee)ServicesLocator.getInstance().getRemoteInterface("ServiceAsk");
-            //TODO refaire avec les services
-            //TODO refaire avec les services
-            int i = checkNumbersOfDay(begDate, endDate);
-            System.out.println(checkNumbersOfDay(begDate, endDate));
-            if(checkNumbersOfDay(begDate, endDate)> 0)
+            if(checkNumbersOfDay(begDate, endDate)> serviceEmployee.checkSolde(employee, new GregorianCalendar().get(Calendar.YEAR)))
                 throw new BadDateException();
             Employee manager = employee.getManager() ;
             serviceEmployee.newVacation(begDate, endDate, begTime, endTime, comment, employee, manager);
@@ -82,9 +78,10 @@ public class NewVacationServlet extends HttpServlet {
         Employee employee = employee = (Employee) session.getAttribute("currentSessionUser"); ;
         int solde = 0 ;
         try{
+            int year = new GregorianCalendar().get(Calendar.YEAR);
             // recuperation du solde des conges de l'employe
             IEmployee serviceAsk = (IEmployee)ServicesLocator.getInstance().getRemoteInterface("ServiceAsk");
-            solde = serviceAsk.checkVacations(employee);
+            solde = serviceAsk.checkSolde(employee, year);
         } catch (ServicesLocatorException e) {
             e.printStackTrace();
         }

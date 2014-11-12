@@ -15,7 +15,7 @@ public interface IEmployee {
                          Employee employee, Employee manager);
 
     public void makePlanning(Employee manager) ;
-    public int checkVacations(Employee employee) ;
+    public int checkSolde(Employee employee, int year) ;
     public List<Vacation> getMyVacations(Employee employee) ;
     public List<Vacation> getAllVacations();
     public List<Vacation> getVacationsByService(String serviceName, String status, int year) ;

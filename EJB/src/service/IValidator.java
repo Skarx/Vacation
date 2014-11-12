@@ -30,4 +30,8 @@ public interface IValidator {
     public List<Vacation> getVacationsForEmployee(Employee employee);
 
     public void updateVacationForEmployee();
+
+    public int checkSolde(Employee employee, int year) ;
+
+    public int changeSolde(Employee employee, int year, int i) ;
 }
