@@ -57,11 +57,13 @@ public class NewVacationServlet extends HttpServlet {
         // recuperation de l'employe
         HttpSession session = request.getSession(true);
         Employee employee = employee = (Employee) session.getAttribute("currentSessionUser");
-
+        Calendar calendar = new GregorianCalendar();
+        calendar.setTime(begDate);
+        calendar.getTime();
         // creation de la demande de conges
         try {
             IEmployee serviceEmployee = (IEmployee)ServicesLocator.getInstance().getRemoteInterface("ServiceAsk");
-            if(checkNumbersOfDay(begDate, endDate)> serviceEmployee.checkSolde(employee, new GregorianCalendar().get(Calendar.YEAR)))
+            if(checkNumbersOfDay(begDate, endDate)> serviceEmployee.checkSolde(employee, calendar.get(Calendar.YEAR)))
                 throw new BadDateException();
             Employee manager = employee.getManager() ;
             serviceEmployee.newVacation(begDate, endDate, begTime, endTime, comment, employee, manager);

@@ -134,11 +134,6 @@ public class ServiceValidate implements IValidator {
     }
 
     @Override
-    public void updateVacationForEmployee() {
-
-    }
-
-    @Override
     public int checkSolde(Employee employee, int year) {
         return soldeDAO.findByYearAndEmployee(employee, year).getNumber();
     }

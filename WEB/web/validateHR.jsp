@@ -18,6 +18,7 @@
         <th>Date début</th>
         <th>Date fin</th>
         <th>Solde</th>
+        <th>Nombre de jours</th>
         <th>Manager</th>
         <th>Commentaires</th>
         <th>Validation</th>
@@ -28,7 +29,7 @@
             <td>${vacation.employee.service}</td>
             <td>${vacation.begdate}</td>
             <td>${vacation.enddate}</td>
-            <td></td>
+
             <td>${vacation.manager}</td>
             <td>
                 <c:forEach var="comment" items="${vacation.comments}">
