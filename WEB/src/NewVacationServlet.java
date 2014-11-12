@@ -171,27 +171,16 @@ public class NewVacationServlet extends HttpServlet {
                 if(begCalendar.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY
                         && begCalendar.get(Calendar.DAY_OF_WEEK) != Calendar.SATURDAY
                         && !testCalendar(begCalendar, noel)
-                        //&& 0 != (begCalendar.compareTo((noel)))
                         && !testCalendar(begCalendar,toussaint)
-                        //&& 0 != (begCalendar.compareTo(toussaint))
                         && !testCalendar(begCalendar, assomption)
-                        //&& 0 != (begCalendar.compareTo(assomption))
                         && !testCalendar(begCalendar, pentecote)
-                        //&& 0 != (begCalendar.compareTo(pentecote))
                         && !testCalendar(begCalendar, ascension)
-                        //&& 0 != (begCalendar.compareTo(ascension))
                         && !testCalendar(begCalendar, paque)
-                        //&& 0 != (begCalendar.compareTo(paque))
                         && !testCalendar(begCalendar, armistice)
-                        //&& 0 != (begCalendar.compareTo(armistice))
                         && !testCalendar(begCalendar, feteNationale)
-                        //&& 0 != (begCalendar.compareTo(feteNationale))
                         && !testCalendar(begCalendar, feteVictoire)
-                        //&& 0 != (begCalendar.compareTo(feteVictoire))
                         && !testCalendar(begCalendar, feteDuTravail)
-                        //&& 0 != (begCalendar.compareTo(feteDuTravail))
                         && !testCalendar(begCalendar, jourDelAn))
-                        //&& 0 != (begCalendar.compareTo(jourDelAn)))
                     nbDay++;
                 begCalendar.add(Calendar.DAY_OF_MONTH, 1);
             }
