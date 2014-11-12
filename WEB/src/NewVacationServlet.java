@@ -167,20 +167,31 @@ public class NewVacationServlet extends HttpServlet {
         long diff = Math.abs(endDate.getTime() - begDate.getTime());
         long numberOfDay = (long)diff/86400000;
         if(numberOfDay != 0){
-            for(int i=0;i<numberOfDay;i++){
+            for(int i=0;i<=numberOfDay;i++){
                 if(begCalendar.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY
                         && begCalendar.get(Calendar.DAY_OF_WEEK) != Calendar.SATURDAY
-                        && !(begCalendar.getTime().equals(noel.getTime()))
-                        && !(begCalendar.getTime().equals(toussaint.getTime()))
-                        && !(begCalendar.getTime().equals(assomption.getTime()))
-                        && !(begCalendar.getTime().equals(pentecote.getTime()))
-                        && !(begCalendar.getTime().equals(ascension.getTime()))
-                        && !(begCalendar.getTime().equals(paque.getTime()))
-                        && !(begCalendar.getTime().equals(armistice.getTime()))
-                        && !(begCalendar.getTime().equals(feteNationale.getTime()))
-                        && !(begCalendar.getTime().equals(feteVictoire.getTime()))
-                        && !(begCalendar.getTime().equals(feteDuTravail.getTime()))
-                        && !(begCalendar.getTime().equals(jourDelAn.getTime())))
+                        && !testCalendar(begCalendar, noel)
+                        //&& 0 != (begCalendar.compareTo((noel)))
+                        && !testCalendar(begCalendar,toussaint)
+                        //&& 0 != (begCalendar.compareTo(toussaint))
+                        && !testCalendar(begCalendar, assomption)
+                        //&& 0 != (begCalendar.compareTo(assomption))
+                        && !testCalendar(begCalendar, pentecote)
+                        //&& 0 != (begCalendar.compareTo(pentecote))
+                        && !testCalendar(begCalendar, ascension)
+                        //&& 0 != (begCalendar.compareTo(ascension))
+                        && !testCalendar(begCalendar, paque)
+                        //&& 0 != (begCalendar.compareTo(paque))
+                        && !testCalendar(begCalendar, armistice)
+                        //&& 0 != (begCalendar.compareTo(armistice))
+                        && !testCalendar(begCalendar, feteNationale)
+                        //&& 0 != (begCalendar.compareTo(feteNationale))
+                        && !testCalendar(begCalendar, feteVictoire)
+                        //&& 0 != (begCalendar.compareTo(feteVictoire))
+                        && !testCalendar(begCalendar, feteDuTravail)
+                        //&& 0 != (begCalendar.compareTo(feteDuTravail))
+                        && !testCalendar(begCalendar, jourDelAn))
+                        //&& 0 != (begCalendar.compareTo(jourDelAn)))
                     nbDay++;
                 begCalendar.add(Calendar.DAY_OF_MONTH, 1);
             }
@@ -216,6 +227,13 @@ public class NewVacationServlet extends HttpServlet {
         ascension.setTime(paque);
         ascension.add(Calendar.DAY_OF_MONTH, 39);
         return ascension.getTime();
+    }
+    private boolean testCalendar(Calendar c1, Calendar c2){
+        if(c1.get(Calendar.YEAR) == c2.get(Calendar.YEAR))
+            if(c1.get(Calendar.MONTH) == c2.get(Calendar.MONTH))
+                if(c1.get(Calendar.DAY_OF_MONTH) == c2.get(Calendar.DAY_OF_MONTH))
+                    return true;
+        return false;
     }
 }
 class BadDayTimeException extends Exception{
