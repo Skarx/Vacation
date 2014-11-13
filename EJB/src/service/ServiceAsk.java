@@ -88,7 +88,7 @@ public class ServiceAsk implements IEmployee{
 
 
     @Override
-    public int checkSolde(Employee employee, int year) {
+    public float checkSolde(Employee employee, int year) {
         return soldeDAO.findByYearAndEmployee(employee, year).getNumber();
     }
 

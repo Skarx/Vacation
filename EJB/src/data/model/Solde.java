@@ -10,7 +10,7 @@ import java.util.Set;
 @Entity
 public class Solde implements Serializable{
     private int id;
-    private int number;
+    private float number;
     private int year;
     private Employee employee;
 
@@ -32,11 +32,11 @@ public class Solde implements Serializable{
 
     @Basic
     @Column(name = "number", nullable = false, insertable = true, updatable = true)
-    public int getNumber() {
+    public float getNumber() {
         return number;
     }
 
-    public void setNumber(int number) {
+    public void setNumber(float number) {
         this.number = number;
     }
 
