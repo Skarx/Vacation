@@ -41,7 +41,7 @@ CREATE TABLE Employee (
 );
 CREATE TABLE Solde (
   id				    SERIAL 				  NOT NULL,
-  number			  INTEGER 		    NOT NULL,
+  number			  NUMERIC 		    NOT NULL,
   year          INTEGER         NOT NULL,
   employeeId    INTEGER         NOT NULL,
   CONSTRAINT 		soldePK 			  PRIMARY KEY (id),

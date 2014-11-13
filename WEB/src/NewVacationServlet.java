@@ -14,6 +14,7 @@ import java.util.GregorianCalendar;
 
 import data.model.DayTime;
 import data.model.Employee;
+import data.model.Vacation;
 import service.*;
 import utils.ServicesLocator;
 import utils.ServicesLocatorException;
@@ -62,8 +63,13 @@ public class NewVacationServlet extends HttpServlet {
         calendar.getTime();
         // creation de la demande de conges
         try {
+            Vacation vac = new Vacation();
+            vac.setBegdate(new java.sql.Date(begDate.getTime()));
+            vac.setBegtime(begTime.toString());
+            vac.setEnddate(new java.sql.Date(endDate.getTime()));
+            vac.setEndtime(endTime.toString());
             IEmployee serviceEmployee = (IEmployee)ServicesLocator.getInstance().getRemoteInterface("ServiceAsk");
-            if(checkNumbersOfDay(begDate, endDate)> serviceEmployee.checkSolde(employee, calendar.get(Calendar.YEAR)))
+            if(checkNumbersOfDay(vac)> serviceEmployee.checkSolde(employee, calendar.get(Calendar.YEAR)))
                 throw new BadDateException();
             Employee manager = employee.getManager() ;
             serviceEmployee.newVacation(begDate, endDate, begTime, endTime, comment, employee, manager);
@@ -78,7 +84,7 @@ public class NewVacationServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession(true);
         Employee employee = employee = (Employee) session.getAttribute("currentSessionUser"); ;
-        int solde = 0 ;
+        float solde = 0 ;
         try{
             int year = new GregorianCalendar().get(Calendar.YEAR);
             // recuperation du solde des conges de l'employe
@@ -113,15 +119,15 @@ public class NewVacationServlet extends HttpServlet {
     }
 
 
-    private int checkNumbersOfDay(Date begDate, Date endDate) throws BadDateException {
-        if(begDate.after(endDate))
+    private float checkNumbersOfDay(Vacation vac) throws BadDateException {
+        if(vac.getBegdate().after(vac.getEnddate()))
             throw new BadDateException();
         Calendar begCalendar = new GregorianCalendar();
         Calendar endCalendar = new GregorianCalendar();
         if(begCalendar.get(Calendar.YEAR)!= endCalendar.get(Calendar.YEAR))
             throw new BadDateException();
-        begCalendar.setTime(begDate);
-        endCalendar.setTime(endDate);
+        begCalendar.setTime(vac.getBegdate());
+        endCalendar.setTime(vac.getEnddate());
         // jours fériés
         Calendar jourDelAn = new GregorianCalendar();
         Calendar feteDuTravail = new GregorianCalendar();
@@ -136,7 +142,7 @@ public class NewVacationServlet extends HttpServlet {
         Calendar assomption = new GregorianCalendar();
         Calendar toussaint = new GregorianCalendar();
         Calendar noel = new GregorianCalendar();
-        int nbDay=0;
+        float nbDay=0;
         int year = begCalendar.get(Calendar.YEAR);
         dimPaque = paqueDay(begCalendar.get(Calendar.YEAR));
         //Initialisation des jours fériés
@@ -163,7 +169,7 @@ public class NewVacationServlet extends HttpServlet {
         toussaint.getTime();
         noel.set(begCalendar.get(Calendar.YEAR), 12-1, 25);
         noel.getTime();
-        long diff = Math.abs(endDate.getTime() - begDate.getTime());
+        long diff = Math.abs(vac.getEnddate().getTime() - vac.getBegdate().getTime());
         long numberOfDay = (long)diff/86400000;
         numberOfDay++;
         if(testCalendar(begCalendar,endCalendar))
@@ -193,6 +199,14 @@ public class NewVacationServlet extends HttpServlet {
                 begCalendar.add(Calendar.DAY_OF_MONTH, 1);
             }
         }
+        if(vac.getBegtime().toString().equals(DayTime.AFTERNOON.toString()) && vac.getEndtime().toString().equals(DayTime.MORNING.toString()))
+            nbDay= nbDay-1f;
+        if(vac.getBegtime().toString().equals(DayTime.AFTERNOON.toString()) && vac.getEndtime().toString().equals(DayTime.AFTERNOON.toString()))
+            nbDay=nbDay-0.5f;
+        if(vac.getBegtime().toString().equals(DayTime.MORNING.toString()) && vac.getEndtime().toString().equals(DayTime.MORNING))
+            nbDay=nbDay-0.5f;
+        if(vac.getBegtime().toString().equals(DayTime.MORNING.toString()) && vac.getEndtime().toString().equals(DayTime.AFTERNOON))
+            nbDay=nbDay-1f;
         if(nbDay==0)
             throw new BadDateException();
         return nbDay;

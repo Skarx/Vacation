@@ -1,3 +1,4 @@
+import data.model.DayTime;
 import data.model.Employee;
 import data.model.Status;
 import data.model.Vacation;
@@ -49,7 +50,7 @@ public class ValidateMgrServlet extends javax.servlet.http.HttpServlet {
                 calendar.getTime();
 
                 try {
-                    serviceValidate.changeSolde(employee, calendar.get(Calendar.YEAR), -(checkNumbersOfDay(vacation.getBegdate(), vacation.getEnddate())));
+                    serviceValidate.changeSolde(employee, calendar.get(Calendar.YEAR), -(checkNumbersOfDay(vacation)));
                 }
                 catch (Exception e){}
                 }
@@ -89,15 +90,15 @@ public class ValidateMgrServlet extends javax.servlet.http.HttpServlet {
         request.setAttribute("vacations", pendingVacations);
         request.getRequestDispatcher("validateMgr.jsp").forward(request, response);
     }
-    private int checkNumbersOfDay(Date begDate, Date endDate) throws BadDateException {
-        if(begDate.after(endDate))
+    private float checkNumbersOfDay(Vacation vac) throws BadDateException {
+        if(vac.getBegdate().after(vac.getEnddate()))
             throw new BadDateException();
         Calendar begCalendar = new GregorianCalendar();
         Calendar endCalendar = new GregorianCalendar();
         if(begCalendar.get(Calendar.YEAR)!= endCalendar.get(Calendar.YEAR))
             throw new BadDateException();
-        begCalendar.setTime(begDate);
-        endCalendar.setTime(endDate);
+        begCalendar.setTime(vac.getBegdate());
+        endCalendar.setTime(vac.getEnddate());
         // jours fériés
         Calendar jourDelAn = new GregorianCalendar();
         Calendar feteDuTravail = new GregorianCalendar();
@@ -112,7 +113,7 @@ public class ValidateMgrServlet extends javax.servlet.http.HttpServlet {
         Calendar assomption = new GregorianCalendar();
         Calendar toussaint = new GregorianCalendar();
         Calendar noel = new GregorianCalendar();
-        int nbDay=0;
+        float nbDay=0;
         int year = begCalendar.get(Calendar.YEAR);
         dimPaque = paqueDay(begCalendar.get(Calendar.YEAR));
         //Initialisation des jours fériés
@@ -139,7 +140,7 @@ public class ValidateMgrServlet extends javax.servlet.http.HttpServlet {
         toussaint.getTime();
         noel.set(begCalendar.get(Calendar.YEAR), 12-1, 25);
         noel.getTime();
-        long diff = Math.abs(endDate.getTime() - begDate.getTime());
+        long diff = Math.abs(vac.getEnddate().getTime() - vac.getBegdate().getTime());
         long numberOfDay = (long)diff/86400000;
         numberOfDay++;
         if(testCalendar(begCalendar,endCalendar))
@@ -169,6 +170,14 @@ public class ValidateMgrServlet extends javax.servlet.http.HttpServlet {
                 begCalendar.add(Calendar.DAY_OF_MONTH, 1);
             }
         }
+        if(vac.getBegtime().toString().equals(DayTime.AFTERNOON.toString()) && vac.getEndtime().toString().equals(DayTime.MORNING.toString()))
+            nbDay= nbDay-1f;
+        if(vac.getBegtime().toString().equals(DayTime.AFTERNOON.toString()) && vac.getEndtime().toString().equals(DayTime.AFTERNOON.toString()))
+            nbDay=nbDay-0.5f;
+        if(vac.getBegtime().toString().equals(DayTime.MORNING.toString()) && vac.getEndtime().toString().equals(DayTime.MORNING))
+            nbDay=nbDay-0.5f;
+        if(vac.getBegtime().toString().equals(DayTime.MORNING.toString()) && vac.getEndtime().toString().equals(DayTime.AFTERNOON))
+            nbDay=nbDay-1f;
         if(nbDay==0)
             throw new BadDateException();
         return nbDay;
