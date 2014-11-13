@@ -139,7 +139,7 @@ public class VacationDAO {
     }
     //-----------------------------------------------------------------------------
     public Vacation persist(Vacation vacation){
-        entityManager.persist(entityManager.merge(vacation));
+        entityManager.persist(vacation);
         return vacation;
 
     }

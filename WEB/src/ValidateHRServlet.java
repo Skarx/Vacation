@@ -76,6 +76,8 @@ public class ValidateHRServlet extends HttpServlet {
 
             }
         }
+        request.setAttribute("solde", solde);
+        request.setAttribute("nbDays", nbDays);
         request.setAttribute("vacations", validatedMgrVacations);
         request.getRequestDispatcher("validateHR.jsp").forward(request, response);
     }

@@ -88,11 +88,11 @@ INSERT INTO Service VALUES (nextval('service_id_seq'), 'RH', 2);
 INSERT INTO Service VALUES (nextval('service_id_seq'), 'Labo1', 3);
 
 -- Insertion des Employés
-INSERT INTO Employee VALUES (nextval('employee_id_seq'),'Smith', 'John', 1, NULL );
-INSERT INTO Employee VALUES (nextval('employee_id_seq'),'Cliff', 'Jimmy', 2, 1 );
-INSERT INTO Employee VALUES (nextval('employee_id_seq'),'Denzey', 'Willy', 3, 1 );
-INSERT INTO Employee VALUES (nextval('employee_id_seq'),'Snow', 'John',2, 2 );
-INSERT INTO Employee VALUES (nextval('employee_id_seq'),'Sand', 'Bobby', 3, 3 );
+INSERT INTO Employee VALUES (nextval('employee_id_seq'),'Director', 'John', 1, NULL );
+INSERT INTO Employee VALUES (nextval('employee_id_seq'),'DRH', 'Jimmy', 2, 1 );
+INSERT INTO Employee VALUES (nextval('employee_id_seq'),'ManagerLabo', 'Willy', 3, 1 );
+INSERT INTO Employee VALUES (nextval('employee_id_seq'),'RH', 'John',2, 2 );
+INSERT INTO Employee VALUES (nextval('employee_id_seq'),'OpeLabo', 'Bobby', 3, 3 );
 
 
 -- Insertion des Soldes
