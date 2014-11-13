@@ -3,6 +3,8 @@ package data.model;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -19,7 +21,7 @@ public class Vacation implements Serializable{
     private Employee employee;
     private Employee manager;
     private Employee hr;
-    private Set<Comment> comments;
+    private Set<Comment> comments = new HashSet<Comment>();
 
     public Vacation(){
 
@@ -56,6 +58,7 @@ public class Vacation implements Serializable{
     public void setHr(Employee hr){this.hr = hr;}
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST, mappedBy = "vacation")
+    @OrderBy("creadate")
     public Set<Comment> getComments(){return comments;}
 
     public void setComments(Set<Comment> comments) {this.comments = comments;}

@@ -75,7 +75,7 @@
                $("#radio_employee").prop("disabled", true);
             }
         });
-        $('#planning_table').DataTable();
+        $('#planning_table').dataTable();
     } );
 </script>
 

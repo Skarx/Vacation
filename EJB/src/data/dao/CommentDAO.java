@@ -48,7 +48,12 @@ public class CommentDAO {
     //-----------------------------------------------------------------------------
 
     public List<Comment> findByVacation(Vacation vacation){
-        return (List<Comment>)vacation.getComments();
+        Query query = entityManager.createQuery("" +
+                "SELECT comment FROM Comment comment " +
+                "WHERE comment.vacation = :vacation " +
+                "ORDER BY comment.creadate");
+        query.setParameter("vacation", vacation);
+        return query.getResultList();
     }
     //-----------------------------------------------------------------------------
 

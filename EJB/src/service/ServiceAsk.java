@@ -63,13 +63,19 @@ public class ServiceAsk implements IEmployee{
             nvVacation.setStatus(Status.PENDING.toString());
 
         Vacation v = vacationDAO.persist(nvVacation);
-        if(!comment.equals("")){
+        /*if(!comment.equals("")){
             Comment comment_obj = new Comment();
             comment_obj.setComments(comment);
             comment_obj.setCreator(employee);
             comment_obj.setVacation(v);
             commentDAO.persist(comment_obj);
+        }*/
+
+        if(!comment.equals("")){
+            Comment comment_obj = new Comment(comment, employee, v);
+            v.addComments(comment_obj);
         }
+        v = vacationDAO.update(v);
 
         return v;
     }
@@ -117,22 +123,26 @@ public class ServiceAsk implements IEmployee{
     @Override
     public Vacation cancelVacation(Vacation vacation, String comment) {
         if(vacation.getStatus().equals(Status.PENDING.toString()) || vacation.getEmployee().getManager() == null) {
+            // Le conge n'a pas ete valide par le manager ou l'employe est le directeur
             vacation.setStatus(Status.CANCELLED.toString());
-            if(!comment.equals("")){
-                Comment comment_obj = new Comment(comment, vacation.getEmployee(), vacation);
-                vacation.addComments(comment_obj);
-            }
-            return vacationDAO.update(vacation);
+        }else{
+            // Le conge a ete valide par un RH
+            vacation.setStatus(Status.PENDINGCANCEL.toString());
         }
-        vacation.setStatus(Status.PENDINGCANCEL.toString());
+        // ajout du commentaire eventuel
+        if(!comment.equals("")){
+            Comment comment_obj = new Comment(comment, vacation.getEmployee(), vacation);
+            vacation.addComments(comment_obj);
+        }
         return vacationDAO.update(vacation);
     }
 
     public String getComments(Vacation vacation){
-        String comments = new String();
-        for(Comment c : vacation.getComments()){
-            comments += c.getComments() + "\n" ;
+        List<Comment> comments_lst = this.commentDAO.findByVacation(vacation);
+        String comments_str = new String();
+        for(Comment c : comments_lst){
+            comments_str += c.getComments() + "\n" ;
         }
-        return comments.substring(0, comments.length()-1) ;
+        return comments_str.substring(0, comments_str.length()-1) ;
     }
 }
