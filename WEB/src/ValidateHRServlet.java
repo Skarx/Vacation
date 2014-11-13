@@ -41,9 +41,6 @@ public class ValidateHRServlet extends HttpServlet {
         calendar.getTime();
         // recuperation de la reponse
         String validate = request.getParameter("validate");
-        
-        // modification du status du conges
-        serviceValidate.validateVacation(vacation, employee, comment);
 
         if(validate == null){
             request.getSession().setAttribute("message", "Aucune réponse sélectionnée.");
@@ -51,10 +48,13 @@ public class ValidateHRServlet extends HttpServlet {
             if (validate.equals("accept")) {
                 // modification du status du conges
                 try {
-                    serviceValidate.changeSolde(vacation.getEmployee(), calendar.get(Calendar.YEAR) ,checkNumbersOfDay(vacation.getBegdate(), vacation.getEnddate()));
+                    serviceValidate.changeSolde(vacation.getEmployee(), calendar.get(Calendar.YEAR), checkNumbersOfDay(vacation.getBegdate(), vacation.getEnddate()));
+                    serviceValidate.validateVacation(vacation, employee, comment);
+                }catch (BadDateException e){
+                    request.getSession().setAttribute("message", "Mauvaise date sélectionnée.");
+                }catch(Exception e) {
+                    request.getSession().setAttribute("message", "Une erreur est survenue lors de la validation de la demande de congés.");
                 }
-                catch (Exception e){}
-                serviceValidate.validateVacation(vacation, employee, comment);
             } else if (validate.equals("refuse")) {
                 // modification du status du conges
                 serviceValidate.refuseVacation(vacation, employee, comment);
@@ -81,6 +81,8 @@ public class ValidateHRServlet extends HttpServlet {
         request.setAttribute("vacations", validatedMgrVacations);
         request.getRequestDispatcher("validateHR.jsp").forward(request, response);
     }
+
+
     private int checkNumbersOfDay(Date begDate, Date endDate) throws BadDateException {
         if(begDate.after(endDate))
             throw new BadDateException();

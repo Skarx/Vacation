@@ -10,7 +10,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <div id="messages">
-    <p>${message}</p>
+    <p color="red">${message}</p>
+    <c:remove var="message" scope="session"/>
 </div>
 
 <table id="my_demands_table" class="display" cellspacing="0" width="100%">

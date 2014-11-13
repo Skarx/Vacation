@@ -37,33 +37,38 @@ public class ValidateMgrServlet extends javax.servlet.http.HttpServlet {
 
         // recuperation de la reponse
         String validate = request.getParameter("validate");
-        if(validate.equals("accept")){
-            if(vacation.getStatus().equals(Status.PENDING.toString())){
-                // modification du status du conges (PENDING -> VALIDATEDMGR)
-                serviceValidate.validateVacation(vacation, employee, comment);
-            }else if(vacation.getStatus().equals(Status.PENDINGCANCEL.toString())){
-                // modification du status du conges (PENDINGCANCEL -> CANCELLED)
-                serviceValidate.validateCancelling(vacation, employee, comment);
-                Calendar calendar = new GregorianCalendar();
-                calendar.setTime(vacation.getBegdate());
-                calendar.getTime();
 
-                try {
-                    serviceValidate.changeSolde(employee, calendar.get(Calendar.YEAR), -(checkNumbersOfDay(vacation.getBegdate(), vacation.getEnddate())));
+        if(validate == null){
+            request.getSession().setAttribute("message", "Aucune réponse sélectionnée.");
+        }else {
+            if (validate.equals("accept")) {
+                if (vacation.getStatus().equals(Status.PENDING.toString())) {
+                    // modification du status du conges (PENDING -> VALIDATEDMGR)
+                    serviceValidate.validateVacation(vacation, employee, comment);
+                } else if (vacation.getStatus().equals(Status.PENDINGCANCEL.toString())) {
+                    // modification du status du conges (PENDINGCANCEL -> CANCELLED)
+                    serviceValidate.validateCancelling(vacation, employee, comment);
+                    Calendar calendar = new GregorianCalendar();
+                    calendar.setTime(vacation.getBegdate());
+                    calendar.getTime();
+
+                    try {
+                        serviceValidate.changeSolde(employee, calendar.get(Calendar.YEAR), -(checkNumbersOfDay(vacation.getBegdate(), vacation.getEnddate())));
+                    } catch (Exception e) {
+                        request.getSession().setAttribute("message", "Une erreur est survenue lors de la validation de la demande de congés.");
+                    }
                 }
-                catch (Exception e){}
+            } else if (validate.equals("refuse")) {
+                if (vacation.getStatus().equals(Status.PENDING.toString())) {
+                    // refus de la demande de conge
+                    // PENDING -> REFUSED
+                    serviceValidate.refuseVacation(vacation, employee, comment);
+                } else if (vacation.getStatus().equals(Status.PENDINGCANCEL.toString())) {
+                    // Non validation de la demande de suppression
+                    // PENDINGCANCEL -> VALIDATEDHR
+                    serviceValidate.refuseCancelling(vacation, employee, comment);
+                }
             }
-        }else if(validate.equals("refuse")){
-            if(vacation.getStatus().equals(Status.PENDING.toString())){
-                // refus de la demande de conge
-                // PENDING -> REFUSED
-                serviceValidate.refuseVacation(vacation, employee, comment);
-            }else if(vacation.getStatus().equals(Status.PENDINGCANCEL.toString())){
-                // Non validation de la demande de suppression
-                // PENDINGCANCEL -> VALIDATEDHR
-                serviceValidate.refuseCancelling(vacation, employee, comment);
-            }
-
         }
 
         // redirection sur la meme page
@@ -88,6 +93,8 @@ public class ValidateMgrServlet extends javax.servlet.http.HttpServlet {
         request.setAttribute("vacations", pendingVacations);
         request.getRequestDispatcher("validateMgr.jsp").forward(request, response);
     }
+
+
     private int checkNumbersOfDay(Date begDate, Date endDate) throws BadDateException {
         if(begDate.after(endDate))
             throw new BadDateException();

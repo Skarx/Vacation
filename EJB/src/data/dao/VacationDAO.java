@@ -44,7 +44,7 @@ public class VacationDAO {
         return entityManager.find(Vacation.class, id);
     }
     //----------------------------------------------------------------------------
-    //TODO Test SQL
+
     public List<Vacation> findAll()
     {
         Query query = entityManager.createQuery(

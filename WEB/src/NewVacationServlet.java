@@ -49,10 +49,8 @@ public class NewVacationServlet extends HttpServlet {
             endTime = convertStringToDayTime(endTime_str);
             checkDayTime(begTime, endTime, begDate, endDate);
         }catch(BadDayTimeException ex){
-            //TODO JE SAIS PAS CA MARCHE PAS TRES BIEN LAULE
-            /*request.setAttribute("message", "Erreur de saisie.");
-            request.getRequestDispatcher("./erreurs.jsp").forward(request, response);
-            */
+            request.getSession().setAttribute("message", "Erreur de saisie.");
+            request.getRequestDispatcher("./index.jsp").forward(request, response);
         }
         // recuperation de l'employe
         HttpSession session = request.getSession(true);
@@ -67,11 +65,10 @@ public class NewVacationServlet extends HttpServlet {
                 throw new BadDateException();
             Employee manager = employee.getManager() ;
             serviceEmployee.newVacation(begDate, endDate, begTime, endTime, comment, employee, manager);
+            request.getSession().setAttribute("message", "Votre demande de congé a bien été créée.");
         }catch(Exception e){
-            // TODO preparer les exceptions de newVacation
+            request.getSession().setAttribute("message", "Erreur lors de la création de la demande de congés.");
         }
-
-        request.setAttribute("message", "Votre demande de congé a bien été créée.");
         response.sendRedirect("/Vacations/");
     }
 

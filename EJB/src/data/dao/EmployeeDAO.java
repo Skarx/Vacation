@@ -43,7 +43,7 @@ public class EmployeeDAO {
             entityManager.merge(employee);
         }
     }
-    //TODO Test SQL
+
     public List<Employee> getAll(){
         Query query = entityManager.createQuery("SELECT employee FROM Employee employee");
         List l = query.getResultList();
@@ -79,7 +79,7 @@ public class EmployeeDAO {
 
         return (Employee)query.getSingleResult();
     }
-    //TODO Test SQL
+
     public Employee find(String firstName, String lastName){
         Query query = entityManager.createQuery("SELECT employee FROM Employee employee " +
                 "WHERE employee.firstname = :firstName AND employee.lastname = :lastName");

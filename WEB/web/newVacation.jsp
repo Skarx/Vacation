@@ -13,6 +13,11 @@
 
 <p>Solde de congés restant : ${solde}</p>
 
+<div id="messages">
+    <p color="red">${message}</p>
+    <c:remove var="message" scope="session"/>
+</div>
+
 <div>
     <form method="POST" action="newVacation">
         <fieldset>
