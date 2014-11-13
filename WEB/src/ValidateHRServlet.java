@@ -36,12 +36,20 @@ public class ValidateHRServlet extends HttpServlet {
 
         // recuperation du commentaire eventuel
         String comment = request.getParameter("comment");
-
+        Calendar calendar = new GregorianCalendar();
+        calendar.setTime(vacation.getBegdate());
+        calendar.getTime();
         // recuperation de la reponse
         String validate = request.getParameter("validate");
         if(validate.equals("accept")){
             // modification du status du conges
-            serviceValidate.validateVacation(vacation, employee, comment);
+            try {
+                serviceValidate.changeSolde(vacation.getEmployee(), calendar.get(Calendar.YEAR) ,checkNumbersOfDay(vacation.getBegdate(), vacation.getEnddate()));
+            }
+            catch (Exception e){
+
+            }
+                serviceValidate.validateVacation(vacation, employee, comment);
 
         }else if(validate.equals("refuse")){
             // modification du status du conges
@@ -120,8 +128,12 @@ public class ValidateHRServlet extends HttpServlet {
         noel.getTime();
         long diff = Math.abs(endDate.getTime() - begDate.getTime());
         long numberOfDay = (long)diff/86400000;
+        numberOfDay++;
+        if(testCalendar(begCalendar,endCalendar))
+            numberOfDay=1;
+        nbDay = (int)numberOfDay;
         if(numberOfDay != 0){
-            for(int i=0;i<=numberOfDay;i++){
+            for(int i=0;i<numberOfDay;i++){
                 if(begCalendar.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY
                         && begCalendar.get(Calendar.DAY_OF_WEEK) != Calendar.SATURDAY
                         && !testCalendar(begCalendar, noel)
@@ -134,11 +146,18 @@ public class ValidateHRServlet extends HttpServlet {
                         && !testCalendar(begCalendar, feteNationale)
                         && !testCalendar(begCalendar, feteVictoire)
                         && !testCalendar(begCalendar, feteDuTravail)
-                        && !testCalendar(begCalendar, jourDelAn))
-                    nbDay++;
+                        && !testCalendar(begCalendar, jourDelAn)) {
+
+                }
+                else{
+                    nbDay--;
+
+                }
                 begCalendar.add(Calendar.DAY_OF_MONTH, 1);
             }
         }
+        if(nbDay==0)
+            throw new BadDateException();
         return nbDay;
     }
     private Date paqueDay(int year){
