@@ -1553,7 +1553,6 @@
       <column name="id" sqlType="serial" precision="10" scale="0" nullable="false" jdbcType="4" def="bmV4dHZhbCgnZW1wbG95ZWVfaWRfc2VxJzo6cmVnY2xhc3Mp" autoIncrement="true"/>
       <column name="lastname" sqlType="varchar" precision="30" scale="0" nullable="false" jdbcType="12"/>
       <column name="firstname" sqlType="varchar" precision="30" scale="0" nullable="false" jdbcType="12"/>
-      <column name="nbvacation" sqlType="int4" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <column name="serviceid" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <column name="managerid" sqlType="int4" precision="10" scale="0" nullable="true" jdbcType="4"/>
       <primary-key name="employeepk" columns="id"/>
@@ -1561,6 +1560,7 @@
       <foreign-key name="employeefkservice" columns="serviceid" ref-table="service" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
       <exported-key name="commentsfkemployee" table="comment" schema="public" catalog="postgres" columns="creatorid"/>
       <exported-key name="employeefkemployee" table="employee" schema="public" catalog="postgres" columns="managerid"/>
+      <exported-key name="soldefkemployee" table="solde" schema="public" catalog="postgres" columns="employeeid"/>
       <exported-key name="vacationfkemployeeemp" table="vacation" schema="public" catalog="postgres" columns="employeeid"/>
       <exported-key name="vacationfkemployeehr" table="vacation" schema="public" catalog="postgres" columns="hrid"/>
       <exported-key name="vacationfkemployeemgr" table="vacation" schema="public" catalog="postgres" columns="managerid"/>
@@ -1596,23 +1596,15 @@
       <column name="is_cycled" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
       <column name="is_called" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
     </table>
-    <table name="vacation" schema="public" catalog="postgres" type="TABLE">
-      <column name="id" sqlType="serial" precision="10" scale="0" nullable="false" jdbcType="4" def="bmV4dHZhbCgndmFjYXRpb25faWRfc2VxJzo6cmVnY2xhc3Mp" autoIncrement="true"/>
-      <column name="begdate" sqlType="date" precision="13" scale="0" nullable="false" jdbcType="91"/>
-      <column name="begtime" sqlType="varchar" precision="20" scale="0" nullable="false" jdbcType="12"/>
-      <column name="enddate" sqlType="date" precision="13" scale="0" nullable="false" jdbcType="91"/>
-      <column name="endtime" sqlType="varchar" precision="20" scale="0" nullable="false" jdbcType="12"/>
-      <column name="status" sqlType="varchar" precision="20" scale="0" nullable="false" jdbcType="12"/>
-      <column name="employeeid" sqlType="serial" precision="10" scale="0" nullable="false" jdbcType="4" def="bmV4dHZhbCgndmFjYXRpb25fZW1wbG95ZWVpZF9zZXEnOjpyZWdjbGFzcyk=" autoIncrement="true"/>
-      <column name="managerid" sqlType="int4" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <column name="hrid" sqlType="int4" precision="10" scale="0" nullable="true" jdbcType="4"/>
-      <primary-key name="vacationpk" columns="id"/>
-      <foreign-key name="vacationfkemployeeemp" columns="employeeid" ref-table="employee" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
-      <foreign-key name="vacationfkemployeehr" columns="hrid" ref-table="employee" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
-      <foreign-key name="vacationfkemployeemgr" columns="managerid" ref-table="employee" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
-      <exported-key name="commentsfkvac" table="comment" schema="public" catalog="postgres" columns="vacationid"/>
+    <table name="solde" schema="public" catalog="postgres" type="TABLE">
+      <column name="id" sqlType="serial" precision="10" scale="0" nullable="false" jdbcType="4" def="bmV4dHZhbCgnc29sZGVfaWRfc2VxJzo6cmVnY2xhc3Mp" autoIncrement="true"/>
+      <column name="number" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="year" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="employeeid" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <primary-key name="soldepk" columns="id"/>
+      <foreign-key name="soldefkemployee" columns="employeeid" ref-table="employee" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
     </table>
-    <table name="vacation_employeeid_seq" schema="public" catalog="postgres" type="SEQUENCE">
+    <table name="solde_id_seq" schema="public" catalog="postgres" type="SEQUENCE">
       <column name="sequence_name" sqlType="name" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>
       <column name="last_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
       <column name="start_value" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
@@ -1623,6 +1615,22 @@
       <column name="log_cnt" sqlType="int8" precision="19" scale="0" nullable="false" jdbcType="-5"/>
       <column name="is_cycled" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
       <column name="is_called" sqlType="bool" precision="1" scale="0" nullable="false" jdbcType="-7"/>
+    </table>
+    <table name="vacation" schema="public" catalog="postgres" type="TABLE">
+      <column name="id" sqlType="serial" precision="10" scale="0" nullable="false" jdbcType="4" def="bmV4dHZhbCgndmFjYXRpb25faWRfc2VxJzo6cmVnY2xhc3Mp" autoIncrement="true"/>
+      <column name="begdate" sqlType="date" precision="13" scale="0" nullable="false" jdbcType="91"/>
+      <column name="begtime" sqlType="varchar" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="enddate" sqlType="date" precision="13" scale="0" nullable="false" jdbcType="91"/>
+      <column name="endtime" sqlType="varchar" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="status" sqlType="varchar" precision="20" scale="0" nullable="false" jdbcType="12"/>
+      <column name="employeeid" sqlType="int4" precision="10" scale="0" nullable="false" jdbcType="4"/>
+      <column name="managerid" sqlType="int4" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="hrid" sqlType="int4" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <primary-key name="vacationpk" columns="id"/>
+      <foreign-key name="vacationfkemployeeemp" columns="employeeid" ref-table="employee" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="vacationfkemployeehr" columns="hrid" ref-table="employee" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="vacationfkemployeemgr" columns="managerid" ref-table="employee" ref-schema="public" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="commentsfkvac" table="comment" schema="public" catalog="postgres" columns="vacationid"/>
     </table>
     <table name="vacation_id_seq" schema="public" catalog="postgres" type="SEQUENCE">
       <column name="sequence_name" sqlType="name" precision="2147483647" scale="0" nullable="false" jdbcType="12"/>

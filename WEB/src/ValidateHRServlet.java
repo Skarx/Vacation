@@ -1,4 +1,3 @@
-import data.model.DayTime;
 import data.model.Employee;
 import data.model.Vacation;
 import service.IValidator;
@@ -42,19 +41,23 @@ public class ValidateHRServlet extends HttpServlet {
         calendar.getTime();
         // recuperation de la reponse
         String validate = request.getParameter("validate");
-        if(validate.equals("accept")){
-            // modification du status du conges
-            try {
-                serviceValidate.changeSolde(vacation.getEmployee(), calendar.get(Calendar.YEAR) ,checkNumbersOfDay(vacation));
+        if(validate == null){
+            request.getSession().setAttribute("message", "Aucune réponse sélectionnée.");
+        }else {
+            if (validate.equals("accept")) {
+                // modification du status du conges
+                try {
+                    serviceValidate.changeSolde(vacation.getEmployee(), calendar.get(Calendar.YEAR) ,checkNumbersOfDay(vacation));
+                    serviceValidate.validateVacation(vacation, employee, comment);
+                }catch (BadDateException e){
+                    request.getSession().setAttribute("message", "Mauvaise date sélectionnée.");
+                }catch(Exception e) {
+                    request.getSession().setAttribute("message", "Une erreur est survenue lors de la validation de la demande de congés.");
+                }
+            } else if (validate.equals("refuse")) {
+                // modification du status du conges
+                serviceValidate.refuseVacation(vacation, employee, comment);
             }
-            catch (Exception e){
-
-            }
-                serviceValidate.validateVacation(vacation, employee, comment);
-
-        }else if(validate.equals("refuse")){
-            // modification du status du conges
-            serviceValidate.refuseVacation(vacation, employee, comment);
         }
 
         // redirection sur la meme page

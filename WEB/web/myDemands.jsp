@@ -10,7 +10,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <div id="messages">
-    <p>${message}</p>
+    <p color="red">${message}</p>
+    <c:remove var="message" scope="session"/>
 </div>
 
 <table id="my_demands_table" class="display" cellspacing="0" width="100%">
@@ -39,7 +40,7 @@
             </td>
             <td>
                 <c:choose>
-                    <c:when test="${((vacation.status == 'pending') || (vacation.status == 'validatedMgr' && vacation.manager == null))}">
+                    <c:when test="${((vacation.status == 'pending') || (vacation.status == 'validatedMgr' && vacation.manager == null) || ((vacation.manager == null) && (vacation.status == 'validatedHr')))}">
                         <form method="POST">
                             <input type="hidden" name="vacationId" value="${vacation.id}"/>
                             <input type="text" name="comment" placeholder="raison"/>

@@ -11,6 +11,11 @@
 
 <h3>Congés de mes collaborateurs en attente de validation</h3>
 
+<div id="messages">
+    <p color="red">${message}</p>
+    <c:remove var="message" scope="session"/>
+</div>
+
 <table id="planning_table_validate_mgr">
     <tr>
         <th>Demandeur</th>

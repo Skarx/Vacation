@@ -18,7 +18,7 @@ import java.util.List;
 /**
  * Created by Manfred on 11/11/2014.
  */
-//TODO Handle NPE quand l'utilisateur n'a aucune demande
+
 public class MyDemandsServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // recuperation des services

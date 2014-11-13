@@ -10,7 +10,7 @@
     <module id="WEB-Web">
         <web>
             <web-uri>WEB.war</web-uri>
-            <context-root>WEBWeb</context-root>
+            <context-root>Vacations</context-root>
         </web>
     </module>
 </application>

@@ -10,8 +10,9 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <h3>Application de gestion de congés</h3>
-<div id="message">
-    <p>${message}</p>
+<div id="messages">
+    <p color="red">${message}</p>
+    <c:remove var="message" scope="session"/>
 </div>
 
 <div id="login">

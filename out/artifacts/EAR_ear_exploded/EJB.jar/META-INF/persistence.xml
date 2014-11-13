@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
-
-    <persistence-unit name="PersistenceUnit">
-        <provider>org.hibernate.ejb.HibernatePersistence</provider>
-        <mapping-file>META-INF/orm.xml</mapping-file>
+    <persistence-unit name="Postgres">
+        <jta-data-source>JNDI_DataBase</jta-data-source>
+        <!--<mapping-file>META-INF/orm.xml</mapping-file>-->
         <class>data.model.Comment</class>
         <class>data.model.Employee</class>
         <class>data.model.Service</class>
         <class>data.model.Vacation</class>
-        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        <class>data.model.Solde</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    </persistence-unit>
+</persistence>
+
+        <!--
+
+        <provider>org.hibernate.ejb.HibernatePersistence</provider>
         <properties>
             <property name="hibernate.connection.url" value="jdbc:postgresql://localhost:5432/postgres"/>
             <property name="hibernate.connection.driver_class" value="org.postgresql.Driver"/>
@@ -19,6 +25,4 @@
             <property name="hibernate.show_sql" value="true"/>
             <property name="hibernate.format_sql" value="true"/>
             <property name="hbm2ddl.auto" value="update"/>
-        </properties>
-    </persistence-unit>
-</persistence>
+        </properties>-->

@@ -2,5 +2,59 @@
 <web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="file:///C:/schemas/ file:///C:/schemas/web-app_3_1.xsd"
-         version="3.1">
+         version="3.1"
+         metadata-complete="false">
+    <servlet>
+        <servlet-name>index</servlet-name>
+        <servlet-class>IndexServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>index</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>NewVacationServlet</servlet-name>
+        <servlet-class>NewVacationServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>NewVacationServlet</servlet-name>
+        <url-pattern>/newVacation</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>Planning</servlet-name>
+        <servlet-class>PlanningServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Planning</servlet-name>
+        <url-pattern>/planning</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>MyDemands</servlet-name>
+        <servlet-class>MyDemandsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MyDemands</servlet-name>
+        <url-pattern>/myDemands</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ValidateMgr</servlet-name>
+        <servlet-class>ValidateMgrServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ValidateMgr</servlet-name>
+        <url-pattern>/validateMgr</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ValidateHR</servlet-name>
+        <servlet-class>ValidateHRServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ValidateHR</servlet-name>
+        <url-pattern>/validateHR</url-pattern>
+    </servlet-mapping>
 </web-app>
