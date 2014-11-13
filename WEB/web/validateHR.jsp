@@ -11,6 +11,11 @@
 
 <h3>Congés validés par un manager</h3>
 
+<div id="messages">
+    <p color="red">${message}</p>
+    <c:remove var="message" scope="session"/>
+</div>
+
 <table id="planning_table_validate_hr">
     <tr>
         <th>Employé</th>

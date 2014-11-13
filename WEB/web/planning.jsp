@@ -10,7 +10,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <div id="messages">
-    <p>${message}</p>
+    <p color="red">${message}</p>
+    <c:remove var="message" scope="session"/>
 </div>
 
 <div id="sort_vacations">
@@ -30,7 +31,7 @@
         </select><br>
 
         <input type="radio" name="accessPoint" value="associates"> Collaborateurs<br>
-        <input type="submit" value="Filtrer">
+        <input type="submit" id="form_submit" value="Filtrer" disabled>
     </form>
 </div>
 
@@ -73,7 +74,8 @@
            }else{
                $("#radio_service").prop("disabled", true);
                $("#radio_employee").prop("disabled", true);
-            }
+           }
+           $("#form_submit").prop("disabled", false);
         });
         $('#planning_table').dataTable();
     } );

@@ -39,13 +39,18 @@ public class ValidateHRServlet extends HttpServlet {
 
         // recuperation de la reponse
         String validate = request.getParameter("validate");
-        if(validate.equals("accept")){
-            // modification du status du conges
-            serviceValidate.validateVacation(vacation, employee, comment);
 
-        }else if(validate.equals("refuse")){
-            // modification du status du conges
-            serviceValidate.refuseVacation(vacation, employee, comment);
+        if(validate == null){
+            request.getSession().setAttribute("message", "Aucune réponse sélectionnée.");
+        }else {
+            if (validate.equals("accept")) {
+                // modification du status du conges
+                serviceValidate.validateVacation(vacation, employee, comment);
+
+            } else if (validate.equals("refuse")) {
+                // modification du status du conges
+                serviceValidate.refuseVacation(vacation, employee, comment);
+            }
         }
 
         // redirection sur la meme page

@@ -34,25 +34,29 @@ public class ValidateMgrServlet extends javax.servlet.http.HttpServlet {
 
         // recuperation de la reponse
         String validate = request.getParameter("validate");
-        if(validate.equals("accept")){
-            if(vacation.getStatus().equals(Status.PENDING.toString())){
-                // modification du status du conges (PENDING -> VALIDATEDMGR)
-                serviceValidate.validateVacation(vacation, employee, comment);
-            }else if(vacation.getStatus().equals(Status.PENDINGCANCEL.toString())){
-                // modification du status du conges (PENDINGCANCEL -> CANCELLED)
-                serviceValidate.validateCancelling(vacation, employee, comment);
-            }
-        }else if(validate.equals("refuse")){
-            if(vacation.getStatus().equals(Status.PENDING.toString())){
-                // refus de la demande de conge
-                // PENDING -> REFUSED
-                serviceValidate.refuseVacation(vacation, employee, comment);
-            }else if(vacation.getStatus().equals(Status.PENDINGCANCEL.toString())){
-                // Non validation de la demande de suppression
-                // PENDINGCANCEL -> VALIDATEDHR
-                serviceValidate.refuseCancelling(vacation, employee, comment);
-            }
+        if(validate == null){
+            request.getSession().setAttribute("message", "Aucune réponse sélectionnée.");
+        }else{
+            if(validate.equals("accept")){
+                if(vacation.getStatus().equals(Status.PENDING.toString())){
+                    // modification du status du conges (PENDING -> VALIDATEDMGR)
+                    serviceValidate.validateVacation(vacation, employee, comment);
+                }else if(vacation.getStatus().equals(Status.PENDINGCANCEL.toString())){
+                    // modification du status du conges (PENDINGCANCEL -> CANCELLED)
+                    serviceValidate.validateCancelling(vacation, employee, comment);
+                }
+            }else if(validate.equals("refuse")){
+                if(vacation.getStatus().equals(Status.PENDING.toString())){
+                    // refus de la demande de conge
+                    // PENDING -> REFUSED
+                    serviceValidate.refuseVacation(vacation, employee, comment);
+                }else if(vacation.getStatus().equals(Status.PENDINGCANCEL.toString())){
+                    // Non validation de la demande de suppression
+                    // PENDINGCANCEL -> VALIDATEDHR
+                    serviceValidate.refuseCancelling(vacation, employee, comment);
+                }
 
+            }
         }
 
         // redirection sur la meme page
