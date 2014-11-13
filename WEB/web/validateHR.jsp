@@ -31,7 +31,8 @@
             <td>${vacation.enddate}</td>
 
             <td>${vacation.manager}</td>
-            <td>
+            <td></td>
+            <td></td>
                 <c:forEach var="comment" items="${vacation.comments}">
                     <c:choose>
                         <c:when test="${not empty comment}">${comment}<br></c:when>
