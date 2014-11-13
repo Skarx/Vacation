@@ -8,6 +8,9 @@ import utils.ServicesLocatorException;
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 /**
@@ -41,7 +44,16 @@ public class ValidateMgrServlet extends javax.servlet.http.HttpServlet {
             }else if(vacation.getStatus().equals(Status.PENDINGCANCEL.toString())){
                 // modification du status du conges (PENDINGCANCEL -> CANCELLED)
                 serviceValidate.validateCancelling(vacation, employee, comment);
-            }
+                Calendar calendar = new GregorianCalendar();
+                calendar.setTime(vacation.getBegdate());
+                calendar.getTime();
+
+                try {
+                    serviceValidate.changeSolde(employee, calendar.get(Calendar.YEAR), -(checkNumbersOfDay(vacation.getBegdate(), vacation.getEnddate())));
+                }
+                catch (Exception e){}
+                }
+
         }else if(validate.equals("refuse")){
             if(vacation.getStatus().equals(Status.PENDING.toString())){
                 // refus de la demande de conge
@@ -76,5 +88,126 @@ public class ValidateMgrServlet extends javax.servlet.http.HttpServlet {
 
         request.setAttribute("vacations", pendingVacations);
         request.getRequestDispatcher("validateMgr.jsp").forward(request, response);
+    }
+    private int checkNumbersOfDay(Date begDate, Date endDate) throws BadDateException {
+        if(begDate.after(endDate))
+            throw new BadDateException();
+        Calendar begCalendar = new GregorianCalendar();
+        Calendar endCalendar = new GregorianCalendar();
+        if(begCalendar.get(Calendar.YEAR)!= endCalendar.get(Calendar.YEAR))
+            throw new BadDateException();
+        begCalendar.setTime(begDate);
+        endCalendar.setTime(endDate);
+        // jours fériés
+        Calendar jourDelAn = new GregorianCalendar();
+        Calendar feteDuTravail = new GregorianCalendar();
+        Calendar feteVictoire = new GregorianCalendar();
+        Calendar feteNationale = new GregorianCalendar();
+        Calendar armistice = new GregorianCalendar();
+        // fêtes religieuses
+        Calendar paque = new GregorianCalendar();
+        Date dimPaque;
+        Calendar ascension = new GregorianCalendar();
+        Calendar pentecote = new GregorianCalendar();
+        Calendar assomption = new GregorianCalendar();
+        Calendar toussaint = new GregorianCalendar();
+        Calendar noel = new GregorianCalendar();
+        int nbDay=0;
+        int year = begCalendar.get(Calendar.YEAR);
+        dimPaque = paqueDay(begCalendar.get(Calendar.YEAR));
+        //Initialisation des jours fériés
+        jourDelAn.set(year, 0, 1);
+        jourDelAn.getTime();
+        feteDuTravail.set(begCalendar.get(Calendar.YEAR), 5 - 1, 1);
+        feteDuTravail.getTime();
+        feteVictoire.set(begCalendar.get(Calendar.YEAR), 5 - 1, 8);
+        feteVictoire.getTime();
+        feteNationale.set(begCalendar.get(Calendar.YEAR), 7 - 1, 14);
+        feteNationale.getTime();
+        armistice.set(begCalendar.get(Calendar.YEAR), 11 - 1, 11);
+        armistice.getTime();
+        paque.setTime(dimPaque);
+        paque.add(Calendar.DAY_OF_MONTH, 1);
+        paque.getTime();
+        ascension.setTime(ascension(dimPaque));
+        ascension.getTime();
+        pentecote.setTime(pentecote(dimPaque));
+        pentecote.getTime();
+        assomption.set(begCalendar.get(Calendar.YEAR), 8-1, 15);
+        assomption.getTime();
+        toussaint.set(begCalendar.get(Calendar.YEAR), 11 - 1, 1);
+        toussaint.getTime();
+        noel.set(begCalendar.get(Calendar.YEAR), 12-1, 25);
+        noel.getTime();
+        long diff = Math.abs(endDate.getTime() - begDate.getTime());
+        long numberOfDay = (long)diff/86400000;
+        numberOfDay++;
+        if(testCalendar(begCalendar,endCalendar))
+            numberOfDay=1;
+        nbDay = (int)numberOfDay;
+        if(numberOfDay != 0){
+            for(int i=0;i<numberOfDay;i++){
+                if(begCalendar.get(Calendar.DAY_OF_WEEK) != Calendar.SUNDAY
+                        && begCalendar.get(Calendar.DAY_OF_WEEK) != Calendar.SATURDAY
+                        && !testCalendar(begCalendar, noel)
+                        && !testCalendar(begCalendar,toussaint)
+                        && !testCalendar(begCalendar, assomption)
+                        && !testCalendar(begCalendar, pentecote)
+                        && !testCalendar(begCalendar, ascension)
+                        && !testCalendar(begCalendar, paque)
+                        && !testCalendar(begCalendar, armistice)
+                        && !testCalendar(begCalendar, feteNationale)
+                        && !testCalendar(begCalendar, feteVictoire)
+                        && !testCalendar(begCalendar, feteDuTravail)
+                        && !testCalendar(begCalendar, jourDelAn)) {
+
+                }
+                else{
+                    nbDay--;
+
+                }
+                begCalendar.add(Calendar.DAY_OF_MONTH, 1);
+            }
+        }
+        if(nbDay==0)
+            throw new BadDateException();
+        return nbDay;
+    }
+    private Date paqueDay(int year){
+        int a = year%19;
+        int b = year%4;
+        int c = year%7;
+        int d = ((19*a) + 24)%30;
+        int e = (((2*b) + (4*c) + (6*d) + 5)%7);
+        int resultMars = 22+d+e;
+        int resultAvril = d+e-9;
+        Calendar paque = new GregorianCalendar();
+        if(resultMars>31) {
+            paque.set(year, 4 - 1, resultAvril);
+            return paque.getTime();
+        }
+        else {
+            paque.set(year, 5 - 1, resultMars);
+            return paque.getTime();
+        }
+    }
+    private Date pentecote (Date paque){
+        Calendar pentecote = new GregorianCalendar();
+        pentecote.setTime(paque);
+        pentecote.add(Calendar.DAY_OF_MONTH, 50);
+        return pentecote.getTime();
+    }
+    private Date ascension (Date paque){
+        Calendar ascension = new GregorianCalendar();
+        ascension.setTime(paque);
+        ascension.add(Calendar.DAY_OF_MONTH, 39);
+        return ascension.getTime();
+    }
+    private boolean testCalendar(Calendar c1, Calendar c2){
+        if(c1.get(Calendar.YEAR) == c2.get(Calendar.YEAR))
+            if(c1.get(Calendar.MONTH) == c2.get(Calendar.MONTH))
+                if(c1.get(Calendar.DAY_OF_MONTH) == c2.get(Calendar.DAY_OF_MONTH))
+                    return true;
+        return false;
     }
 }
