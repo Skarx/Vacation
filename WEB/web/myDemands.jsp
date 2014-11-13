@@ -39,7 +39,7 @@
             </td>
             <td>
                 <c:choose>
-                    <c:when test="${((vacation.status == 'pending') || (vacation.status == 'validatedMgr' && vacation.manager == null))}">
+                    <c:when test="${((vacation.status == 'pending') || (vacation.status == 'validatedMgr' && vacation.manager == null) || ((vacation.manager == null) && (vacation.status == 'validatedHr')))}">
                         <form method="POST">
                             <input type="hidden" name="vacationId" value="${vacation.id}"/>
                             <input type="text" name="comment" placeholder="raison"/>
