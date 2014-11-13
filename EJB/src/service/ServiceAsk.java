@@ -63,13 +63,19 @@ public class ServiceAsk implements IEmployee{
             nvVacation.setStatus(Status.PENDING.toString());
 
         Vacation v = vacationDAO.persist(nvVacation);
-        if(!comment.equals("")){
+        /*if(!comment.equals("")){
             Comment comment_obj = new Comment();
             comment_obj.setComments(comment);
             comment_obj.setCreator(employee);
             comment_obj.setVacation(v);
             commentDAO.persist(comment_obj);
+        }*/
+
+        if(!comment.equals("")){
+            Comment comment_obj = new Comment(comment, employee, v);
+            v.addComments(comment_obj);
         }
+        v = vacationDAO.update(v);
 
         return v;
     }

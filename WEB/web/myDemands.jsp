@@ -52,7 +52,7 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-        $('#my_demands_table').DataTable();
+        $('#my_demands_table').dataTable();
     } );
 </script>
 
