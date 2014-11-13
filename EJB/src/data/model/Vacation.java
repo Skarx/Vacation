@@ -58,6 +58,7 @@ public class Vacation implements Serializable{
     public void setHr(Employee hr){this.hr = hr;}
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST, mappedBy = "vacation")
+    @OrderBy("creadate")
     public Set<Comment> getComments(){return comments;}
 
     public void setComments(Set<Comment> comments) {this.comments = comments;}

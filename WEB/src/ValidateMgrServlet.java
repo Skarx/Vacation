@@ -1,4 +1,5 @@
 import data.model.Employee;
+import data.model.Status;
 import data.model.Vacation;
 import service.IEmployee;
 import service.IValidator;
@@ -34,11 +35,24 @@ public class ValidateMgrServlet extends javax.servlet.http.HttpServlet {
         // recuperation de la reponse
         String validate = request.getParameter("validate");
         if(validate.equals("accept")){
-            // modification du status du conges
-            serviceValidate.validateVacation(vacation, employee, comment);
+            if(vacation.getStatus().equals(Status.PENDING.toString())){
+                // modification du status du conges (PENDING -> VALIDATEDMGR)
+                serviceValidate.validateVacation(vacation, employee, comment);
+            }else if(vacation.getStatus().equals(Status.PENDINGCANCEL.toString())){
+                // modification du status du conges (PENDINGCANCEL -> CANCELLED)
+                serviceValidate.validateCancelling(vacation, employee, comment);
+            }
         }else if(validate.equals("refuse")){
-            // modification du status du conges
-            serviceValidate.refuseVacation(vacation, employee, comment);
+            if(vacation.getStatus().equals(Status.PENDING.toString())){
+                // refus de la demande de conge
+                // PENDING -> REFUSED
+                serviceValidate.refuseVacation(vacation, employee, comment);
+            }else if(vacation.getStatus().equals(Status.PENDINGCANCEL.toString())){
+                // Non validation de la demande de suppression
+                // PENDINGCANCEL -> VALIDATEDHR
+                serviceValidate.refuseCancelling(vacation, employee, comment);
+            }
+
         }
 
         // redirection sur la meme page
@@ -57,7 +71,7 @@ public class ValidateMgrServlet extends javax.servlet.http.HttpServlet {
             e.printStackTrace();
         }
 
-        // recuperation des conges dans le status PENDING des collaborateurs
+        // recuperation des conges dans le status PENDING et PENDINGCANCEL des collaborateurs
         List<Vacation> pendingVacations = serviceValidate.getMyAssociatesPendingVacations(employee);
 
         request.setAttribute("vacations", pendingVacations);

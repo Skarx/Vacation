@@ -111,10 +111,11 @@ public class ServiceValidate implements IValidator {
     public List<Vacation> getMyAssociatesPendingVacations(Employee employee) {
         List<Vacation> vacations = new ArrayList<Vacation>();
 
-        // pour chaque associe du manager, on incremente la liste des conges
+        // pour chaque associe du manager, on recupere les conges en cours de validation (PENDING + PENDINGCANCEL)
         List<Employee> associates = this.employeeDAO.getAssociates(employee) ;
         for( Employee e : associates){
-            vacations.addAll(vacationDAO.findPendingVacationsByEmployee(e));
+            vacations.addAll(vacationDAO.findByEmployeeAndStatus(e, Status.PENDING));
+            vacations.addAll(vacationDAO.findByEmployeeAndStatus(e, Status.PENDINGCANCEL));
         }
 
         return vacations ;
