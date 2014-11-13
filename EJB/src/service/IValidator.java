@@ -2,6 +2,7 @@ package service;
 
 import data.model.Comment;
 import data.model.Employee;
+import data.model.Solde;
 import data.model.Vacation;
 
 import javax.ejb.Remote;
@@ -32,4 +33,6 @@ public interface IValidator {
     public int checkSolde(Employee employee, int year) ;
 
     public int changeSolde(Employee employee, int year, int i) ;
+
+    public Solde getSolde(Employee employee, int year) ;
 }

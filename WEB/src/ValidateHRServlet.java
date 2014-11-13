@@ -65,19 +65,6 @@ public class ValidateHRServlet extends HttpServlet {
 
         // recuperation des conges dans le status VALITATEDMGR
         List<Vacation> validatedMgrVacations = serviceValidate.getVacationsValidatedMgr();
-        List<Integer> solde=null;
-        List<Integer> nbDays=null;
-        for(Vacation vac: validatedMgrVacations){
-            solde.add(serviceValidate.checkSolde(vac.getEmployee(), vac.getBegdate().getYear()));
-            try {
-                nbDays.add(checkNumbersOfDay(vac.getBegdate(), vac.getEnddate()));
-            }
-            catch (Exception e){
-
-            }
-        }
-        request.setAttribute("solde", solde);
-        request.setAttribute("nbDays", nbDays);
         request.setAttribute("vacations", validatedMgrVacations);
         request.getRequestDispatcher("validateHR.jsp").forward(request, response);
     }
