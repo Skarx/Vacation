@@ -54,7 +54,7 @@ public class ValidateMgrServlet extends javax.servlet.http.HttpServlet {
                     calendar.getTime();
 
                     try {
-                        serviceValidate.changeSolde(employee, calendar.get(Calendar.YEAR), -(checkNumbersOfDay(vacation.getBegdate(), vacation.getEnddate())));
+                        serviceValidate.changeSolde(employee, calendar.get(Calendar.YEAR), -(checkNumbersOfDay(vacation)));
                     } catch (Exception e) {
                         request.getSession().setAttribute("message", "Une erreur est survenue lors de la validation de la demande de congés.");
                     }
