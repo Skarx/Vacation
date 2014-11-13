@@ -63,7 +63,7 @@ public class MyDemandsServlet extends HttpServlet {
         Employee employee = employee = (Employee) session.getAttribute("currentSessionUser");
 
         // recuperation des conges pour l'employee connecte
-        List<Vacation> l = serviceAsk.getVacationsByEmployee(employee.getId(), null, 0);
+        List<Vacation> l = serviceAsk.getMyVacations(employee);
         request.setAttribute("vacations", l);
 
         request.getRequestDispatcher("myDemands.jsp").forward(request, response);

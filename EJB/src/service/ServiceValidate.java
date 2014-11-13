@@ -139,6 +139,11 @@ public class ServiceValidate implements IValidator {
     }
 
     @Override
+    public Solde getSolde(Employee employee, int year) {
+        return soldeDAO.findByYearAndEmployee(employee, year);
+    }
+
+    @Override
     public int changeSolde(Employee employee, int year, int i) {
         Solde solde = soldeDAO.findByYearAndEmployee(employee, year);
         solde.setNumber(solde.getNumber()-i);
