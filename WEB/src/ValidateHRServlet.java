@@ -161,13 +161,13 @@ public class ValidateHRServlet extends HttpServlet {
                 begCalendar.add(Calendar.DAY_OF_MONTH, 1);
             }
         }
-        if(vac.getBegtime().toString().equals(DayTime.AFTERNOON.toString()) && vac.getEndtime().toString().equals(DayTime.MORNING.toString()))
+        if((vac.getBegtime().toString().equals(DayTime.AFTERNOON.toString())) && (vac.getEndtime().toString().equals(DayTime.MORNING.toString())))
             nbDay= nbDay-1f;
-        if(vac.getBegtime().toString().equals(DayTime.AFTERNOON.toString()) && vac.getEndtime().toString().equals(DayTime.AFTERNOON.toString()))
+        if((vac.getBegtime().toString().equals(DayTime.AFTERNOON.toString())) && (vac.getEndtime().toString().equals(DayTime.AFTERNOON.toString())))
             nbDay=nbDay-0.5f;
-        if(vac.getBegtime().toString().equals(DayTime.MORNING.toString()) && vac.getEndtime().toString().equals(DayTime.MORNING))
+        if((vac.getBegtime().toString().equals(DayTime.MORNING.toString())) && (vac.getEndtime().toString().equals(DayTime.MORNING)))
             nbDay=nbDay-0.5f;
-        if(vac.getBegtime().toString().equals(DayTime.MORNING.toString()) && vac.getEndtime().toString().equals(DayTime.AFTERNOON))
+        if((vac.getBegtime().toString().equals(DayTime.MORNING.toString())) && (vac.getEndtime().toString().equals(DayTime.AFTERNOON)))
             nbDay=nbDay-1f;
             if(nbDay==0)
             throw new BadDateException();
