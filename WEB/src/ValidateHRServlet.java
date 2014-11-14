@@ -165,11 +165,9 @@ public class ValidateHRServlet extends HttpServlet {
             nbDay= nbDay-1f;
         if((vac.getBegtime().toString().equals(DayTime.AFTERNOON.toString())) && (vac.getEndtime().toString().equals(DayTime.AFTERNOON.toString())))
             nbDay=nbDay-0.5f;
-        if((vac.getBegtime().toString().equals(DayTime.MORNING.toString())) && (vac.getEndtime().toString().equals(DayTime.MORNING)))
+        if((vac.getBegtime().toString().equals(DayTime.MORNING.toString())) && (vac.getEndtime().toString().equals(DayTime.MORNING.toString())))
             nbDay=nbDay-0.5f;
-        if((vac.getBegtime().toString().equals(DayTime.MORNING.toString())) && (vac.getEndtime().toString().equals(DayTime.AFTERNOON)))
-            nbDay=nbDay-1f;
-            if(nbDay==0)
+        if(nbDay==0)
             throw new BadDateException();
         return nbDay;
     }
